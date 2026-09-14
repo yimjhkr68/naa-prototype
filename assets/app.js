@@ -788,7 +788,7 @@
       /* 키 오류(API 미사용 설정·결제 미연결·리퍼러 불일치 등)이면 Google 오류 화면 대신 간이 좌표도로 되돌림 */
       window.gm_authFailure = function(){
         mapsP = Promise.reject(new Error("auth")); mapsP.catch(function(){});
-        CFG.googleMapsApiKey = "";
+        CFG.googleMapsApiKey = ""; CFG.mapsAuthError = true;
         toast("Google 지도 API 키 오류 — 간이 좌표도로 표시합니다");
         if (MAPSTATE && $("#mapbox")){ MAPSTATE.map = null; MAPSTATE.markers = {}; drawInsets(); }
         var mm = $("#minimap"); if (mm) mm.remove();
@@ -1063,7 +1063,7 @@
     var box = $("#mapbox"); if (!box) return;
     var st = MAPSTATE.st, pl = mapPlaces(), regions = [];
     pl.forEach(function(x){ if (regions.indexOf(x.p.region) < 0) regions.push(x.p.region); });
-    var html = '<p class="mapnote">Google 지도 API 키가 설정되지 않아 권역별 간이 좌표도로 표시합니다(config.js에 키를 넣으면 Google 지도로 바뀜)</p><div class="insets" id="insets">';
+    var html = '<p class="mapnote">' + (CFG.mapsAuthError ? 'Google 지도 키가 이 주소(' + esc(location.host) + ')에서 허용되지 않아 권역별 간이 좌표도로 표시합니다(Google Cloud 콘솔에서 키의 웹사이트 제한에 이 주소를 추가하면 Google 지도로 바뀜)' : 'Google 지도 API 키가 설정되지 않아 권역별 간이 좌표도로 표시합니다(config.js에 키를 넣으면 Google 지도로 바뀜)') + '</p><div class="insets" id="insets">';
     regions.forEach(function(r, ri){
       var ps = pl.filter(function(x){ return x.p.region === r; });
       var la = ps.map(function(x){ return x.p.lat; }), ln = ps.map(function(x){ return x.p.lng; });
