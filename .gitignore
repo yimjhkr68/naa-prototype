@@ -3,3 +3,4 @@ tools/build/
 __pycache__/
 보고/
 tools/_cap.*
+tools/_report.py
