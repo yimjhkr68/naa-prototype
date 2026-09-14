@@ -1,0 +1,11 @@
+{
+  "_note": "맥 내장 한국어 음성 중 파일 출력이 되는 것은 Yuna뿐이어서, 화자는 음높이(pitch)와 속도(tempo)로 구분함. 고품질 음성(Yuna 프리미엄 등)을 설치하면 voice 값만 바꿔 다시 생성할 수 있음",
+  "default": { "voice": "Yuna", "rate": 180, "pitch": 1.0, "tempo": 1.0 },
+  "speakers": {
+    "정다온": { "voice": "Yuna", "rate": 185, "pitch": 1.0, "tempo": 1.0 },
+    "문채원": { "voice": "Yuna", "rate": 185, "pitch": 1.03, "tempo": 1.0 },
+    "홍석진": { "voice": "Yuna", "rate": 178, "pitch": 0.79, "tempo": 1.14 },
+    "윤미경": { "voice": "Yuna", "rate": 172, "pitch": 0.9, "tempo": 1.04 },
+    "한정희": { "voice": "Yuna", "rate": 176, "pitch": 0.95, "tempo": 1.02 }
+  }
+}

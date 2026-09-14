@@ -1,0 +1,27 @@
+{
+  "topics": [
+    { "id": "T-OPERATION", "label": "국회 운영", "definition": "원 구성과 본회의 운영 등 국회가 일하는 방식에 관한 주제", "broader": null, "narrower": ["T-NEGOT", "T-PRESIDE", "T-SPEAKER"], "related_timeline_entry": null },
+    { "id": "T-NEGOT", "label": "원 구성 협상", "definition": "상임위원장 배분 등 국회 원 구성을 둘러싼 교섭단체 간 협상", "broader": "T-OPERATION", "narrower": [], "related_timeline_entry": null },
+    { "id": "T-PRESIDE", "label": "본회의 사회·의사진행", "definition": "본회의 사회, 표결, 정회 등 의사진행에 관한 경험", "broader": "T-OPERATION", "narrower": [], "related_timeline_entry": null },
+    { "id": "T-SPEAKER", "label": "의장의 중립", "definition": "국회의장의 당적 이탈과 중립적 직무 수행에 관한 경험", "broader": "T-OPERATION", "narrower": [], "related_timeline_entry": null },
+    { "id": "T-INSTITUTION", "label": "국회 조직과 기록", "definition": "국회의 조직·시설·기록 관리에 관한 주제", "broader": null, "narrower": ["T-RELOC", "T-RECORD", "T-STAFF", "T-ARCHIVE"], "related_timeline_entry": null },
+    { "id": "T-RELOC", "label": "국회 이전", "definition": "국회 소재지의 이전과 의사당 건립", "broader": "T-INSTITUTION", "narrower": [], "related_timeline_entry": "1975" },
+    { "id": "T-RECORD", "label": "속기와 회의록", "definition": "발언의 속기, 회의록 작성과 수정 원칙", "broader": "T-INSTITUTION", "narrower": [], "related_timeline_entry": null },
+    { "id": "T-STAFF", "label": "국회사무처 실무", "definition": "국회사무처 직원의 업무와 경험", "broader": "T-INSTITUTION", "narrower": [], "related_timeline_entry": null },
+    { "id": "T-ARCHIVE", "label": "기록과 기증", "definition": "의정활동 기록의 보존과 기증", "broader": "T-INSTITUTION", "narrower": [], "related_timeline_entry": null },
+    { "id": "T-LEGIS", "label": "입법과 심사", "definition": "헌법·법률·예산의 심사에 관한 주제", "broader": null, "narrower": ["T-AMEND", "T-COMMITTEE", "T-BUDGET"], "related_timeline_entry": null },
+    { "id": "T-AMEND", "label": "개헌", "definition": "헌법 개정 논의와 절차", "broader": "T-LEGIS", "narrower": [], "related_timeline_entry": "1987" },
+    { "id": "T-COMMITTEE", "label": "상임위원회", "definition": "상임위원회 활동과 심사", "broader": "T-LEGIS", "narrower": [], "related_timeline_entry": null },
+    { "id": "T-BUDGET", "label": "예산 심사", "definition": "예산결산특별위원회와 예산안 심사", "broader": "T-LEGIS", "narrower": [], "related_timeline_entry": null },
+    { "id": "T-PEOPLE", "label": "국회의 사람들", "definition": "의원·직원·언론 등 국회를 이루는 사람들에 관한 주제", "broader": null, "narrower": ["T-PATH", "T-WOMEN", "T-DISTRICT", "T-DIPLO", "T-PRESS"], "related_timeline_entry": null },
+    { "id": "T-PATH", "label": "의정 입문", "definition": "정치와 국회에 들어서게 된 계기와 과정", "broader": "T-PEOPLE", "narrower": [], "related_timeline_entry": null },
+    { "id": "T-WOMEN", "label": "여성 의원", "definition": "여성 의원의 의정활동과 국회 환경", "broader": "T-PEOPLE", "narrower": [], "related_timeline_entry": null },
+    { "id": "T-DISTRICT", "label": "지역구 활동", "definition": "선거와 지역구 활동", "broader": "T-PEOPLE", "narrower": [], "related_timeline_entry": null },
+    { "id": "T-DIPLO", "label": "의원외교", "definition": "의원 대표단 활동과 외국 의회와의 교류", "broader": "T-PEOPLE", "narrower": [], "related_timeline_entry": null },
+    { "id": "T-PRESS", "label": "국회와 언론", "definition": "출입기자와 국회 보도", "broader": "T-PEOPLE", "narrower": [], "related_timeline_entry": null }
+  ],
+  "events": [
+    { "id": "E-1975-RELOC", "label": "국회의사당 여의도 이전", "date": "1975", "definition": "국회가 태평로 의사당에서 여의도에 새로 지은 의사당으로 옮긴 일", "broader": null, "related_timeline_entry": "1975" },
+    { "id": "E-1987-AMEND", "label": "제9차 헌법 개정", "date": "1987", "definition": "1987년에 이루어진 헌법 개정", "broader": null, "related_timeline_entry": "1987" }
+  ]
+}

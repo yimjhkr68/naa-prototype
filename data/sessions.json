@@ -1,0 +1,58 @@
+[
+  {
+    "id": "n01-s1",
+    "narrator_id": "n01",
+    "seq": 1,
+    "date": "2025-10-14",
+    "interviewer": "정다온",
+    "place": "국회기록원 구술채록실",
+    "duration": "00:04:28.324",
+    "project_name": "역대 국회의장단 구술기록 아카이브 구축 사업(표본)",
+    "video_url": "media/n01-s1.mp4",
+    "captions_url": "media/n01-s1.vtt",
+    "poster_url": "media/n01-s1.jpg",
+    "published_at": "2026-08-20"
+  },
+  {
+    "id": "n01-s2",
+    "narrator_id": "n01",
+    "seq": 2,
+    "date": "2025-10-28",
+    "interviewer": "정다온",
+    "place": "국회기록원 구술채록실",
+    "duration": "00:03:02.702",
+    "project_name": "역대 국회의장단 구술기록 아카이브 구축 사업(표본)",
+    "video_url": "media/n01-s2.mp4",
+    "captions_url": "media/n01-s2.vtt",
+    "poster_url": "media/n01-s2.jpg",
+    "published_at": "2026-08-20"
+  },
+  {
+    "id": "n02-s1",
+    "narrator_id": "n02",
+    "seq": 1,
+    "date": "2025-11-06",
+    "interviewer": "정다온",
+    "place": "구술자 자택(춘천)",
+    "duration": "00:06:19.388",
+    "project_name": "역대 국회의장단 구술기록 아카이브 구축 사업(표본)",
+    "video_url": null,
+    "captions_url": null,
+    "poster_url": "media/n02-s1.jpg",
+    "published_at": "2026-09-03"
+  },
+  {
+    "id": "n03-s1",
+    "narrator_id": "n03",
+    "seq": 1,
+    "date": "2025-11-20",
+    "interviewer": "문채원",
+    "place": "국회기록원 구술채록실",
+    "duration": "00:02:41.035",
+    "project_name": "국회 사람들 구술채록(표본)",
+    "video_url": "media/n03-s1.mp4",
+    "captions_url": "media/n03-s1.vtt",
+    "poster_url": "media/n03-s1.jpg",
+    "published_at": "2026-09-10"
+  }
+]

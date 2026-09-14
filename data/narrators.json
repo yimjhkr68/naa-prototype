@@ -1,0 +1,191 @@
+[
+  {
+    "id": "n01",
+    "name": "홍석진",
+    "name_hanja": "洪錫振",
+    "is_sample": true,
+    "person_id": "P-N01",
+    "headline_position": "前 국회의장",
+    "photo": {
+      "scene": 0,
+      "palette": 0,
+      "caption": "본회의 사회 장면(예시 이미지)"
+    },
+    "positions": [
+      {
+        "title": "신문사 정치부 기자",
+        "assembly_no": null,
+        "period": "1965~1972"
+      },
+      {
+        "title": "국회의원",
+        "assembly_no": null,
+        "period": "제9대~제16대 중 6선"
+      },
+      {
+        "title": "원내총무",
+        "assembly_no": null,
+        "period": "제13대"
+      },
+      {
+        "title": "국회의장",
+        "assembly_no": null,
+        "period": "제○대 후반기"
+      }
+    ],
+    "bio_narrative": [
+      "홍석진은 신문사 정치부 기자로 국회를 처음 만났다. 태평로 의사당 이층 기자석에서 국회를 지켜보던 그는 고향 사람들의 권유로 출마하여 여섯 차례 국회의원에 당선되었다. 원내총무로서 원 구성 협상을 이끌었고, 당적을 내려놓고 국회의장을 지냈다.",
+      "두 차례에 걸친 이 구술에서 그는 여의도 의사당 이전, 새벽까지 이어진 원 구성 협상, 의장의 중립을 둘러싼 고민을 이야기한다. 회의록과 속기사, 기록의 보존에 관한 회고가 여러 번 되풀이되는데, 은퇴한 뒤 의원 시절 수첩을 국회기록원에 기증하기로 한 결정도 그 연장선에 있다."
+    ],
+    "representative_quotes": [
+      {
+        "text": "기록은 자랑하려고 남기는 게 아니라, 나중에 틀렸다는 걸 알 수 있게 남기는 겁니다.",
+        "segment_id": "n01-s2-04",
+        "paragraph_id": "n01-s2-04-p04"
+      },
+      {
+        "text": "서두르지 않는 것도 사회자의 일입니다.",
+        "segment_id": "n01-s2-02",
+        "paragraph_id": "n01-s2-02-p04"
+      }
+    ],
+    "access_level": "full",
+    "related": {
+      "series_book": {
+        "title": "구술총서 — 홍석진 편(표본)",
+        "note": "표지·목차·원문 연결 자리"
+      },
+      "curations": [
+        {
+          "title": "대한민국 국회를 말하다 — 의장석의 무게(표본)",
+          "note": "큐레이션 본문 인용 발언이 세그먼트로 연결되는 자리"
+        }
+      ],
+      "donated_collection": {
+        "title": "국회의원 컬렉션 — 홍석진(표본)",
+        "note": "수첩 20여 권 기증 협의 중. 국회의원 컬렉션과 같은 인물 식별자로 연결"
+      },
+      "records": [
+        {
+          "type": "회의록",
+          "title": "제○대 국회 본회의 회의록(표본)",
+          "note": "회의록시스템 연결 자리"
+        },
+        {
+          "type": "사진",
+          "title": "여의도 의사당 개원 무렵 본회의장 사진(표본)",
+          "note": "소장 사진 연결 자리"
+        }
+      ]
+    },
+    "full_transcript_pdf": "downloads/n01-full-transcript-index.pdf"
+  },
+  {
+    "id": "n02",
+    "name": "윤미경",
+    "name_hanja": "尹美卿",
+    "is_sample": true,
+    "person_id": "P-N02",
+    "headline_position": "前 국회부의장",
+    "photo": {
+      "scene": 1,
+      "palette": 3,
+      "caption": "지역 간담회 장면(예시 이미지)"
+    },
+    "positions": [
+      {
+        "title": "중학교 교사(춘천)",
+        "assembly_no": null,
+        "period": "1968~1987"
+      },
+      {
+        "title": "국회의원",
+        "assembly_no": null,
+        "period": "제13대~제16대 중 4선"
+      },
+      {
+        "title": "국회부의장",
+        "assembly_no": null,
+        "period": "제○대 후반기"
+      }
+    ],
+    "bio_narrative": [
+      "윤미경은 춘천에서 스무 해 가까이 중학교 교사로 일했다. 학부모들과 함께 시작한 작은 도서관 짓기 운동이 계기가 되어 정치에 들어섰고, 여성 의원이 손에 꼽을 만큼 적던 시기에 네 차례 당선되었다. 교육위원회와 예산결산특별위원회에서 오래 활동했으며, 국회부의장을 지냈다.",
+      "이 구술은 초선 시절 복도에서 지켜본 원 구성 협상, 본회의장의 여성 의원들, 지역 예산을 둘러싼 논쟁을 담고 있다. 구술자와의 협의에 따라 한 구간은 하이라이트 영상으로, 세 구간은 녹취문으로 공개하며, 한 구간은 방문 열람으로 제공한다."
+    ],
+    "representative_quotes": [
+      {
+        "text": "싸워도 같이 현장에 가 보면 답이 보입니다.",
+        "segment_id": "n02-s1-04",
+        "paragraph_id": "n02-s1-04-p04"
+      }
+    ],
+    "access_level": "highlight",
+    "related": {
+      "series_book": null,
+      "curations": [],
+      "donated_collection": {
+        "title": "국회의원 컬렉션 — 윤미경(표본)",
+        "note": "국회의원 컬렉션과 같은 인물 식별자로 연결"
+      },
+      "records": [
+        {
+          "type": "간행물",
+          "title": "의정보고서 「춘천에서 여의도까지」(표본)",
+          "note": "소장 간행물 연결 자리"
+        }
+      ]
+    },
+    "full_transcript_pdf": null
+  },
+  {
+    "id": "n03",
+    "name": "한정희",
+    "name_hanja": "韓貞姬",
+    "is_sample": true,
+    "person_id": "P-N03",
+    "headline_position": "前 국회사무처 속기사",
+    "photo": {
+      "scene": 4,
+      "palette": 1,
+      "caption": "속기석 장면(예시 이미지)"
+    },
+    "positions": [
+      {
+        "title": "국회사무처 의사국 속기사",
+        "assembly_no": null,
+        "period": "1972~2002"
+      }
+    ],
+    "bio_narrative": [
+      "한정희는 1972년 국회사무처 공채로 속기사가 되어 서른 해 동안 본회의와 위원회의 발언을 받아 적었다. 태평로 의사당에서 첫 출근을 했고, 1975년 여의도 이전 때에는 속기 원고와 녹음테이프를 상자에 담아 옮기는 일을 맡았다.",
+      "국회를 움직인 실무자의 목소리를 모으는 「국회 사람들」 구술채록의 첫 표본이다. 의원이 아닌 자리에서 본 국회, 한 글자도 빠뜨리지 않는다는 회의록의 원칙, 기록을 둘러싼 사람들의 이야기가 담겨 있다. 같은 사건을 다른 구술자가 어떻게 기억하는지 나란히 볼 수 있는 대목이 많다."
+    ],
+    "representative_quotes": [
+      {
+        "text": "회의록은 의원님 것이 아니라 역사의 것이라고 말씀드렸어요.",
+        "segment_id": "n03-s1-03",
+        "paragraph_id": "n03-s1-03-p02"
+      }
+    ],
+    "access_level": "full",
+    "related": {
+      "series_book": null,
+      "curations": [
+        {
+          "title": "대한민국 국회를 말하다 — 속기석에서 본 국회(표본)",
+          "note": "큐레이션 연결 자리"
+        }
+      ],
+      "donated_collection": null,
+      "records": [
+        {
+          "type": "행정박물",
+          "title": "속기용 원고지와 연필(표본)",
+          "note": "소장 행정박물 연결 자리"
+        }
+      ]
+    },
+    "full_transcript_pdf": null
+  }
+]

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>frame</title>
+<style>
+  /* 표본 영상의 화면(프레임) 템플릿 — build_media.py가 크롬 헤드리스로 촬영함 */
+  html,body{margin:0;width:1280px;height:720px;overflow:hidden;background:#EAE6DC}
+  body{font-family:"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#17181A;position:relative}
+  .serif{font-family:"AppleMyungjo","Nanum Myeongjo",serif}
+  svg.scene{position:absolute;inset:0;width:1280px;height:720px}
+  .brand{position:absolute;left:44px;top:36px;display:flex;align-items:center;gap:14px;font-size:19px;color:#2b2c2e;letter-spacing:.02em}
+  .brand img{height:34px}
+  .brand span{border-left:1px solid rgba(0,0,0,.25);padding-left:14px}
+  .sample{position:absolute;right:44px;top:34px;font-size:17px;color:#fff;background:#8A5A33;padding:8px 16px;letter-spacing:.04em}
+  .lower{position:absolute;left:44px;bottom:40px;max-width:760px;background:rgba(250,249,246,.93);
+    border-left:5px solid #004890;padding:18px 26px 20px}
+  .lower .who{font-size:18px;color:#55585C}
+  .lower .who b{font-size:25px;color:#17181A;margin-right:10px}
+  .lower .seg{margin-top:8px;font-size:29px;line-height:1.35;letter-spacing:-.05em}
+  .lower .seg small{font-family:"Apple SD Gothic Neo",sans-serif;font-size:19px;color:#86898D;margin-right:12px;letter-spacing:.06em}
+  .intro{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 110px;
+    background:linear-gradient(90deg,rgba(243,242,238,.96) 0 58%,rgba(243,242,238,.55) 80%,rgba(243,242,238,0))}
+  .intro .k{font-size:21px;letter-spacing:.2em;color:#86898D}
+  .intro h1{margin:22px 0 0;font-size:64px;font-weight:700;letter-spacing:-.01em}
+  .intro .m{margin-top:22px;font-size:25px;color:#55585C;line-height:1.7}
+  .intro .w{margin-top:40px;font-size:20px;color:#8A5A33;border-top:1px solid #C2C1B9;padding-top:18px;max-width:640px}
+  .lockbox{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(40,41,43,.82);color:#EDEDE9;flex-direction:column;gap:18px}
+  .lockbox .t{font-size:40px}
+  .lockbox .d{font-size:22px;opacity:.75}
+</style>
+</head>
+<body>
+<svg class="scene" id="scene" viewBox="0 0 1280 720" aria-hidden="true"></svg>
+<div class="brand"><img src="../assets/logo.png" alt=""><span>구술기록</span></div>
+<div class="sample">표본 영상 · 가상 인물 · 합성 음성</div>
+<div id="layer"></div>
+<script>
+  var P = JSON.parse(decodeURIComponent(location.hash.slice(1)));
+  var PAL = [
+    ["#E4DACB","#C6A87C","#8A6C45","#4A3A26"],
+    ["#DCE3DD","#A9BFB2","#5F8274","#2E4A40"],
+    ["#E6DCD6","#CDA98C","#A5714E","#5E3A24"],
+    ["#E2E0E6","#BEB8C6","#8A8296","#4B4455"],
+    ["#E3E1D8","#BFBBA6","#8E8A72","#4B4838"],
+    ["#E0E4E6","#B4C0C4","#7E8D93","#3E4B50"]
+  ];
+  var c = PAL[P.palette % PAL.length];
+  /* 면담 장면: 벽·창·서가·안락의자·구술자 실루엣 */
+  var books = "", x = 70, i = 0;
+  while (x < 470){
+    var w = 16 + ((i * 7 + P.palette * 3) % 14), h = 70 + ((i * 13) % 40);
+    var col = [c[1], c[2], c[3], "#B7B6B2"][(i + P.palette) % 4];
+    books += '<rect x="' + x + '" y="' + (250 - h) + '" width="' + w + '" height="' + h + '" fill="' + col + '" opacity=".85"/>';
+    books += '<rect x="' + x + '" y="' + (390 - h + 8) + '" width="' + w + '" height="' + (h - 8) + '" fill="' + col + '" opacity=".7"/>';
+    x += w + 3; i++;
+  }
+  var g = '' +
+    '<defs><linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="' + c[0] + '"/><stop offset="1" stop-color="#D9D4C8"/></linearGradient>' +
+    '<radialGradient id="light" cx=".78" cy=".22" r=".7"><stop offset="0" stop-color="#FFF" stop-opacity=".55"/><stop offset="1" stop-color="#FFF" stop-opacity="0"/></radialGradient></defs>' +
+    '<rect width="1280" height="720" fill="url(#wall)"/>' +
+    '<rect x="820" y="90" width="330" height="360" fill="#F6F3EC"/><rect x="820" y="90" width="330" height="360" fill="none" stroke="' + c[2] + '" stroke-width="10" opacity=".5"/>' +
+    '<path d="M985,90 V450 M820,270 H1150" stroke="' + c[2] + '" stroke-width="6" opacity=".4"/>' +
+    '<rect x="56" y="120" width="430" height="290" fill="' + c[3] + '" opacity=".12"/>' + books +
+    '<rect x="56" y="250" width="430" height="8" fill="' + c[3] + '" opacity=".5"/><rect x="56" y="390" width="430" height="8" fill="' + c[3] + '" opacity=".5"/>' +
+    '<rect y="560" width="1280" height="160" fill="' + c[2] + '" opacity=".35"/>' +
+    '<circle cx="1010" cy="170" r="210" fill="' + c[1] + '" opacity=".22" style="mix-blend-mode:multiply"/>' +
+    '<circle cx="360" cy="600" r="150" fill="none" stroke="' + c[1] + '" stroke-width="14" opacity=".35"/>' +
+    /* 안락의자 */
+    '<path d="M560,640 V420 C560,360 600,330 660,330 H800 C860,330 900,360 900,420 V640 Z" fill="' + c[3] + '" opacity=".78"/>' +
+    '<rect x="520" y="470" width="80" height="190" rx="30" fill="' + c[3] + '"/><rect x="860" y="470" width="80" height="190" rx="30" fill="' + c[3] + '"/>' +
+    '<rect x="580" y="560" width="300" height="80" rx="16" fill="' + c[2] + '"/>' +
+    /* 구술자 실루엣 */
+    '<circle cx="730" cy="330" r="54" fill="#3A3B3D" opacity=".92"/>' +
+    '<path d="M620,560 C620,440 666,400 730,400 C794,400 840,440 840,560 Z" fill="#3A3B3D" opacity=".92"/>' +
+    '<rect x="700" y="420" width="6" height="18" fill="#D9D4C8" opacity=".9"/>' +
+    /* 탁자와 찻잔, 녹음기 */
+    '<rect x="960" y="560" width="220" height="14" fill="' + c[3] + '"/><rect x="1060" y="574" width="16" height="120" fill="' + c[3] + '"/>' +
+    '<rect x="990" y="530" width="38" height="30" rx="6" fill="#F6F3EC"/><rect x="1080" y="536" width="70" height="24" rx="3" fill="#2B2C2E"/>' +
+    '<circle cx="1100" cy="548" r="6" fill="#B8892B"/>' +
+    '<rect width="1280" height="720" fill="url(#light)"/>';
+  var sc = document.getElementById("scene");
+  sc.innerHTML = P.mirror ? '<g transform="translate(1280,0) scale(-1,1)">' + g + '</g>' : g;
+  var L = document.getElementById("layer");
+  function esc(s){ return String(s).replace(/[&<>]/g, function(m){ return {"&":"&amp;","<":"&lt;",">":"&gt;"}[m]; }); }
+  if (P.mode === "intro"){
+    L.innerHTML = '<div class="intro"><div class="k">구술기록 · ' + esc(P.project) + '</div>' +
+      '<h1 class="serif">' + esc(P.name) + ' 구술</h1>' +
+      '<div class="m">' + esc(P.position) + '<br>제' + P.session + '차 채록 · ' + esc(P.date) + ' · 면담 ' + esc(P.interviewer) + '</div>' +
+      '<div class="w">표본 영상입니다. 구술자와 면담자는 가상 인물이며, 음성은 녹취문을 합성 음성으로 읽은 것입니다.</div></div>';
+  } else {
+    L.innerHTML = '<div class="lower"><div class="who"><b>' + esc(P.name) + '</b>' + esc(P.position) + ' · 제' + P.session + '차 채록</div>' +
+      '<div class="seg serif"><small>' + String(P.seq).padStart(2, "0") + '</small>' + esc(P.title) + '</div></div>' +
+      (P.mode === "onsite" ? '<div class="lockbox"><div class="t serif">방문 열람 구간</div><div class="d">구술자의 요청에 따라 국회기록원 열람실에서만 제공합니다</div></div>' : '');
+  }
+</script>
+</body>
+</html>
