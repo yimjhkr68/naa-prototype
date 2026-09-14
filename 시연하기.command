@@ -16,6 +16,6 @@ if lsof -i :$PORT -sTCP:LISTEN >/dev/null 2>&1; then
   read -n 1 -s -r -p "아무 키나 누르면 창을 닫습니다"
   exit 1
 fi
-echo "구술기록 프로토타입: $URL  (이 창을 닫으면 종료됩니다)"
 ( sleep 1; open "$URL" ) &
-python3 -m http.server $PORT --bind 127.0.0.1
+# 영상 구간 이동을 위해 Range 요청을 지원하는 서버를 씀(파이썬 기본 서버는 미지원)
+python3 tools/serve.py $PORT

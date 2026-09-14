@@ -1,3 +1,5 @@
 .DS_Store
 tools/build/
 __pycache__/
+보고/
+tools/_cap.*
