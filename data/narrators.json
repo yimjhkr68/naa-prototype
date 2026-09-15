@@ -83,8 +83,7 @@
     "assembly_range": [
       9,
       16
-    ],
-    "member_id": "P-N01"
+    ]
   },
   {
     "id": "n02",
@@ -147,8 +146,7 @@
     "assembly_range": [
       13,
       16
-    ],
-    "member_id": "P-N02"
+    ]
   },
   {
     "id": "n03",
@@ -203,8 +201,7 @@
     "assembly_range": [
       8,
       16
-    ],
-    "member_id": null
+    ]
   },
   {
     "id": "n04",
@@ -242,8 +239,7 @@
     "assembly_range": [
       14,
       17
-    ],
-    "member_id": null
+    ]
   },
   {
     "id": "n05",
@@ -281,8 +277,7 @@
     "assembly_range": [
       15,
       17
-    ],
-    "member_id": "P-N05"
+    ]
   },
   {
     "id": "n06",
@@ -320,8 +315,7 @@
     "assembly_range": [
       11,
       15
-    ],
-    "member_id": null
+    ]
   },
   {
     "id": "n07",
@@ -359,8 +353,7 @@
     "assembly_range": [
       14,
       19
-    ],
-    "member_id": null
+    ]
   },
   {
     "id": "n08",
@@ -398,8 +391,7 @@
     "assembly_range": [
       12,
       16
-    ],
-    "member_id": "P-N08"
+    ]
   },
   {
     "id": "n09",
@@ -437,7 +429,99 @@
     "assembly_range": [
       12,
       18
+    ]
+  },
+  {
+    "id": "n10",
+    "name": "강윤서",
+    "name_hanja": null,
+    "is_sample": true,
+    "person_id": "P-N10",
+    "headline_position": "제22대 국회의원(3선)",
+    "photo": {
+      "scene": 0,
+      "palette": 2,
+      "caption": "운영위원회 질의 장면(예시 이미지)"
+    },
+    "positions": [
+      {
+        "title": "국회의원",
+        "assembly_no": null,
+        "period": "제20대~제22대"
+      },
+      {
+        "title": "운영위원회 위원",
+        "assembly_no": 22,
+        "period": "제22대"
+      }
     ],
-    "member_id": null
+    "bio_narrative": [
+      "강윤서는 서울 지역구에서 세 차례 당선된 국회의원이다. 제22대 국회에서 운영위원회에 배정되어 국회 운영과 소속기관 예산을 다루었다. 2024년 6월부터 다섯 차례에 걸쳐 의정활동 기록을 국회기록원에 기증하였다.",
+      "이 구술은 기증 기록이 어떻게 만들어졌고 왜 남기게 되었는지를 기증자 스스로 설명하는 '기증자 구술'의 표본이다. 국회의원 컬렉션의 기록과 나란히 읽도록 설계하였다."
+    ],
+    "representative_quotes": [
+      {
+        "text": "제 캐비닛은 이제 비었지만, 그 안에 있던 시간은 남았습니다.",
+        "segment_id": "n10-s1-04",
+        "paragraph_id": "n10-s1-04-p04"
+      }
+    ],
+    "access_level": "full",
+    "related": {
+      "series_book": null,
+      "curations": [],
+      "donated_collection": {
+        "title": "국회의원 컬렉션 — 강윤서",
+        "note": "1차 국회의원 컬렉션 화면의 의원 상세에서 이 구술로 연결됩니다"
+      },
+      "records": []
+    },
+    "full_transcript_pdf": null,
+    "category": "국회의원",
+    "assembly_range": [
+      20,
+      22
+    ]
+  },
+  {
+    "id": "n11",
+    "name": "안태경",
+    "name_hanja": null,
+    "is_sample": true,
+    "person_id": "P-N11",
+    "headline_position": "제22대 국회의원(5선)",
+    "photo": {
+      "scene": 3,
+      "palette": 5,
+      "caption": "외교통일위원회 회의 장면(예시 이미지)"
+    },
+    "positions": [
+      {
+        "title": "국회의원",
+        "assembly_no": null,
+        "period": "제18대~제22대"
+      }
+    ],
+    "bio_narrative": [
+      "안태경은 서울 지역구에서 다섯 차례 당선된 국회의원이다. 외교통일위원회에서 오래 활동하였고, 아홉 차례에 걸쳐 의정활동 기록을 국회기록원에 기증하였다.",
+      "채록은 끝났으며 세그먼트 분할과 녹취문 검수를 진행하고 있다."
+    ],
+    "representative_quotes": [],
+    "access_level": null,
+    "related": {
+      "series_book": null,
+      "curations": [],
+      "donated_collection": {
+        "title": "국회의원 컬렉션 — 안태경",
+        "note": "1차 국회의원 컬렉션 화면의 의원 상세에서 이 구술로 연결됩니다"
+      },
+      "records": []
+    },
+    "full_transcript_pdf": null,
+    "category": "국회의원",
+    "assembly_range": [
+      18,
+      22
+    ]
   }
 ]

@@ -50,7 +50,8 @@
     "birth_death": null,
     "disambiguation": "前 국회사무처 속기사",
     "variants": [
-      "한정희 씨"
+      "한정희 씨",
+      "한정희 선생님"
     ],
     "type": "STAFF",
     "is_public_figure": true,
@@ -81,7 +82,7 @@
     "summary": "나래당 소속 국회의원으로 원내총무를 지냈다. 헌법 개정 논의에 참여했다.",
     "links": {
       "narrator_id": null,
-      "member_collection_id": "C-P-004",
+      "member_collection_id": null,
       "kac": null,
       "wikidata": null
     }
@@ -124,7 +125,7 @@
     "summary": "국회의원으로 의원외교와 예산 심사에 참여했다.",
     "links": {
       "narrator_id": null,
-      "member_collection_id": "C-P-006",
+      "member_collection_id": null,
       "kac": null,
       "wikidata": null
     }
@@ -224,7 +225,7 @@
     "summary": "부산에서 세 차례 당선된 국회의원.",
     "links": {
       "narrator_id": "n05",
-      "member_collection_id": "C-P-N05",
+      "member_collection_id": null,
       "kac": null,
       "wikidata": null
     }
@@ -284,7 +285,7 @@
     "summary": "국회의원 4선, 국회부의장을 지냈다.",
     "links": {
       "narrator_id": "n08",
-      "member_collection_id": "C-P-N08",
+      "member_collection_id": null,
       "kac": null,
       "wikidata": null
     }
@@ -305,6 +306,46 @@
     "links": {
       "narrator_id": "n09",
       "member_collection_id": null,
+      "kac": null,
+      "wikidata": null
+    }
+  },
+  {
+    "person_id": "P-N10",
+    "name": "강윤서",
+    "hanja": null,
+    "birth_death": null,
+    "disambiguation": "제22대 국회의원",
+    "variants": [
+      "강윤서"
+    ],
+    "type": "MEMBER",
+    "is_public_figure": true,
+    "is_sample": true,
+    "summary": "서울 지역구에서 세 차례 당선된 국회의원. 2024년부터 의정활동 기록을 기증하고 있다.",
+    "links": {
+      "narrator_id": "n10",
+      "member_collection_id": "22-000001",
+      "kac": null,
+      "wikidata": null
+    }
+  },
+  {
+    "person_id": "P-N11",
+    "name": "안태경",
+    "hanja": null,
+    "birth_death": null,
+    "disambiguation": "제22대 국회의원",
+    "variants": [
+      "안태경"
+    ],
+    "type": "MEMBER",
+    "is_public_figure": true,
+    "is_sample": true,
+    "summary": "서울 지역구에서 다섯 차례 당선된 국회의원.",
+    "links": {
+      "narrator_id": "n11",
+      "member_collection_id": "22-000031",
       "kac": null,
       "wikidata": null
     }

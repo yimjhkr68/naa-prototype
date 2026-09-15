@@ -466,5 +466,17 @@
     "entity_id": "P-006",
     "status": "CONFIRMED",
     "method": "NER+REVIEW"
+  },
+  {
+    "mention_id": "MN-0040",
+    "segment_id": "n10-s1-02",
+    "paragraph_id": "n10-s1-02-p04",
+    "surface": "한정희 선생님",
+    "char_start": 33,
+    "tc": "00:01:08.457",
+    "entity_type": "PERSON",
+    "entity_id": "P-N03",
+    "status": "CONFIRMED",
+    "method": "NER+REVIEW"
   }
 ]

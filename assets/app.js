@@ -4,7 +4,7 @@
   "use strict";
 
   var CFG = window.OH_CONFIG || {};
-  var FILES = ["site","narrators","sessions","segments","topics","assemblies","places","persons","mentions","members"];
+  var FILES = ["site","narrators","sessions","segments","topics","assemblies","places","persons","mentions"];
   var D = null, X = {};
   var main = document.getElementById("main");
   var P = null;                /* 재생 상태 */
@@ -102,7 +102,6 @@
     X.event = map(D.topics.events, "id");
     X.place = map(D.places, "place_id");
     X.person = map(D.persons, "person_id");
-    X.member = map(D.members || [], "person_id");
     X.segsBySes = {}; X.sesByNar = {}; X.para = {};
     D.sessions.forEach(function(s){ (X.sesByNar[s.narrator_id] = X.sesByNar[s.narrator_id] || []).push(s); });
     Object.keys(X.sesByNar).forEach(function(k){ X.sesByNar[k].sort(function(a, b){ return a.seq - b.seq; }); });
@@ -366,8 +365,6 @@
       switch (p[0] || "home"){
         case "home": title = viewHome(); break;
         case "narrators": title = viewNarrators(r.q); break;
-        case "members": title = viewMembers(); nav = ""; break;
-        case "member": title = viewMember(p[1], r.q); nav = ""; break;
         case "narrator": title = viewNarrator(p[1], r.q); nav = "narrators"; break;
         case "segment": title = viewSegment(p[1], r.q); nav = "narrators"; break;
         case "explore": title = viewExplore(r.q); nav = r.q.get("axis") === "search" || r.q.get("q") ? "search" : "explore"; break;
@@ -578,8 +575,7 @@
     var others = (X.byEnt["PERSON|" + n.person_id] || []).filter(function(m){ return sesOf(X.seg[m.segment_id]).narrator_id !== id; });
 
     var rel = n.related, relCards = [];
-    var mem = n.member_id && X.member[n.member_id];
-    if (mem) relCards.push(["국회의원 컬렉션", {title: n.name + " 의원 컬렉션", note: mem.has_records ? "기증 기록과 이 구술을 같은 인물 기준으로 잇습니다" : "국회의원 컬렉션 상세에서 이 구술로 연결됩니다", href: "#/member/" + n.member_id}]);
+    if (rel.donated_collection) relCards.push(["국회의원 컬렉션", rel.donated_collection]);
     if (rel.series_book) relCards.push(["구술총서", rel.series_book]);
     rel.curations.forEach(function(c){ relCards.push(["큐레이션", c]); });
     rel.records.forEach(function(r){ relCards.push([r.type, r]); });
@@ -603,7 +599,7 @@
         '<div><dt>관리번호</dt><dd class="tnum">' + ss.map(function(s){ return esc(s.record_no); }).join("<br>") + '</dd></div>' +
         '<div><dt>재임·경력</dt><dd>' + n.positions.map(function(p){ return esc(p.title) + ' <span class="muted">' + esc(p.period || "") + '</span>'; }).join("<br>") + '</dd></div></dl>' +
       '<div class="share"><button class="btn" data-copy="url">링크 복사</button><button class="btn" data-copy="text" data-text="' + esc(n.name + " 구술 — " + D.site.url_base + "/narrator/" + n.id) + '">공유 문구 복사</button>' +
-        (mem ? '<a class="btn" href="#/member/' + n.member_id + '">국회의원 컬렉션에서 보기</a>' : '') + '</div>' +
+        '</div>' +
       '</div></div></section>' +
 
       '<div class="article">' +
@@ -1495,7 +1491,7 @@
       '<header class="phero"><p class="kicker">인명 사전' + (p.is_sample ? ' · 표본(가상 인물)' : '') + '</p><h1>' + esc(p.name) + (p.hanja ? '<small>' + esc(p.hanja) + '</small>' : '') + '</h1>' +
         '<p class="dis">' + esc(p.disambiguation) + '</p><p class="summary">' + esc(p.summary) + '</p>' +
         '<div class="links">' + (n ? '<a class="btn primary" href="#/narrator/' + n.id + '">' + esc(n.name) + ' 본인의 구술 보기</a>' : '') +
-          (X.member[id] ? '<a class="btn" href="#/member/' + id + '">국회의원 컬렉션에서 보기</a>' : '') + '</div>' +
+          (p.links.member_collection_id ? '<button class="btn" data-toast="국회의원 컬렉션(1차 과제)과 같은 인물 식별자로 연결됩니다 — 연동 예정">국회의원 컬렉션에서 보기</button>' : '') + '</div>' +
         (same.length ? '<p class="samename">같은 이름의 다른 인물이 있습니다: ' + same.map(function(o){ return '<a href="#/person/' + o.person_id + '">' + esc(o.name) + '(' + esc(o.disambiguation) + ')</a>'; }).join(", ") + '. 인명 사전은 동명이인을 구분하여 연결합니다.</p>' : '') +
         '<p class="note" style="margin-top:14px">구술 속 표기: ' + surfaces.map(function(s){ return "‘" + esc(s) + "’"; }).join(", ") + '</p>' +
       '</header>' +
@@ -1507,61 +1503,6 @@
         }).join("") + '</div>' : '<p class="empty">공개된 구술에서 이 인물을 언급한 대목이 없습니다.</p>') +
       '</section><div style="height:90px"></div></div>';
     return p.name + " — 인명 사전";
-  }
-
-  /* ============================================================ 국회의원 컬렉션 연계 예시 — 1차 과제 SC-01·SC-02 문법에 '구술기록' 영역을 더함 */
-  function memCard(m){
-    var p = X.person[m.person_id], nm = {name:p.name, photo:m.photo};
-    return '<article class="ncard' + (m.has_records ? "" : " gray") + '"><div class="ph">' + sceneSVG(nm) + '</div>' +
-      '<h3><a class="cardlink" href="#/member/' + m.person_id + '" aria-label="' + esc(p.name + ", " + m.party + ", " + (m.has_records ? "기증된 기록 있음" : "기증 대기")) + '">' + esc(p.name) + '</a></h3>' +
-      '<div class="pos">' + esc(m.party) + '</div></article>';
-  }
-  function viewMembers(){
-    main.innerHTML = '<section class="lhead"><div class="art" aria-hidden="true">' + abstractSVG(90210, 4) + '</div><div class="wrap">' +
-      '<p class="kicker">국회의원 컬렉션 · 구술기록 연계 예시</p><h1>국회의원 컬렉션</h1>' +
-      '<p class="lede">1차 과제에서 설계한 국회의원 컬렉션 화면에 구술기록을 잇는 방식을 보이기 위한 예시입니다. 목록 카드는 1차 설계대로 사진·성명·정당만 두고, 구술기록은 의원 상세 화면에서 연결합니다.</p></div></section>' +
-      '<div class="wrap"><div class="resline"><span><b>' + D.members.length + '</b>명(예시)</span><span class="lg"><span><i class="c" aria-hidden="true"></i>기록 있음</span><span><i class="g" aria-hidden="true"></i>기증 대기</span></span></div>' +
-      '<div class="ngrid">' + D.members.map(memCard).join("") + '</div>' +
-      '<p class="note" style="padding:6px 0 80px;max-width:62em">예시 의원은 모두 가상 인물이며 구술자 표본과 같은 인물 식별자를 씁니다. 1차 설계서의 카드 단순화 원칙(사진·성명·정당, 기증 여부는 색으로만)을 그대로 따릅니다.</p></div>';
-    return "국회의원 컬렉션(연계 예시)";
-  }
-  function viewMember(pid, q){
-    var m = X.member[pid], p = X.person[pid];
-    if (!m || !p){ main.innerHTML = '<div class="wrap"><p class="empty">의원을 찾을 수 없습니다.</p></div>'; return ""; }
-    var nm = {name:p.name, photo:m.photo};
-    var n = p.links.narrator_id ? X.nar[p.links.narrator_id] : null;
-    var others = (X.byEnt["PERSON|" + pid] || []).filter(function(x){ return !n || sesOf(X.seg[x.segment_id]).narrator_id !== n.id; });
-    var oral = "";
-    if (n || others.length){
-      var ss = n ? (X.sesByNar[n.id] || []) : [], segs = n ? narSegs(n) : [], st = n ? narStatus(n) : "", qt = n && n.representative_quotes[0];
-      oral = '<section class="block oralblk" id="oral"><p class="kicker">구술기록</p><h2>' + esc(p.name) + '의 목소리</h2>' +
-        '<p class="d">국회기록원 구술기록과 같은 인물 기준으로 연결했습니다. 기증 기록이 남긴 결론과 구술이 남긴 과정을 함께 볼 수 있습니다.</p>' +
-        (n ? '<div class="oral"><div class="oc">' + narCard(n) + '</div><div class="ot"><p class="k">본인 구술</p><h3>' + esc(n.name) + ' 구술</h3>' +
-          '<p class="m">' + ss.length + '차례 채록(' + narYears(n) + ') · ' + esc(D.site.narrator_status[st]) + (segs.length ? ' · 세그먼트 ' + segs.length + '개' : '') + '</p>' +
-          (qt ? '<blockquote>“' + esc(qt.text) + '”</blockquote>' : '<p class="m">' + esc(ss[0] ? ss[0].summary : "") + '</p>') +
-          '<div class="acts"><a class="btn primary" href="#/narrator/' + n.id + '">구술자 카드로 가기 →</a></div>' +
-          (segs.length ? '<ul class="olist">' + segs.filter(function(g){ return g.access_level !== "onsite"; }).slice(0, 4).map(function(g){
-            return '<li><a href="' + segHref(g) + '">' + esc(g.title) + '</a><span class="tnum">' + clock(segDur(g)) + ' · ' + esc(D.site.access_levels[g.access_level].short) + '</span></li>'; }).join("") + '</ul>' : '') +
-          '</div></div>' : '') +
-        (others.length ? '<h3 class="oh3">다른 구술 속의 ' + esc(p.name) + '</h3><div class="pair-cols">' + groupBySeg(others).map(function(g){
-          return segCard(g.seg, {t:firstMentionT(g.ms), snip:sentenceOf(g.ms[0]), noThumb:true});
-        }).join("") + '</div>' : '') +
-        '<p class="note" style="margin-top:14px">1차 설계서 SC-02(의원 컬렉션 상세)에 「구술기록」 영역을 더하는 개정안의 예시입니다. 목록 카드에는 표시하지 않고(카드 단순화 원칙) 상세 화면에서만 연결합니다.</p></section>';
-    }
-    main.innerHTML =
-      '<section class="dhero"><div class="band' + (m.has_records ? "" : " gray") + '" aria-hidden="true"><div>' + sceneSVG(nm) + '</div><div>' + sceneSVG(nm, 1) + '</div><div>' + sceneSVG(nm, 2) + '</div></div>' +
-      '<div class="wrap"><p class="cap">의정활동 사진이 들어갈 자리(예시 이미지)</p>' +
-      '<nav class="crumb" aria-label="현재 위치"><a href="#/members">국회의원 컬렉션</a><span aria-hidden="true">›</span><span aria-current="page">' + esc(p.name) + '</span></nav>' +
-      '<div class="top"><p class="kicker">국회의원 컬렉션 · 연계 예시(가상 인물)</p><h1>' + esc(p.name) + (p.hanja ? '<small>' + esc(p.hanja) + '</small>' : '') + '</h1>' +
-      '<p class="oneline">' + esc(m.party) + ' · ' + esc(m.terms_label) + ' · ' + esc(m.period) + '</p>' +
-      '<div class="share"><button class="btn" data-copy="url">링크 복사</button>' + (oral ? '<a class="btn" href="#/member/' + pid + '?to=oral">구술기록으로</a>' : '') + '</div></div></div></section>' +
-      '<div class="article"><div class="bio col">' + m.bio.map(function(x){ return "<p>" + esc(x) + "</p>"; }).join("") + '</div>' +
-        (m.rounds.length ? '<section class="ledger"><div class="lh"><h2>기록의 내력</h2><span class="sum">' + m.rounds.length + '회 기증</span></div><ol class="tl">' + m.rounds.map(function(r){
-          return '<li' + (r.arranged ? '' : ' class="wip"') + '><span class="ym">' + r.date.slice(0, 4) + '. ' + (+r.date.slice(5, 7)) + '</span><span class="tx2">' + esc(r.text) + '</span></li>'; }).join("") + '</ol></section>'
-          : '<section class="invite"><h2>기록을 기다립니다</h2><p>의정활동 기록은 기증을 통해 국회기록원의 영구 보존 대상이 되며, 정리·기술을 거쳐 이 컬렉션에 더해집니다.</p><a href="#/members" data-toast="기증 안내 화면은 1차 과제(SC-04)와 연계됩니다">기록물 기증 안내</a></section>') +
-        oral + '<div style="height:80px"></div></div>';
-    scrollToParam(q);
-    return p.name + " — 국회의원 컬렉션(연계 예시)";
   }
 
   /* ============================================================ 이벤트 위임 */
@@ -1616,7 +1557,7 @@
     var S = D.site;
     $("#notice").innerHTML = '<div class="wrap"><span><b>' + esc(S.prototype_version) + '</b> — 국회기록원 홈페이지 개편 참조물</span><span><b>표본 데이터</b> — ' + esc(S.sample_notice) + '</span></div>';
     $("#foot").innerHTML = '<div class="wrap"><span class="brand" aria-hidden="true"></span><p>' + esc(S.footer.address) + '</p><p>' + esc(S.footer.contact) + '</p><p>' + esc(S.footer.copyright) + '</p>' +
-      '<p class="proto">' + esc(S.prototype_version) + ' · 기준일 ' + dateK(S.base_date) + ' · 화면 코드: OH-01·02·03·04·05·07·08, 구술기록 검색, 국회의원 컬렉션 연계 예시</p></div>';
+      '<p class="proto">' + esc(S.prototype_version) + ' · 기준일 ' + dateK(S.base_date) + ' · 화면 코드: OH-01·02·03·04·05·07·08, 구술기록 검색</p></div>';
   }
   loadData().then(function(d){
     D = d; buildIndex(); chrome();
