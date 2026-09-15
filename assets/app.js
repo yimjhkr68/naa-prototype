@@ -357,9 +357,28 @@
     var path = i < 0 ? h : h.slice(0, i);
     return { parts: path.split("/").filter(Boolean), q: new URLSearchParams(i < 0 ? "" : h.slice(i + 1)) };
   }
+  /* 구술기록 메뉴 표시 — 다른 화면에서는 aria-current="page", 홈에서는 스크롤 위치의 섹션을 "true"로 표시 */
+  var HOMESPY = null, spyTick = false;
+  function markNav(nav, kind){
+    $$(".ohnav [data-nav]").forEach(function(a){
+      if (a.dataset.nav !== nav){ a.removeAttribute("aria-current"); return; }
+      if (a.getAttribute("aria-current") === kind) return;
+      a.setAttribute("aria-current", kind);
+      var ul = a.closest("ul"), r = a.getBoundingClientRect(), u = ul.getBoundingClientRect();
+      if (r.left < u.left || r.right > u.right) ul.scrollLeft += r.left - u.left - 16;
+    });
+  }
+  window.addEventListener("scroll", function(){
+    if (!HOMESPY || spyTick) return;
+    spyTick = true;
+    requestAnimationFrame(function(){ spyTick = false; if (HOMESPY) HOMESPY(); });
+  }, {passive:true});
+  window.addEventListener("resize", function(){ if (HOMESPY) HOMESPY(); });
+
   function route(){
     closePop(true);
     stopPlayer();
+    HOMESPY = null;
     var r = parseHash(), p = r.parts, nav = p[0] || "home", title = "";
     try {
       switch (p[0] || "home"){
@@ -379,11 +398,10 @@
       console.error(e);
       main.innerHTML = '<div class="wrap"><p class="empty">화면을 만들지 못했습니다: ' + esc(e.message) + '</p></div>';
     }
-    $$(".ohnav [data-nav]").forEach(function(a){
-      if (a.dataset.nav === nav) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
-    });
+    markNav(nav, "page");
     document.title = (title ? title + " — " : "") + "구술기록 — 국회기록원 (프로토타입)";
     if (!r.q.get("keep")) window.scrollTo(0, 0);
+    if (HOMESPY) HOMESPY();
     if (!firstRoute) main.focus({preventScroll:true});
     firstRoute = false;
   }
@@ -418,13 +436,30 @@
     });
 
     var places = D.places.filter(function(p){ return p.is_public && X.byEnt["PLACE|" + p.place_id]; })
-      .sort(function(a, b){ return X.byEnt["PLACE|" + b.place_id].length - X.byEnt["PLACE|" + a.place_id].length; }).slice(0, 4);
+      .sort(function(a, b){ return X.byEnt["PLACE|" + b.place_id].length - X.byEnt["PLACE|" + a.place_id].length; }).slice(0, 6);
     var persons = D.persons.filter(function(p){ return p.is_public_figure && X.byEnt["PERSON|" + p.person_id]; })
-      .sort(function(a, b){ return X.byEnt["PERSON|" + b.person_id].length - X.byEnt["PERSON|" + a.person_id].length; }).slice(0, 4);
+      .sort(function(a, b){ return X.byEnt["PERSON|" + b.person_id].length - X.byEnt["PERSON|" + a.person_id].length; }).slice(0, 6);
 
     var recent = D.sessions.filter(function(s){ return s.published_at && (X.segsBySes[s.id] || []).length; })
       .sort(function(a, b){ return a.published_at < b.published_at ? 1 : -1; });
 
+    /* 구술기록 검색 — 조건 바로 가기(채록 건수) */
+    function qCount(get){
+      var c = {}; D.sessions.forEach(function(s){ var v = get(s); if (v) c[v] = (c[v] || 0) + 1; });
+      return Object.keys(c).sort(function(a, b){ return a.localeCompare(b, "ko"); }).map(function(k){ return [k, c[k]]; });
+    }
+    var qGroups = [
+      ["구술자 구분", D.site.categories.map(function(c){ return [c, D.sessions.filter(function(s){ return X.nar[s.narrator_id].category === c; }).length]; })
+        .filter(function(x){ return x[1]; }).map(function(x){ return [x[0], x[1], "cat=" + encodeURIComponent(x[0])]; })],
+      ["면담자", qCount(function(s){ return s.interviewer; }).map(function(x){ return [x[0], x[1], "iv=" + encodeURIComponent(x[0])]; })],
+      ["구술 장소", qCount(function(s){ return s.place; }).map(function(x){ return [x[0], x[1], "place=" + encodeURIComponent(x[0])]; })],
+      ["면담 연도", qCount(function(s){ return s.date.slice(0, 4); }).map(function(x){ return [x[0] + "년", x[1], "df=" + x[0] + "-01-01&dt=" + x[0] + "-12-31"]; })]
+    ];
+
+    /* 섹션은 구술기록 메뉴와 제목·순서를 맞춤. data-nav로 스크롤 위치에 따라 메뉴를 표시함 */
+    function head(no, title, d){
+      return '<div class="sec-head"><div><div class="no">' + no + '</div><h2>' + title + '</h2></div><p class="d">' + d + '</p></div>';
+    }
     main.innerHTML =
       '<section class="hero"><div class="art" aria-hidden="true">' + abstractSVG(20260914, 1, true) + '</div><div class="wrap"><div class="txt">' +
         '<p class="kicker">' + esc(S.kicker) + '</p>' +
@@ -434,52 +469,74 @@
         '<div><dt>주제 세그먼트</dt><dd class="tnum">' + D.segments.length + '<small>개</small></dd></div>' +
         '<div><dt>채록 시간</dt><dd class="tnum">' + (Math.round(totalSec / 360) / 10) + '<small>시간</small></dd></div>' +
         '<div><dt>언급된 장소·인물</dt><dd class="tnum">' + entCount + '<small>곳·명</small></dd></div></dl>' +
+        '<p class="scrollhint">아래로 내려 구술자·주제·지도·인명 사전·검색 순으로 둘러보세요 ↓</p>' +
       '</div></div></section>' +
 
-      '<section class="sec"><div class="wrap">' +
-        '<div class="sec-head"><div><div class="no">01</div><h2>오늘의 증언</h2></div><p class="d">긴 구술 전체가 아니라 한 대목부터 시작합니다. 자동으로 재생하지 않으며, 누르면 해당 대목의 재생 화면으로 이동합니다.</p></div>' +
+      '<section class="sec" aria-labelledby="h-today"><div class="wrap">' +
+        '<div class="sec-head"><div><div class="no">오늘의 증언</div><h2 id="h-today">' + esc(f.title.split(" — ")[0]) + '</h2></div><p class="d">긴 구술 전체가 아니라 한 대목부터 시작합니다. 자동으로 재생하지 않으며, 누르면 해당 대목의 재생 화면으로 이동합니다.</p></div>' +
         '<div class="feature"><a class="visual" href="' + segHref(f, qT) + '" aria-label="' + esc(f.title) + ' 재생 화면으로"><img src="' + esc(thumb(f)) + '" alt=""' + (hasVideo(f) ? '' : ' style="filter:grayscale(1);opacity:.6"') + '><span class="play"><i></i>' + (hasVideo(f) ? "이 대목 듣기 · " + clock(segDur(f)) : "녹취문 읽기") + '</span></a>' +
           '<div class="panel"><blockquote>' + esc(qt) + '</blockquote>' +
           '<p class="src"><b>' + esc(fn.name) + '</b> ' + esc(fn.headline_position) + ' · 「' + esc(f.title) + '」 · 제' + fs.seq + '차 채록</p>' +
           '<div class="acts"><a class="btn primary" href="' + segHref(f, qT) + '">이 대목으로 가기</a><a class="btn" href="#/narrator/' + fn.id + '">구술자 소개</a></div></div></div>' +
       '</div></section>' +
 
-      '<section class="sec alt"><div class="wrap">' +
-        '<div class="sec-head"><div><div class="no">02</div><h2>주제로 들어가기</h2></div><p class="d">구술을 사람이 아니라 주제로 엽니다. 숫자는 그 주제를 다룬 세그먼트 수입니다.</p></div>' +
-        '<div class="chips">' + chips + '</div>' +
-        '<p style="margin-top:22px"><a class="btn" href="#/explore">주제·사건·시대 전체 보기</a></p>' +
-      '</div></section>' +
-
-      (crossSegs.length === 2 ? '<section class="sec"><div class="wrap">' +
-        '<div class="sec-head"><div><div class="no">03</div><h2>같은 사건, 다른 기억</h2></div><p class="d">' + esc(cx.note) + '</p></div>' +
-        '<div class="cross">' + segCard(crossSegs[0], {summary:true}) + '<div class="vs" aria-hidden="true">그리고</div>' + segCard(crossSegs[1], {summary:true}) + '</div>' +
-        '<p style="margin-top:22px"><a class="btn" href="#/explore?axis=topic&id=' + cx.topic + '">「' + esc(topicLabel(cx.topic)) + '」 교차 증언 모두 보기</a></p>' +
-      '</div></section>' : "") +
-
-      '<section class="sec alt"><div class="wrap">' +
-        '<div class="sec-head"><div><div class="no">04</div><h2>구술자</h2></div><p class="d">의장단에서 속기사·경위·보좌관·출입기자까지, 국회를 거쳐 간 사람들입니다. 온라인으로 들을 수 있는 구술이 있으면 카드에 색이 들어갑니다.</p></div>' +
+      '<section class="sec alt" data-nav="narrators" id="home-narrators"><div class="wrap">' +
+        head("01", "구술자", "의장단에서 속기사·경위·보좌관·출입기자까지, 국회를 거쳐 간 사람들입니다. 온라인으로 들을 수 있는 구술이 있으면 카드에 색이 들어갑니다.") +
         '<div class="hscroll">' + D.narrators.slice().sort(function(a, b){ return (narStatus(a) === "online" ? 0 : 1) - (narStatus(b) === "online" ? 0 : 1); }).map(narCard).join("") + '</div>' +
         '<p style="margin-top:22px"><a class="btn" href="#/narrators">구술자 전체 보기</a></p>' +
-      '</div></section>' +
-
-      '<section class="sec"><div class="wrap">' +
-        '<div class="sec-head"><div><div class="no">05</div><h2>장소와 인물로 찾기</h2></div><p class="d">구술에서 언급된 지명과 인명을 사전으로 정리했습니다. 같은 장소, 같은 사람을 이야기한 대목이 한곳에 모입니다.</p></div>' +
-        '<div class="finders"><div class="finder"><h3>지도로 보는 구술</h3><p>핀을 누르면 그 장소를 언급한 대목 목록이 나오고, 대목을 누르면 그 위치부터 재생합니다.</p><ul>' +
-          places.map(function(p){ return '<li><a href="#/map?place=' + p.place_id + '"><span>' + esc(p.name) + '</span><span>언급 ' + X.byEnt["PLACE|" + p.place_id].length + '회</span></a></li>'; }).join("") +
-          '</ul><a class="btn go" href="#/map">지도 열기</a></div>' +
-        '<div class="finder"><h3>인명 사전</h3><p>호칭이 달라도 같은 사람이면 하나로 묶었습니다. 동명이인은 구분해 두었습니다.</p><ul>' +
-          persons.map(function(p){ return '<li><a href="#/person/' + p.person_id + '"><span>' + esc(p.name) + ' <small class="muted">' + esc(p.disambiguation) + '</small></span><span>언급 ' + X.byEnt["PERSON|" + p.person_id].length + '회</span></a></li>'; }).join("") +
-          '</ul><a class="btn go" href="#/persons">인명 사전 열기</a></div></div>' +
-      '</div></section>' +
-
-      '<section class="sec alt"><div class="wrap">' +
-        '<div class="sec-head"><div><div class="no">06</div><h2>최근 공개</h2></div><p class="d">새로 공개한 채록 회차입니다.</p></div>' +
+        '<h3 class="subh">최근 공개</h3>' +
         '<ul class="recent">' + recent.map(function(s){
           var n = X.nar[s.narrator_id], segs = X.segsBySes[s.id] || [];
           return '<li><a href="#/narrator/' + n.id + '"><span class="d tnum">' + dateK(s.published_at) + '</span><span class="t">' + esc(n.name) + ' 구술 제' + s.seq + '차 — ' + esc(segs.map(function(x){ return x.title.split(" — ")[0]; }).slice(0, 2).join(", ")) + ' 외</span>' +
             '<span class="s">' + esc(s.project_name) + ' · 세그먼트 ' + segs.length + '개 · ' + durK(sec(s.duration)) + '</span></a></li>';
         }).join("") + '</ul>' +
+      '</div></section>' +
+
+      '<section class="sec" data-nav="explore" id="home-explore"><div class="wrap">' +
+        head("02", "주제로 보기", "구술을 사람이 아니라 주제로 엽니다. 숫자는 그 주제를 다룬 세그먼트 수입니다. 사건별·시대별로도 볼 수 있습니다.") +
+        '<div class="chips">' + chips + '</div>' +
+        (crossSegs.length === 2 ? '<h3 class="subh">같은 사건, 다른 기억</h3><p class="subd">' + esc(cx.note) + '</p>' +
+          '<div class="cross">' + segCard(crossSegs[0], {summary:true}) + '<div class="vs" aria-hidden="true">그리고</div>' + segCard(crossSegs[1], {summary:true}) + '</div>' : '') +
+        '<p class="acts2"><a class="btn" href="#/explore?axis=topic">주제별</a><a class="btn" href="#/explore?axis=event">사건별</a><a class="btn" href="#/explore?axis=era">시대별</a>' +
+          (crossSegs.length === 2 ? '<a class="btn" href="#/explore?axis=topic&id=' + cx.topic + '">「' + esc(topicLabel(cx.topic)) + '」 교차 증언 모두 보기</a>' : '') + '</p>' +
+      '</div></section>' +
+
+      '<section class="sec alt" data-nav="map" id="home-map"><div class="wrap">' +
+        head("03", "지도로 보기", "구술에서 언급된 지명을 사전으로 정리해 지도에 핀으로 두었습니다. 핀을 누르면 그 장소를 언급한 대목 목록이 나오고, 대목을 누르면 그 위치부터 재생합니다.") +
+        '<ul class="hlist">' + places.map(function(p){ return '<li><a href="#/map?place=' + p.place_id + '"><span>' + esc(p.name) + '</span><span>언급 ' + X.byEnt["PLACE|" + p.place_id].length + '회</span></a></li>'; }).join("") + '</ul>' +
+        '<p style="margin-top:22px"><a class="btn" href="#/map">지도 열기</a></p>' +
+      '</div></section>' +
+
+      '<section class="sec" data-nav="persons" id="home-persons"><div class="wrap">' +
+        head("04", "인명 사전", "구술에서 언급된 사람을 사전으로 정리했습니다. 호칭이 달라도 같은 사람이면 하나로 묶고, 동명이인은 구분해 두었습니다. 같은 사람을 이야기한 대목이 한곳에 모입니다.") +
+        '<ul class="hlist">' + persons.map(function(p){ return '<li><a href="#/person/' + p.person_id + '"><span>' + esc(p.name) + ' <small class="muted">' + esc(p.disambiguation) + '</small></span><span>언급 ' + X.byEnt["PERSON|" + p.person_id].length + '회</span></a></li>'; }).join("") + '</ul>' +
+        '<p style="margin-top:22px"><a class="btn" href="#/persons">인명 사전 열기</a></p>' +
+      '</div></section>' +
+
+      '<section class="sec alt" data-nav="search" id="home-search"><div class="wrap">' +
+        head("05", "구술기록 검색", "구술자·면담자·구술 장소·면담 일자 같은 채록 정보와 주제·사건·언급 인물 같은 내용 색인을 함께 조건으로 걸어 찾습니다. 검색어는 녹취문 전문에도 적용됩니다.") +
+        '<form class="sform" id="hsform" role="search"><label class="sr" for="hq">검색어</label><input id="hq" type="search" placeholder="예: 회의록, 정다온, 춘천, OH-2024" autocomplete="off"><button class="btn primary" type="submit">검색</button></form>' +
+        '<div class="qgroups">' + qGroups.map(function(g){
+          return '<div class="qg"><p class="fl">' + g[0] + '</p><div class="chips">' + g[1].map(function(x){
+            return '<a class="chip sm" href="#/search?' + x[2] + '">' + esc(x[0]) + '<small>' + x[1] + '건</small></a>'; }).join("") + '</div></div>';
+        }).join("") + '</div>' +
+        '<p style="margin-top:22px"><a class="btn" href="#/search">상세 조건으로 검색</a></p>' +
       '</div></section>';
+
+    $("#hsform").addEventListener("submit", function(ev){
+      ev.preventDefault();
+      var v = $("#hq").value.trim();
+      go("#/search" + (v ? "?q=" + encodeURIComponent(v) : ""));
+    });
+
+    /* 스크롤 위치에 따라 해당 구술기록 메뉴를 표시함(국회의원 컬렉션 첫 화면과 같은 방식) */
+    var secs = $$("#main .sec[data-nav]");
+    HOMESPY = function(){
+      var line = window.innerHeight * 0.34, hit = "";
+      secs.forEach(function(el){ if (el.getBoundingClientRect().top <= line) hit = el.dataset.nav; });
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) hit = secs[secs.length - 1].dataset.nav;
+      markNav(hit, "true");
+    };
     return "";
   }
 
