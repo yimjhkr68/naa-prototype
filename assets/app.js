@@ -4,7 +4,7 @@
   "use strict";
 
   var CFG = window.OH_CONFIG || {};
-  var FILES = ["site","narrators","sessions","segments","topics","assemblies","places","persons","mentions"];
+  var FILES = ["site","narrators","sessions","segments","topics","assemblies","places","persons","mentions","members"];
   var D = null, X = {};
   var main = document.getElementById("main");
   var P = null;                /* 재생 상태 */
@@ -102,6 +102,7 @@
     X.event = map(D.topics.events, "id");
     X.place = map(D.places, "place_id");
     X.person = map(D.persons, "person_id");
+    X.member = map(D.members || [], "person_id");
     X.segsBySes = {}; X.sesByNar = {}; X.para = {};
     D.sessions.forEach(function(s){ (X.sesByNar[s.narrator_id] = X.sesByNar[s.narrator_id] || []).push(s); });
     Object.keys(X.sesByNar).forEach(function(k){ X.sesByNar[k].sort(function(a, b){ return a.seq - b.seq; }); });
@@ -206,13 +207,34 @@
       '<circle cx="160" cy="64" r="18"/><path d="M133,118 C133,93 145,82 160,82 C175,82 187,93 187,118 Z"/>' +
       '<circle cx="250" cy="74" r="15"/><path d="M228,118 C228,98 237,88 250,88 C263,88 272,98 272,118 Z"/></g>' +
       '<rect y="118" width="320" height="12" fill="' + c[2] + '"/><rect y="130" width="320" height="70" fill="' + c[3] + '" opacity=".85"/>'; },
+    2: function(c){ return '<rect width="320" height="200" fill="' + c[0] + '"/><path d="M0,92 L54,52 L108,92 Z" fill="' + c[1] + '"/>' +
+      '<rect x="130" y="40" width="58" height="80" fill="' + c[1] + '"/><rect x="206" y="62" width="76" height="58" fill="' + c[2] + '" opacity=".8"/>' +
+      '<rect y="120" width="320" height="80" fill="' + c[2] + '"/>' +
+      '<g fill="' + c[3] + '"><circle cx="88" cy="118" r="13"/><path d="M68,168 C68,140 76,130 88,130 C100,130 108,140 108,168 Z"/>' +
+      '<circle cx="132" cy="112" r="15"/><path d="M110,172 C110,142 119,130 132,130 C145,130 154,142 154,172 Z"/>' +
+      '<circle cx="178" cy="120" r="12"/><path d="M160,166 C160,141 168,132 178,132 C188,132 196,141 196,166 Z"/></g>'; },
+    3: function(c){ return '<rect width="320" height="200" fill="' + c[0] + '"/><rect width="320" height="86" fill="' + c[1] + '"/>' +
+      '<rect x="88" y="16" width="144" height="46" fill="' + c[2] + '" opacity=".6"/>' +
+      '<g fill="' + c[3] + '"><circle cx="62" cy="92" r="14"/><path d="M40,134 C40,110 49,102 62,102 C75,102 84,110 84,134 Z"/>' +
+      '<circle cx="128" cy="84" r="15"/><path d="M105,132 C105,106 115,96 128,96 C141,96 151,106 151,132 Z"/>' +
+      '<circle cx="196" cy="86" r="15"/><path d="M173,132 C173,107 183,98 196,98 C209,98 219,107 219,132 Z"/>' +
+      '<circle cx="260" cy="94" r="13"/><path d="M240,134 C240,112 248,104 260,104 C272,104 280,112 280,134 Z"/></g>' +
+      '<ellipse cx="160" cy="164" rx="140" ry="34" fill="' + c[3] + '"/><ellipse cx="160" cy="158" rx="128" ry="27" fill="' + c[2] + '"/>'; },
+    5: function(c){ return '<rect width="320" height="200" fill="' + c[0] + '"/><rect width="320" height="104" fill="' + c[1] + '"/>' +
+      '<rect x="56" y="18" width="208" height="40" fill="' + c[3] + '" opacity=".3"/>' +
+      '<g fill="' + c[3] + '"><circle cx="112" cy="82" r="16"/><path d="M88,140 C88,110 98,100 112,100 C126,100 136,110 136,140 Z"/>' +
+      '<circle cx="208" cy="82" r="16"/><path d="M184,140 C184,110 194,100 208,100 C222,100 232,110 232,140 Z"/>' +
+      '<path d="M136,120 H184 V130 H136 Z"/></g>' +
+      '<rect y="140" width="320" height="60" fill="' + c[2] + '"/><rect x="118" y="150" width="84" height="12" fill="' + c[0] + '" opacity=".75"/>'; },
     4: function(c){ return '<rect width="320" height="200" fill="' + c[1] + '"/><rect y="24" width="320" height="58" fill="' + c[2] + '" opacity=".55"/>' +
       '<g stroke="' + c[0] + '" stroke-width="3" opacity=".5"><path d="M24,44 H120 M24,62 H96 M200,44 H296 M224,62 H296"/></g>' +
       '<circle cx="160" cy="90" r="22" fill="' + c[3] + '"/><path d="M112,200 C112,146 132,124 160,124 C188,124 208,146 208,200 Z" fill="' + c[3] + '"/>' +
       '<rect x="60" y="160" width="200" height="40" fill="' + c[0] + '" opacity=".9"/><g stroke="' + c[3] + '" stroke-width="2" opacity=".5"><path d="M76,172 H170 M76,182 H150 M76,192 H160"/></g>'; }
   };
-  function sceneSVG(n){
-    var c = PAL[n.photo.palette % PAL.length], f = SCENES[n.photo.scene] || SCENES[0];
+  function sceneSVG(n, shift){
+    var sc = n.photo.scene, keys = [0, 1, 2, 3, 4, 5];
+    if (shift) sc = keys[(keys.indexOf(sc) + shift) % keys.length];
+    var c = PAL[(n.photo.palette + (shift || 0)) % PAL.length], f = SCENES[sc] || SCENES[0];
     return '<svg class="viz" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="' + esc(n.name) + ' 활동 사진 자리(예시 이미지)">' + f(c) + '</svg>';
   }
 
@@ -235,12 +257,95 @@
       (o.summary ? '<p class="sum">' + esc(seg.summary) + '</p>' : "") +
       '<div class="ft">' + lvl(seg.access_level, true) + (o.extra ? '<span>' + o.extra + '</span>' : "") + '</div></div></article>';
   }
+  function narSegs(n){ return (X.sesByNar[n.id] || []).reduce(function(a, s){ return a.concat(X.segsBySes[s.id] || []); }, []); }
+  /* 구술자 공개 상태: 온라인으로 들을·읽을 세그먼트가 있으면 online, 목록·요약만 있으면 onsite, 채록만 끝났으면 processing */
+  function narStatus(n){
+    var segs = narSegs(n);
+    if (segs.some(function(g){ return g.access_level !== "onsite"; })) return "online";
+    if (segs.length || (X.sesByNar[n.id] || []).some(function(s){ return s.status === "onsite"; })) return "onsite";
+    return "processing";
+  }
+  function sesStatus(s){ return s.status || "online"; }
+  function narYears(n){
+    var ys = (X.sesByNar[n.id] || []).map(function(s){ return s.date.slice(0, 4); }).filter(function(v, i, a){ return a.indexOf(v) === i; });
+    return ys.join("·");
+  }
+  function narPublished(n){
+    return (X.sesByNar[n.id] || []).reduce(function(a, s){ return s.published_at && s.published_at > a ? s.published_at : a; }, "");
+  }
+  /* 구술자 카드 — 국회의원 컬렉션 카드 문법(활동 사진·성명·직위). 공개 상태는 사진의 색으로만 구분함 */
   function narCard(n){
-    var ss = X.sesByNar[n.id] || [];
-    var segs = ss.reduce(function(a, s){ return a.concat(X.segsBySes[s.id] || []); }, []);
-    return '<a class="ncard" href="#/narrator/' + n.id + '"><div class="ph">' + sceneSVG(n) + '</div>' +
-      '<h3>' + esc(n.name) + '</h3><div class="pos">' + esc(n.headline_position) + '</div>' +
-      '<div class="meta">' + lvl(n.access_level) + '<span>채록 ' + ss.length + '회 · 세그먼트 ' + segs.length + '개</span></div></a>';
+    var st = narStatus(n), ss = X.sesByNar[n.id] || [], q = n.representative_quotes[0];
+    var label = n.name + ", " + n.headline_position + ", " + D.site.narrator_status[st];
+    return '<article class="ncard' + (st === "online" ? "" : " gray") + '"><div class="ph">' + sceneSVG(n) +
+      (q ? '<p class="qt" aria-hidden="true">“' + esc(q.text) + '”</p>' : '') + '</div>' +
+      '<h3><a class="cardlink" href="#/narrator/' + n.id + '" aria-label="' + esc(label) + '">' + esc(n.name) + '</a></h3>' +
+      '<div class="pos">' + esc(n.headline_position) + '</div>' +
+      '<div class="meta">' + narYears(n) + '년 채록 · ' + ss.length + '회</div></article>';
+  }
+  function debounce(fn, ms){ var t; return function(){ var a = arguments, me = this; clearTimeout(t); t = setTimeout(function(){ fn.apply(me, a); }, ms); }; }
+
+  /* 색인(Index) 항목 — OHMS 방식: 부분 녹취·요약·키워드·주제·장소·인물·관련 링크와 [구간 재생][구간 링크] */
+  function ixItem(g, o){
+    o = o || {};
+    var n = narOf(g), lv = g.access_level;
+    var first = g.transcript_sync.filter(function(p){ return p.speaker === n.name; })[0];
+    var partial = first ? first.text.slice(0, 72) + (first.text.length > 72 ? "…" : "") : "";
+    var ek = [];
+    (X.bySeg[g.id] || []).forEach(function(m){ var k = m.entity_type + "|" + m.entity_id; if (ek.indexOf(k) < 0) ek.push(k); });
+    var here = o.here && g === o.here && hasVideo(g);
+    var play = here ? '<button type="button" class="btn sm" data-seek="' + segStart(g) + '">처음부터 재생</button>'
+      : '<a class="btn sm" href="' + segHref(g) + (o.here && hasVideo(g) ? '?autoplay=1' : '') + '">' + (hasVideo(g) ? "이 구간 재생" : lv === "onsite" ? "구간 정보" : "녹취문 보기") + '</a>';
+    return '<details class="ixi' + (o.cur ? " cur" : "") + '" data-sid="' + g.id + '"' + (o.open ? " open" : "") + '>' +
+      '<summary><span class="n">' + pad(g.seq) + '</span><span class="t">' + esc(g.title) + '</span>' +
+      '<span class="m tnum">' + (lv === "onsite" ? durK(segDur(g)) : clock(segStart(g)) + '–' + clock(segEnd(g))) + ' ' + lvl(lv, true) + '</span></summary>' +
+      '<div class="ixb">' +
+        (partial && lv !== "onsite" ? '<p><b>부분 녹취</b><span class="pt">“' + esc(partial) + '”</span></p>' : '') +
+        '<p><b>요약</b><span>' + esc(g.summary) + '</span></p>' +
+        ((g.keywords || []).length ? '<p><b>키워드</b><span class="tags">' + g.keywords.map(function(k){ return '<a class="tag" href="#/search?q=' + encodeURIComponent(k) + '">' + esc(k) + '</a>'; }).join("") + '</span></p>' : '') +
+        (g.topics.length ? '<p><b>주제</b><span class="tags">' + g.topics.map(function(t){ return '<a class="tag" href="#/explore?axis=topic&id=' + t + '">' + esc(topicLabel(t)) + '</a>'; }).join("") + '</span></p>' : '') +
+        (ek.length ? '<p><b>장소·인물</b><span class="ents-list">' + ek.map(function(k){ var a = k.split("|"); return entButton(k, entity(a[0], a[1]).name, a[0] === "PLACE" ? "place" : "person"); }).join("") + '</span></p>' : '') +
+        ((g.hyperlinks || []).length ? '<p><b>관련 링크</b><span>' + linksHTML(g.hyperlinks) + '</span></p>' : '') +
+        '<div class="acts">' + play + '<button type="button" class="btn sm" data-copy="seglink" data-id="' + g.id + '">구간 링크 복사</button></div>' +
+      '</div></details>';
+  }
+  function linksHTML(ls){
+    return ls.map(function(l){
+      return l.url ? '<a class="xl" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.label) + '↗</a>' : '<span class="xl off">' + esc(l.label) + '</span>';
+    }).join("");
+  }
+  /* 이 구술 안에서 찾기 — OHMS 'Search This Index'. 제목·요약·키워드·녹취문(방문 열람 제외)에서 찾음 */
+  function ixSearchBox(){
+    return '<div class="ixs"><label class="sr" for="ixq">이 구술 안에서 찾기</label><input id="ixq" type="search" placeholder="이 구술 안에서 찾기 (제목·요약·키워드·녹취문)" autocomplete="off">' +
+      '<p id="ixcount" class="note" aria-live="polite"></p><ol id="ixhits" class="ixhits"></ol></div>';
+  }
+  function bindIxSearch(segs, root, inPlayer){
+    var inp = $("#ixq", root); if (!inp) return;
+    inp.addEventListener("input", debounce(function(){
+      var term = inp.value.trim(), lt = term.toLowerCase(), hits = [], segHit = {};
+      if (term) segs.forEach(function(g){
+        var where = [];
+        if (g.title.toLowerCase().indexOf(lt) > -1) where.push("제목");
+        if (g.summary.toLowerCase().indexOf(lt) > -1) where.push("요약");
+        if ((g.keywords || []).some(function(k){ return k.toLowerCase().indexOf(lt) > -1; })) where.push("키워드");
+        if (where.length){ segHit[g.id] = 1; hits.push({g:g, t:segStart(g), html:'<i>' + where.join("·") + '</i> ' + hi(g.title, term)}); }
+        if (g.access_level !== "onsite") g.transcript_sync.forEach(function(p){
+          var i = p.text.toLowerCase().indexOf(lt); if (i < 0) return;
+          segHit[g.id] = 1;
+          var a = Math.max(p.text.lastIndexOf(". ", i), p.text.lastIndexOf("? ", i)); a = a < 0 ? 0 : a + 2;
+          var b = p.text.slice(i).search(/[.?!](\s|$)/); b = b < 0 ? p.text.length : i + b + 1;
+          hits.push({g:g, t:sec(p.tc), html:hi(p.text.slice(a, b), term)});
+        });
+      });
+      $("#ixcount", root).textContent = term ? "「" + term + "」 " + hits.length + "건 · 세그먼트 " + Object.keys(segHit).length + "개" : "";
+      $("#ixhits", root).innerHTML = hits.slice(0, 30).map(function(h){
+        var same = inPlayer && P && h.g === P.seg;
+        var lbl = pad(h.g.seq) + " " + h.g.title.split(" — ")[0];
+        return '<li>' + (same ? '<button type="button" class="tcj" data-seek="' + h.t + '">' + clock(h.t) + '</button>' : '<a class="tcj" href="' + segHref(h.g, h.t) + (inPlayer && hasVideo(h.g) ? '&autoplay=1' : '') + '">' + clock(h.t) + '</a>') +
+          '<span><small>제' + sesOf(h.g).seq + '차 · ' + esc(lbl) + '</small>' + h.html + '</span></li>';
+      }).join("");
+      $$("details.ixi", root).forEach(function(d){ var on = !!segHit[d.dataset.sid]; d.classList.toggle("hit", on); if (term && on) d.open = true; });
+    }, 180));
   }
   function entButton(key, label, cls){
     return '<button type="button" class="' + cls + '" data-ent="' + key + '" aria-haspopup="dialog">' + esc(label) + '</button>';
@@ -260,8 +365,10 @@
     try {
       switch (p[0] || "home"){
         case "home": title = viewHome(); break;
-        case "narrators": title = viewNarrators(); break;
-        case "narrator": title = viewNarrator(p[1]); nav = "narrators"; break;
+        case "narrators": title = viewNarrators(r.q); break;
+        case "members": title = viewMembers(); nav = ""; break;
+        case "member": title = viewMember(p[1], r.q); nav = ""; break;
+        case "narrator": title = viewNarrator(p[1], r.q); nav = "narrators"; break;
         case "segment": title = viewSegment(p[1], r.q); nav = "narrators"; break;
         case "explore": title = viewExplore(r.q); nav = r.q.get("axis") === "search" || r.q.get("q") ? "search" : "explore"; break;
         case "search": title = viewSearch(r.q); break;
@@ -282,6 +389,11 @@
     if (!r.q.get("keep")) window.scrollTo(0, 0);
     if (!firstRoute) main.focus({preventScroll:true});
     firstRoute = false;
+  }
+  /* ?to=요소ID — 화면을 그린 뒤 해당 영역으로 스크롤 */
+  function scrollToParam(q){
+    var to = q && q.get("to");
+    if (to) setTimeout(function(){ var el = document.getElementById(to); if (el) window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - 70}); }, 30);
   }
   function go(h){ if (location.hash === h) route(); else location.hash = h; }
 
@@ -313,7 +425,8 @@
     var persons = D.persons.filter(function(p){ return p.is_public_figure && X.byEnt["PERSON|" + p.person_id]; })
       .sort(function(a, b){ return X.byEnt["PERSON|" + b.person_id].length - X.byEnt["PERSON|" + a.person_id].length; }).slice(0, 4);
 
-    var recent = D.sessions.slice().sort(function(a, b){ return a.published_at < b.published_at ? 1 : -1; });
+    var recent = D.sessions.filter(function(s){ return s.published_at && (X.segsBySes[s.id] || []).length; })
+      .sort(function(a, b){ return a.published_at < b.published_at ? 1 : -1; });
 
     main.innerHTML =
       '<section class="hero"><div class="art" aria-hidden="true">' + abstractSVG(20260914, 1, true) + '</div><div class="wrap"><div class="txt">' +
@@ -322,7 +435,7 @@
         '<p class="lede">' + esc(S.lede) + '</p>' +
         '<dl class="figs"><div><dt>구술자</dt><dd class="tnum">' + D.narrators.length + '<small>명</small></dd></div>' +
         '<div><dt>주제 세그먼트</dt><dd class="tnum">' + D.segments.length + '<small>개</small></dd></div>' +
-        '<div><dt>채록 시간</dt><dd class="tnum">' + Math.round(totalSec / 60) + '<small>분</small></dd></div>' +
+        '<div><dt>채록 시간</dt><dd class="tnum">' + (Math.round(totalSec / 360) / 10) + '<small>시간</small></dd></div>' +
         '<div><dt>언급된 장소·인물</dt><dd class="tnum">' + entCount + '<small>곳·명</small></dd></div></dl>' +
       '</div></div></section>' +
 
@@ -347,8 +460,9 @@
       '</div></section>' : "") +
 
       '<section class="sec alt"><div class="wrap">' +
-        '<div class="sec-head"><div><div class="no">04</div><h2>구술자</h2></div><p class="d">의장단에서 속기사까지, 국회를 거쳐 간 사람들입니다. 공개 수준은 구술자와의 협의에 따라 다릅니다.</p></div>' +
-        '<div class="hscroll">' + D.narrators.map(narCard).join("") + '</div>' +
+        '<div class="sec-head"><div><div class="no">04</div><h2>구술자</h2></div><p class="d">의장단에서 속기사·경위·보좌관·출입기자까지, 국회를 거쳐 간 사람들입니다. 온라인으로 들을 수 있는 구술이 있으면 카드에 색이 들어갑니다.</p></div>' +
+        '<div class="hscroll">' + D.narrators.slice().sort(function(a, b){ return (narStatus(a) === "online" ? 0 : 1) - (narStatus(b) === "online" ? 0 : 1); }).map(narCard).join("") + '</div>' +
+        '<p style="margin-top:22px"><a class="btn" href="#/narrators">구술자 전체 보기</a></p>' +
       '</div></section>' +
 
       '<section class="sec"><div class="wrap">' +
@@ -372,54 +486,124 @@
     return "";
   }
 
-  /* ============================================================ 구술자 목록(간이 — OH-02는 1단계 범위 밖) */
-  function viewNarrators(){
-    main.innerHTML = '<section class="phead"><div class="art" aria-hidden="true">' + abstractSVG(4411, 4) + '</div><div class="wrap">' +
-      '<p class="kicker">구술기록</p><h1>구술자</h1><p class="lede">국회의원 컬렉션과 같은 카드 문법으로 구술자를 모았습니다. 정식 목록 화면(OH-02)은 2단계에서 필터와 함께 구현합니다.</p></div></section>' +
-      '<div class="wrap pagebody"><div class="pgrid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:26px">' + D.narrators.map(narCard).join("") + '</div></div>';
+  /* ============================================================ OH-02 구술자 목록 — 국회의원 컬렉션(SC-01)과 같은 카드 문법 */
+  var NST = null;
+  function viewNarrators(q){
+    NST = { cat: q.get("cat") || "", st: q.get("st") || "", q: q.get("q") || "", ini: q.get("ini") || "", sort: q.get("sort") || "name" };
+    var cats = [["", "전체"]].concat(D.site.categories.map(function(c){ return [c, c]; }));
+    main.innerHTML = '<section class="lhead"><div class="art" aria-hidden="true">' + abstractSVG(4411, 4) + '</div><div class="wrap">' +
+      '<p class="kicker">구술기록</p><h1>구술자</h1><p class="lede">국회를 거쳐 간 사람들의 자리를 두었습니다. 온라인으로 들을 수 있는 구술이 있는 구술자의 카드에는 색이 들어갑니다.</p>' +
+      '<div class="terms" role="group" aria-label="구술자 구분">' + cats.map(function(c){
+        return '<button type="button" data-ncat="' + esc(c[0]) + '" aria-pressed="' + (NST.cat === c[0]) + '">' + esc(c[1]) + '<span class="tag0" data-ccount="' + esc(c[0]) + '"></span></button>';
+      }).join("") + '</div></div></section>' +
+      '<section class="toolbar"><div class="wrap">' +
+        '<div class="seg" role="group" aria-label="공개 상태">' + [["", "전체"], ["online", "온라인 공개"], ["off", "방문 열람·정리 중"]].map(function(s){
+          return '<button type="button" data-nst="' + s[0] + '" aria-pressed="' + (NST.st === s[0]) + '">' + s[1] + '</button>'; }).join("") + '</div>' +
+        '<label class="sr" for="nq">성명·직위 검색</label><input class="search" id="nq" type="search" placeholder="성명·직위 검색" value="' + esc(NST.q) + '" autocomplete="off">' +
+        '<label class="sr" for="nsort">정렬</label><select class="sel" id="nsort">' + [["name", "가나다순"], ["recent", "최근 공개순"], ["era", "재임 시기순"]].map(function(s){
+          return '<option value="' + s[0] + '"' + (NST.sort === s[0] ? " selected" : "") + '>' + s[1] + '</option>'; }).join("") + '</select>' +
+        '<div class="idx" id="nidx" role="group" aria-label="초성 색인"></div>' +
+      '</div></section>' +
+      '<div class="wrap"><div class="resline"><span id="ncount" aria-live="polite"></span>' +
+        '<span class="lg"><span><i class="c" aria-hidden="true"></i>온라인 공개 구술 있음</span><span><i class="g" aria-hidden="true"></i>방문 열람·정리 중</span></span></div>' +
+      '<div class="ngrid" id="ngrid"></div><p class="estate" id="nempty" hidden>조건에 맞는 구술자가 없습니다.</p>' +
+      '<p class="note" style="padding:6px 0 80px;max-width:62em">카드는 국회의원 컬렉션과 같은 문법(활동 사진·성명·직위)으로 두고, 공개 상태는 사진의 색으로만 구분합니다. 카드에 마우스를 올리거나 초점을 두면 대표 인용이 나타납니다.</p></div>';
+    $$("[data-ncat]").forEach(function(b){ b.onclick = function(){ NST.cat = b.dataset.ncat; renderNGrid(); }; });
+    $$("[data-nst]").forEach(function(b){ b.onclick = function(){ NST.st = b.dataset.nst; renderNGrid(); }; });
+    $("#nq").addEventListener("input", debounce(function(){ NST.q = this.value.trim(); renderNGrid(); }, 150));
+    $("#nsort").onchange = function(){ NST.sort = this.value; renderNGrid(); };
+    renderNGrid(true);
     return "구술자";
+  }
+  function renderNGrid(first){
+    var st = NST;
+    function pass(n, skip){
+      var s = narStatus(n);
+      if (skip !== "cat" && st.cat && n.category !== st.cat) return false;
+      if (st.st === "online" && s !== "online") return false;
+      if (st.st === "off" && s === "online") return false;
+      if (st.q && (n.name + " " + n.headline_position + " " + n.category).indexOf(st.q) < 0 && initialsOf(n.name).indexOf(st.q) !== 0) return false;
+      if (skip !== "ini" && st.ini && initial(n.name) !== st.ini) return false;
+      return true;
+    }
+    var list = D.narrators.filter(function(n){ return pass(n); });
+    list.sort(function(a, b){
+      if (st.sort === "recent") return (narPublished(b) || "0") < (narPublished(a) || "0") ? -1 : 1;
+      if (st.sort === "era") return a.assembly_range[0] - b.assembly_range[0];
+      return a.name.localeCompare(b.name, "ko");
+    });
+    $("#ngrid").innerHTML = list.map(narCard).join("");
+    $("#nempty").hidden = list.length > 0;
+    var on = list.filter(function(n){ return narStatus(n) === "online"; }).length;
+    $("#ncount").innerHTML = '<b>' + list.length + '</b>명 · 온라인 공개 ' + on + '명';
+    $$("[data-ncat]").forEach(function(b){
+      b.setAttribute("aria-pressed", String(st.cat === b.dataset.ncat));
+      var c = D.narrators.filter(function(n){ return (!b.dataset.ncat || n.category === b.dataset.ncat) && pass(n, "cat"); }).length;
+      $('[data-ccount="' + b.dataset.ncat + '"]').textContent = c;
+    });
+    $$("[data-nst]").forEach(function(b){ b.setAttribute("aria-pressed", String(st.st === b.dataset.nst)); });
+    var has = {}; D.narrators.filter(function(n){ return pass(n, "ini"); }).forEach(function(n){ has[initial(n.name)] = 1; });
+    $("#nidx").innerHTML = '<button type="button" data-nini="" aria-pressed="' + (!st.ini) + '" style="width:auto;padding:6px 8px">전체</button>' + CHO_LIST.map(function(c){
+      return '<button type="button" data-nini="' + c + '" aria-pressed="' + (st.ini === c) + '"' + (has[c] ? "" : " disabled") + '>' + c + '</button>'; }).join("");
+    $$("[data-nini]").forEach(function(b){ b.onclick = function(){ NST.ini = b.dataset.nini; renderNGrid(); }; });
+    if (!first){
+      var qs = ["cat", "st", "q", "ini"].filter(function(k){ return st[k]; }).map(function(k){ return k + "=" + encodeURIComponent(st[k]); });
+      if (st.sort !== "name") qs.push("sort=" + st.sort);
+      history.replaceState(null, "", "#/narrators" + (qs.length ? "?" + qs.join("&") : ""));
+    }
+  }
+  function initialsOf(s){
+    var o = "";
+    for (var i = 0; i < s.length; i++){ var c = s.charCodeAt(i) - 0xAC00; o += (c >= 0 && c <= 11171) ? (CHO_FOLD[CHO[Math.floor(c / 588)]] || CHO[Math.floor(c / 588)]) : s[i]; }
+    return o;
   }
 
   /* ============================================================ OH-03 구술자 상세 */
-  function viewNarrator(id){
+  function viewNarrator(id, q){
     var n = X.nar[id];
     if (!n){ main.innerHTML = '<div class="wrap"><p class="empty">구술자를 찾을 수 없습니다.</p></div>'; return ""; }
     var ss = X.sesByNar[id] || [];
-    var segs = ss.reduce(function(a, s){ return a.concat(X.segsBySes[s.id] || []); }, []);
+    var segs = narSegs(n), status = narStatus(n);
     var total = ss.reduce(function(a, s){ return a + sec(s.duration); }, 0);
     var projects = ss.map(function(s){ return s.project_name; }).filter(function(v, i, a){ return a.indexOf(v) === i; });
     var ivs = ss.map(function(s){ return s.interviewer; }).filter(function(v, i, a){ return a.indexOf(v) === i; });
     var levelsUsed = segs.map(function(s){ return s.access_level; }).filter(function(v, i, a){ return a.indexOf(v) === i; });
     var withVideo = segs.filter(hasVideo);
-    var bandSegs = (withVideo.length >= 2 ? withVideo : segs).slice(1, 3);
-    var band = [sceneSVG(n)].concat(bandSegs.map(function(s){ return '<img src="' + thumb(s) + '" alt="">'; }));
+    var band = [sceneSVG(n)].concat(withVideo.length >= 2 ? withVideo.slice(1, 3).map(function(s){ return '<img src="' + thumb(s) + '" alt="">'; }) : [sceneSVG(n, 1), sceneSVG(n, 2)]);
 
-    /* 구술 속 장소·인물 */
     var ents = {};
     segs.forEach(function(s){ (X.bySeg[s.id] || []).forEach(function(m){
       var k = m.entity_type + "|" + m.entity_id; if (m.entity_id === n.person_id) return; ents[k] = (ents[k] || 0) + 1; }); });
     var entKeys = Object.keys(ents).sort(function(a, b){ return ents[b] - ents[a]; });
-    /* 이 구술자를 언급한 다른 구술 */
     var others = (X.byEnt["PERSON|" + n.person_id] || []).filter(function(m){ return sesOf(X.seg[m.segment_id]).narrator_id !== id; });
 
     var rel = n.related, relCards = [];
+    var mem = n.member_id && X.member[n.member_id];
+    if (mem) relCards.push(["국회의원 컬렉션", {title: n.name + " 의원 컬렉션", note: mem.has_records ? "기증 기록과 이 구술을 같은 인물 기준으로 잇습니다" : "국회의원 컬렉션 상세에서 이 구술로 연결됩니다", href: "#/member/" + n.member_id}]);
     if (rel.series_book) relCards.push(["구술총서", rel.series_book]);
     rel.curations.forEach(function(c){ relCards.push(["큐레이션", c]); });
-    if (rel.donated_collection) relCards.push(["국회의원 컬렉션", rel.donated_collection]);
     rel.records.forEach(function(r){ relCards.push([r.type, r]); });
 
+    var statusBox = status === "online" ? "" :
+      '<div class="guide" style="margin-top:34px"><b>' + (status === "processing" ? "구술 정리 중" : "방문 열람 구술") + '</b><p style="margin-top:6px;font-size:14px;color:var(--ink-2)">' +
+      (status === "processing" ? "채록을 마쳤으며 세그먼트 분할과 녹취문 검수를 진행하고 있습니다. 정리가 끝나면 온라인으로 공개합니다. 채록 정보와 회차별 요약은 아래에서 볼 수 있습니다."
+        : "구술자의 요청에 따라 영상과 녹취문 전체를 국회기록원 열람실에서만 제공합니다. 온라인에는 회차별 요약만 게시합니다.") + '</p>' +
+      (status === "onsite" ? '<ol style="margin-top:10px">' + D.site.onsite_guide.map(function(g){ return "<li>" + esc(g) + "</li>"; }).join("") + '</ol>' : '') + '</div>';
+
     main.innerHTML =
-      '<section class="dhero"><div class="band" aria-hidden="true">' + band.map(function(b){ return "<div>" + b + "</div>"; }).join("") + '</div>' +
+      '<section class="dhero"><div class="band' + (status === "online" ? "" : " gray") + '" aria-hidden="true">' + band.map(function(b){ return "<div>" + b + "</div>"; }).join("") + '</div>' +
       '<div class="wrap"><p class="cap">' + esc(n.photo.caption) + ' · 활동 사진이 들어갈 자리</p>' + crumb([["구술자", "#/narrators"], [n.name]]) +
-      '<div class="top"><p class="kicker">구술자' + (n.is_sample ? ' · 표본(가상 인물)' : '') + '</p>' +
+      '<div class="top"><p class="kicker">구술자 · ' + esc(n.category) + (n.is_sample ? ' · 표본(가상 인물)' : '') + '</p>' +
       '<h1>' + esc(n.name) + (n.name_hanja ? '<small>' + esc(n.name_hanja) + '</small>' : '') + '</h1>' +
-      '<p class="oneline">' + esc(n.headline_position) + ' ' + lvl(n.access_level) + '</p>' +
+      '<p class="oneline">' + esc(n.headline_position) + ' ' + (n.access_level ? lvl(n.access_level) : '<span class="lvl onsite">' + esc(D.site.narrator_status[status]) + '</span>') + '</p>' +
       '<dl class="rec"><div><dt>채록 사업</dt><dd>' + projects.map(esc).join("<br>") + '</dd></div>' +
         '<div><dt>채록</dt><dd>' + ss.map(function(s){ return "제" + s.seq + "차 " + dateK(s.date); }).join("<br>") + '</dd></div>' +
-        '<div><dt>분량</dt><dd>' + durK(total) + ' · 세그먼트 ' + segs.length + '개</dd></div>' +
+        '<div><dt>분량</dt><dd>' + durK(total) + (segs.length ? ' · 세그먼트 ' + segs.length + '개' : '') + '</dd></div>' +
         '<div><dt>면담자</dt><dd>' + ivs.map(esc).join(", ") + '</dd></div>' +
+        '<div><dt>관리번호</dt><dd class="tnum">' + ss.map(function(s){ return esc(s.record_no); }).join("<br>") + '</dd></div>' +
         '<div><dt>재임·경력</dt><dd>' + n.positions.map(function(p){ return esc(p.title) + ' <span class="muted">' + esc(p.period || "") + '</span>'; }).join("<br>") + '</dd></div></dl>' +
-      '<div class="share"><button class="btn" data-copy="url">링크 복사</button><button class="btn" data-copy="text" data-text="' + esc(n.name + " 구술 — " + D.site.url_base + "/narrator/" + n.id) + '">공유 문구 복사</button></div>' +
+      '<div class="share"><button class="btn" data-copy="url">링크 복사</button><button class="btn" data-copy="text" data-text="' + esc(n.name + " 구술 — " + D.site.url_base + "/narrator/" + n.id) + '">공유 문구 복사</button>' +
+        (mem ? '<a class="btn" href="#/member/' + n.member_id + '">국회의원 컬렉션에서 보기</a>' : '') + '</div>' +
       '</div></div></section>' +
 
       '<div class="article">' +
@@ -427,17 +611,15 @@
         n.representative_quotes.map(function(q){
           var s = X.seg[q.segment_id], t = sec(X.para[q.paragraph_id].p.tc);
           return '<figure class="pull"><p>“' + esc(q.text) + '”</p><cite>— 「<a href="' + segHref(s, t) + '">' + esc(s.title) + '</a>」에서</cite></figure>';
-        }).join("") +
+        }).join("") + statusBox +
 
-        '<section class="block"><h2>구술 목록</h2><p class="d">채록 회차별로 주제 세그먼트를 나누었습니다. 세그먼트는 원본 영상 안의 타임코드 구간이며, 누르면 해당 구간을 재생합니다.</p>' +
+        '<section class="block" id="index"><h2>구술 목록과 색인</h2><p class="d">채록 회차별로 주제 세그먼트를 나누었습니다. 항목을 펼치면 부분 녹취·요약·키워드·장소·인물·관련 링크가 나오고, 원본 영상의 해당 구간을 바로 재생할 수 있습니다.</p>' +
+        (segs.length ? ixSearchBox() : '') +
         ss.map(function(s){
           var list = X.segsBySes[s.id] || [];
-          return '<div class="sesh"><h3>제' + s.seq + '차 채록 <span>' + dateK(s.date) + ' · ' + esc(s.place) + ' · 면담 ' + esc(s.interviewer) + ' · ' + durK(sec(s.duration)) + '</span></h3><ul class="seglist">' +
-            list.map(function(g){
-              return '<li><a href="' + segHref(g) + '"><span class="n">' + pad(g.seq) + '</span><span class="t">' + esc(g.title) + '</span>' +
-                '<span class="m"><span class="tnum">' + clock(segStart(g)) + '–' + clock(segEnd(g)) + '</span>' + lvl(g.access_level, true) +
-                g.topics.map(function(t){ return '<span>#' + esc(topicLabel(t)) + '</span>'; }).join("") + '</span></a></li>';
-            }).join("") + '</ul></div>';
+          return '<div class="sesh"><h3>제' + s.seq + '차 채록 <span>' + dateK(s.date) + ' · ' + esc(s.place) + ' · 면담 ' + esc(s.interviewer) + ' · ' + durK(sec(s.duration)) + ' · ' + esc(s.media) + ' · ' + esc(s.record_no) + '</span></h3>' +
+            (list.length ? '<div class="ixl">' + list.map(function(g){ return ixItem(g); }).join("") + '</div>'
+              : '<p class="sesum"><span class="lvl onsite">' + esc(D.site.narrator_status[sesStatus(s)]) + '</span> ' + esc(s.summary) + '</p>') + '</div>';
         }).join("") + '</section>' +
 
         (entKeys.length ? '<section class="block"><h2>구술 속 장소와 인물</h2><p class="d">이 구술에서 언급된 지명·인명입니다. 누르면 사전 카드와 다른 구술자의 관련 대목을 볼 수 있습니다.</p>' +
@@ -452,17 +634,22 @@
           }).join("") + '</div></section>' : "") +
 
         (relCards.length ? '<section class="block"><h2>관련 자료</h2><div class="rel">' + relCards.map(function(r){
-          return '<div><div class="ty">' + esc(r[0]) + '</div><b>' + esc(r[1].title) + '</b><p>' + esc(r[1].note || "") + '</p></div>';
+          var body = '<div class="ty">' + esc(r[0]) + '</div><b>' + esc(r[1].title) + '</b><p>' + esc(r[1].note || "") + '</p>';
+          return r[1].href ? '<a class="rlink" href="' + r[1].href + '">' + body + '<span class="go">바로 가기 →</span></a>' : '<div>' + body + '</div>';
         }).join("") + '</div></section>' : "") +
 
-        '<section class="block"><h2>공개 안내</h2><p class="d">' + esc(D.site.access_levels[n.access_level].desc) + '</p>' +
-          '<ul style="margin-top:14px;display:flex;flex-direction:column;gap:8px">' + levelsUsed.map(function(l){
+        '<section class="block"><h2>공개 안내</h2>' +
+          (n.access_level ? '<p class="d">' + esc(D.site.access_levels[n.access_level].desc) + '</p>' : '') +
+          (levelsUsed.length ? '<ul style="margin-top:14px;display:flex;flex-direction:column;gap:8px">' + levelsUsed.map(function(l){
             var c = segs.filter(function(s){ return s.access_level === l; }).length;
             return '<li>' + lvl(l) + ' <span class="muted" style="font-size:13px">세그먼트 ' + c + '개 — ' + esc(D.site.access_levels[l].desc) + '</span></li>';
-          }).join("") + '</ul>' +
-          (levelsUsed.indexOf("onsite") > -1 || levelsUsed.indexOf("transcript_only") > -1 ? onsiteGuide() : "") +
+          }).join("") + '</ul>' : '') +
+          (levelsUsed.indexOf("onsite") > -1 || levelsUsed.indexOf("transcript_only") > -1 || status === "onsite" ? onsiteGuide() : "") +
+          '<p class="disc">' + esc(D.site.disclaimer) + '</p>' +
         '</section>' +
       '</div>';
+    bindIxSearch(segs, main, false);
+    scrollToParam(q);
     return n.name + " 구술";
   }
   function onsiteGuide(){
@@ -516,11 +703,17 @@
       right = '<section class="tx static" aria-labelledby="txh"><div class="txh"><h2 id="txh">녹취문</h2></div><div class="body" style="padding:18px 16px">' +
         '<p>이 구간의 녹취문은 온라인에 게시하지 않습니다.</p>' + onsiteGuide() + '</div></section>';
     } else {
-      right = '<section class="tx' + (video ? "" : " static") + (entsOn ? "" : " ents-off") + '" id="tx" aria-labelledby="txh"><div class="txh"><h2 id="txh">녹취문</h2><div class="opts">' +
-        '<label><input type="checkbox" id="entsT"' + (entsOn ? " checked" : "") + '> 장소·인물 표시</label>' +
+      var hasEn = seg.transcript_sync.some(function(p){ return p.text_en; });
+      var lang = hasEn ? (store("lang") || "ko") : "ko";
+      right = '<section class="tx' + (video ? "" : " static") + (entsOn ? "" : " ents-off") + '" id="tx" aria-label="녹취문과 색인"><div class="txh">' +
+        '<div class="tabs2" role="tablist" aria-label="보기"><button type="button" role="tab" id="tab-tx" aria-selected="true" aria-controls="txbody">녹취문</button>' +
+        '<button type="button" role="tab" id="tab-ix" aria-selected="false" aria-controls="ixbody">색인 · 구술 안 검색</button></div>' +
+        '<div class="opts"><label><input type="checkbox" id="entsT"' + (entsOn ? " checked" : "") + '> 장소·인물 표시</label>' +
         (video ? '<label><input type="checkbox" id="followT"' + (followOn ? " checked" : "") + '> 재생 위치 따라가기</label>' : '') +
+        (hasEn ? '<label>언어 <select id="langT"><option value="ko">한국어</option><option value="en">English</option><option value="both">함께 보기</option></select></label>' : '') +
         '</div><div class="legend"><span class="pl"><i>장소</i>지명 사전</span><span class="ps"><i>인물</i>인명 사전</span></div></div>' +
-        '<div class="body" id="txbody">' + transcriptHTML(seg, n, video) + '</div></section>';
+        '<div class="body" id="txbody" role="tabpanel" aria-labelledby="tab-tx">' + transcriptHTML(seg, n, video, lang) + '</div>' +
+        '<div class="body ixbody" id="ixbody" role="tabpanel" aria-labelledby="tab-ix" hidden>' + ixSearchBox() + ixPanel(seg, n) + '</div></section>';
     }
 
     /* 세그먼트 정보 */
@@ -540,7 +733,7 @@
 
     main.innerHTML = '<div class="wrap">' + crumb([[n.name, "#/narrator/" + n.id], ["제" + s.seq + "차 채록", "#/narrator/" + n.id], [pad(seg.seq) + " " + seg.title]]) +
       '<header class="shead"><p class="kicker">' + esc(n.name) + ' · ' + esc(n.headline_position) + ' · 제' + s.seq + '차 채록 · 세그먼트 ' + (k + 1) + '/' + sibs.length + '</p>' +
-        '<h1>' + esc(seg.title) + '</h1>' +
+        '<h1>' + esc(seg.title) + '</h1>' + (seg.title_en ? '<p class="en-t" lang="en">' + esc(seg.title_en) + '</p>' : '') +
         '<div class="meta">' + lvl(lv) + (lv !== "onsite" ? '<span class="tnum">' + clock(segStart(seg)) + '–' + clock(segEnd(seg)) + ' · ' + durK(segDur(seg)) + '</span>' : '<span>' + durK(segDur(seg)) + ' 분량</span>') +
         '<span>면담 ' + esc(s.interviewer) + ' · ' + dateK(s.date) + '</span></div></header>' +
       '<div class="play-grid">' + left + right + '</div>' +
@@ -556,7 +749,10 @@
             var a = k2.split("|"), e = entity(a[0], a[1]);
             return entButton(k2, e.name, a[0] === "PLACE" ? "place" : "person");
           }).join("") + '</dd>' : '') +
+          ((seg.keywords || []).length ? '<dt>키워드</dt><dd class="tags">' + seg.keywords.map(function(k){ return '<a class="tag" href="#/search?q=' + encodeURIComponent(k) + '">' + esc(k) + '</a>'; }).join("") + '</dd>' : '') +
+          ((seg.hyperlinks || []).length ? '<dt>관련 링크</dt><dd>' + linksHTML(seg.hyperlinks) + '</dd>' : '') +
         '</dl>' +
+        (seg.summary_en ? '<p class="sum en" lang="en">' + esc(seg.summary_en) + '</p>' : '') +
         (cross.length ? '<h2 style="margin-top:34px">다른 구술자의 증언</h2><p class="note" style="margin-bottom:12px">같은 주제·사건을 다른 구술자가 이야기한 대목입니다.</p><div class="pair-cols">' +
           cross.slice(0, 3).map(function(c){ return segCard(c, {noThumb:true, extra: "공통 주제 " + esc(sharedLabel(seg, c))}); }).join("") + '</div>' : '') +
       '</div><div>' +
@@ -564,7 +760,7 @@
           '<div class="share" style="margin-top:12px"><button class="btn" data-copy="cite">인용 표기 복사</button><button class="btn" data-copy="url">세그먼트 링크 복사</button>' +
           (video ? '<button class="btn" data-copy="urlt">현재 재생 위치 링크</button>' : '') + '</div></div>' +
         (dls.length ? '<div class="box"><h2>내려받기</h2><ul class="dl">' + dls.map(function(d){ return '<li><span>' + d[0] + '</span>' + d[1] + '</li>'; }).join("") + '</ul></div>' : '') +
-        '<div class="box"><h2>이용 조건</h2><p style="font-size:13.5px">' + esc(seg.license || D.site.license_default) + '</p><p class="note" style="margin-top:6px">' + esc(D.site.license_note) + '</p></div>' +
+        '<div class="box"><h2>이용 조건</h2><p style="font-size:13.5px">' + esc(seg.license || D.site.license_default) + '</p><p class="note" style="margin-top:6px">' + esc(D.site.license_note) + '</p><p class="disc">' + esc(D.site.disclaimer) + '</p></div>' +
       '</div></div>' +
 
       '<nav class="prevnext" aria-label="같은 채록의 이전·다음 세그먼트">' +
@@ -582,11 +778,39 @@
     if (ct) ct.onchange = function(){ store("cont", ct.checked ? "1" : "0"); };
     if (video) mountPlayer(seg, q);
     else if (q.get("t")) markStatic(parseFloat(q.get("t")));
+    $$("#tx [role=tab]").forEach(function(b){
+      b.onclick = function(){
+        var ix = b.id === "tab-ix";
+        $("#tab-tx").setAttribute("aria-selected", String(!ix)); $("#tab-ix").setAttribute("aria-selected", String(ix));
+        $("#txbody").hidden = ix; $("#ixbody").hidden = !ix;
+        if (ix){ var c = $("#ixbody details.cur"); if (c) c.scrollIntoView({block:"nearest"}); }
+      };
+    });
+    var lt = $("#langT");
+    if (lt){
+      lt.value = store("lang") || "ko";
+      lt.onchange = function(){
+        store("lang", lt.value);
+        $("#txbody").innerHTML = transcriptHTML(seg, n, video, lt.value);
+        if (P){ P.paras = $$("#txbody .pa").map(function(el){ return {el:el, t:+el.dataset.t}; }); P.cur = -1; onTime(); }
+      };
+    }
+    if ($("#ixbody")) bindIxSearch(narSegs(n), $("#ixbody"), true);
     return seg.title;
   }
 
-  function transcriptHTML(seg, n, video){
+  /* 재생 화면의 색인 패널 — 이 구술자의 모든 회차·세그먼트를 펼쳐 볼 수 있음(OHMS Index) */
+  function ixPanel(seg, n){
+    return (X.sesByNar[n.id] || []).map(function(s){
+      var list = X.segsBySes[s.id] || [];
+      if (!list.length) return "";
+      return '<p class="ixsh">제' + s.seq + '차 채록 · ' + dateK(s.date) + ' · ' + esc(s.record_no) + '</p><div class="ixl">' +
+        list.map(function(g){ return ixItem(g, {here: seg, cur: g === seg, open: g === seg}); }).join("") + '</div>';
+    }).join("");
+  }
+  function transcriptHTML(seg, n, video, lang){
     var seen = {};
+    lang = lang || "ko";
     return seg.transcript_sync.map(function(p){
       var t = sec(p.tc), nar = p.speaker === n.name;
       var ms = (X.byPara[p.id] || []).slice().sort(function(a, b){ return a.char_start - b.char_start; });
@@ -601,10 +825,12 @@
         pos = i + m.surface.length;
       });
       out += esc(p.text.slice(pos));
+      if (lang === "en" && p.text_en) out = esc(p.text_en);
       return '<div class="pa ' + (nar ? "nar" : "ivw") + '" id="' + p.id + '" data-t="' + t + '">' +
         (video ? '<button type="button" class="tcb" data-seek="' + t + '" aria-label="' + clock(t) + '부터 재생">' + clock(t) + '</button>'
                : '<span class="tcb">' + clock(t) + '</span>') +
-        '<span class="who">' + esc(p.speaker) + (nar ? "" : " (면담자)") + '</span><p class="txt">' + out + '</p></div>';
+        '<span class="who">' + esc(p.speaker) + (nar ? "" : " (면담자)") + '</span><p class="txt"' + (lang === "en" && p.text_en ? ' lang="en"' : '') + '>' + out + '</p>' +
+        (lang === "both" && p.text_en ? '<p class="txt en" lang="en">' + esc(p.text_en) + '</p>' : '') + '</div>';
     }).join("");
   }
   function crossOf(seg){
@@ -675,7 +901,7 @@
         var el = P.paras[idx].el;
         el.classList.add("now"); el.setAttribute("aria-current", "true");
         var ft = $("#followT");
-        if ((!ft || ft.checked) && Date.now() - P.userAt > 4000 && !P.v.paused) follow(el);
+        if ((!ft || ft.checked) && Date.now() - P.userAt > 4000 && !P.v.paused && !$("#txbody").hidden) follow(el);
       }
     }
     var ph = $("#ph"), pp = $("#phpos");
@@ -911,27 +1137,186 @@
     return "주제로 보는 구술";
   }
 
-  /* ============================================================ 녹취문 검색(OH-05 전문검색을 독립 화면으로) */
+  /* ============================================================ 구술기록 검색 — 여러 조건으로 채록(구술 건)·세그먼트를 찾음 */
+  var SQ = null;
+  function uniq(a){ return a.filter(function(v, i){ return a.indexOf(v) === i; }); }
+  function byKo(a, b){ return String(a[1]).localeCompare(String(b[1]), "ko"); }
+  function entIds(g, type){ return uniq((X.bySeg[g.id] || []).filter(function(m){ return m.entity_type === type; }).map(function(m){ return m.entity_id; })); }
+  function facetDefs(){
+    function vals(get){ return uniq(D.sessions.map(get)).map(function(v){ return [v, v]; }).sort(byKo); }
+    return [
+      {k:"nar", g:"구술자", label:"구술자", lv:"ses", opts:D.narrators.map(function(n){ return [n.id, n.name]; }).sort(byKo), get:function(s){ return [s.narrator_id]; }},
+      {k:"cat", g:"구술자", label:"구술자 구분", lv:"ses", opts:D.site.categories.map(function(c){ return [c, c]; }), get:function(s){ return [X.nar[s.narrator_id].category]; }},
+      {k:"iv", g:"채록 정보", label:"면담자", lv:"ses", opts:vals(function(s){ return s.interviewer; }), get:function(s){ return [s.interviewer]; }},
+      {k:"place", g:"채록 정보", label:"구술 장소", lv:"ses", opts:vals(function(s){ return s.place; }), get:function(s){ return [s.place]; }},
+      {k:"proj", g:"채록 정보", label:"채록 사업", lv:"ses", opts:vals(function(s){ return s.project_name; }), get:function(s){ return [s.project_name]; }},
+      {k:"media", g:"채록 정보", label:"매체", lv:"ses", opts:vals(function(s){ return s.media; }), get:function(s){ return [s.media]; }},
+      {k:"st", g:"공개", label:"공개 상태", lv:"ses", opts:[["online", "온라인 공개"], ["onsite", "방문 열람"], ["processing", "정리 중"]], get:function(s){ return [sesStatus(s)]; }},
+      {k:"lv", g:"공개", label:"세그먼트 공개 수준", lv:"seg", opts:Object.keys(D.site.access_levels).map(function(k){ return [k, D.site.access_levels[k].label]; }), get:function(g){ return [g.access_level]; }},
+      {k:"topic", g:"내용", label:"주제", lv:"seg", opts:D.topics.topics.filter(function(t){ return t.broader; }).map(function(t){ return [t.id, t.label]; }), get:function(g){ return g.topics; }},
+      {k:"event", g:"내용", label:"사건", lv:"seg", opts:D.topics.events.map(function(t){ return [t.id, t.label]; }), get:function(g){ return g.events; }},
+      {k:"person", g:"내용", label:"언급 인물", lv:"seg", opts:D.persons.filter(function(p){ return p.is_public_figure && X.byEnt["PERSON|" + p.person_id]; }).map(function(p){ return [p.person_id, p.name + (X.nameCount[p.name] > 1 ? "(" + p.disambiguation + ")" : "")]; }).sort(byKo), get:function(g){ return entIds(g, "PERSON"); }},
+      {k:"pl", g:"내용", label:"언급 장소", lv:"seg", opts:D.places.filter(function(p){ return p.is_public && X.byEnt["PLACE|" + p.place_id]; }).map(function(p){ return [p.place_id, p.name]; }).sort(byKo), get:function(g){ return entIds(g, "PLACE"); }}
+    ];
+  }
+  function sMatch(st, skip){
+    var F = SQ.F, term = st.q.toLowerCase(), asm = st.asm && skip !== "asm" ? D.assemblies.filter(function(a){ return String(a.no) === st.asm; })[0] : null;
+    var sesF = F.filter(function(f){ return f.lv === "ses" && f.k !== skip && st[f.k].length; });
+    var segF = F.filter(function(f){ return f.lv === "seg" && f.k !== skip && st[f.k].length; });
+    var segOn = segF.length > 0 || !!asm;
+    function hasAny(vals, sel){ return vals.some(function(v){ return sel.indexOf(v) > -1; }); }
+    function okSeg(g){
+      for (var i = 0; i < segF.length; i++) if (!hasAny(segF[i].get(g), st[segF[i].k])) return false;
+      if (asm && (!g.period || g.period.to < asm.from || g.period.from > asm.to)) return false;
+      return true;
+    }
+    function hits(g){
+      var r = {score:0, hits:[], inSum:false, inKw:false};
+      if (!term) return r;
+      if (g.title.toLowerCase().indexOf(term) > -1) r.score += 3;
+      if (g.summary.toLowerCase().indexOf(term) > -1){ r.score += 1; r.inSum = true; }
+      if ((g.keywords || []).some(function(k){ return k.toLowerCase().indexOf(term) > -1; })){ r.score += 2; r.inKw = true; }
+      if (g.access_level !== "onsite") g.transcript_sync.forEach(function(p){
+        var i = p.text.toLowerCase().indexOf(term); if (i < 0) return;
+        var a = Math.max(p.text.lastIndexOf(". ", i), p.text.lastIndexOf("? ", i)); a = a < 0 ? 0 : a + 2;
+        var b = p.text.slice(i).search(/[.?!](\s|$)/); b = b < 0 ? p.text.length : i + b + 1;
+        r.hits.push({t:sec(p.tc), html:hi(p.text.slice(a, b), st.q)}); r.score += 2;
+      });
+      return r;
+    }
+    var ses = [], segs = [];
+    D.sessions.forEach(function(s){
+      for (var i = 0; i < sesF.length; i++) if (!hasAny(sesF[i].get(s), st[sesF[i].k])) return;
+      if (skip !== "date"){ if (st.df && s.date < st.df) return; if (st.dt && s.date > st.dt) return; }
+      var n = X.nar[s.narrator_id];
+      var meta = !term || [n.name, n.headline_position, n.category, s.record_no, s.interviewer, s.place, s.project_name, s.summary, s.media].join(" ").toLowerCase().indexOf(term) > -1;
+      var list = (X.segsBySes[s.id] || []).filter(okSeg), inSegs = [];
+      list.forEach(function(g){ var h = hits(g); if (!term || meta || h.score) inSegs.push({g:g, h:h}); });
+      inSegs.forEach(function(m){ segs.push({seg:m.g, h:m.h, date:s.date, score:m.h.score + (term && meta ? 1 : 0)}); });
+      var ok = segOn ? inSegs.length > 0 : (meta || inSegs.length > 0);
+      if (ok) ses.push({s:s, segs:inSegs.map(function(m){ return m.g; }), matched:term ? inSegs.filter(function(m){ return m.h.score; }) : [], score:(term && meta ? 2 : 0) + inSegs.reduce(function(a, m){ return a + m.h.score; }, 0)});
+    });
+    return {ses:ses, segs:segs};
+  }
   function viewSearch(q){
-    var term = (q.get("q") || "").trim();
-    var results = term ? searchAll(term) : [];
-    var tq = $("#topq"); if (tq) tq.value = term;
-    main.innerHTML = '<section class="phead"><div class="art" aria-hidden="true">' + abstractSVG(2468, 3) + '</div><div class="wrap"><p class="kicker">구술기록</p><h1>녹취문 검색</h1>' +
-      '<p class="lede">녹취문 전문에서 찾습니다. 결과는 인터뷰가 아니라 세그먼트 단위로 돌아오며, 일치한 문장을 누르면 그 위치부터 재생합니다. 방문 열람 구간은 제목·요약만 검색합니다.</p>' +
-      '<form class="sform" id="sform" role="search"><label class="sr" for="sq">검색어</label><input id="sq" type="search" value="' + esc(term) + '" placeholder="예: 회의록, 여의도, 커피"><button class="btn primary" type="submit">검색</button></form></div></section>' +
-      '<div class="wrap pagebody"><p class="note" id="scount" aria-live="polite">' + (term ? '「' + esc(term) + '」 — 세그먼트 ' + results.length + '건' : '검색어를 입력하십시오.') + '</p>' +
-      '<ul class="res">' + results.map(function(r){
-        var s = r.seg, n = narOf(s);
-        return '<li><div class="who">' + esc(n.name) + ' · 제' + sesOf(s).seq + '차 · ' + pad(s.seq) + ' ' + lvl(s.access_level, true) + '</div>' +
-          '<h3><a href="' + segHref(s) + '">' + hi(s.title, term) + '</a></h3>' +
-          (r.inSummary ? '<p class="mq">' + hi(s.summary, term) + '</p>' : '') +
-          r.hits.slice(0, 3).map(function(h){
-            return '<div class="hit"><a href="' + segHref(s, h.t) + '">' + clock(h.t) + '</a><span>' + h.html + '</span></div>';
-          }).join("") + '</li>';
-      }).join("") + '</ul></div>';
-    $("#sform").onsubmit = function(ev){ ev.preventDefault(); go("#/search?q=" + encodeURIComponent($("#sq").value.trim())); };
-    if (!term) $("#sq").focus({preventScroll:true});
-    return "녹취문 검색";
+    var F = facetDefs();
+    var st = {q:(q.get("q") || "").trim(), mode:q.get("mode") || "ses", sort:q.get("sort") || "rel", df:q.get("df") || "", dt:q.get("dt") || "", asm:q.get("asm") || ""};
+    F.forEach(function(f){ st[f.k] = q.get(f.k) ? q.get(f.k).split(",") : []; });
+    SQ = {F:F, st:st};
+    var tq = $("#topq"); if (tq) tq.value = st.q;
+    var groups = ["구술자", "채록 정보", "공개", "내용"];
+    function facetHTML(f){
+      return '<div class="fac"><p class="fl" id="fl-' + f.k + '">' + esc(f.label) + '</p><div role="group" aria-labelledby="fl-' + f.k + '"' + (f.opts.length > 6 ? ' class="scrollf"' : '') + '>' + f.opts.map(function(o){
+        return '<label class="opt"><input type="checkbox" data-f="' + f.k + '" value="' + esc(o[0]) + '"' + (st[f.k].indexOf(o[0]) > -1 ? " checked" : "") + '><span>' + esc(o[1]) + '</span><small data-cnt="' + f.k + '|' + esc(o[0]) + '"></small></label>';
+      }).join("") + '</div></div>';
+    }
+    main.innerHTML = '<section class="phead"><div class="art" aria-hidden="true">' + abstractSVG(2468, 3) + '</div><div class="wrap"><p class="kicker">구술기록</p><h1>구술기록 검색</h1>' +
+      '<p class="lede">구술자·면담자·구술 장소·면담 일자 등 채록 정보와, 주제·사건·언급 인물·장소 등 내용 색인을 함께 조건으로 걸어 찾습니다. 검색어는 채록 정보와 세그먼트 제목·요약·키워드·녹취문 전문에 적용됩니다.</p>' +
+      '<form class="sform" id="sform" role="search"><label class="sr" for="sq">검색어</label><input id="sq" type="search" value="' + esc(st.q) + '" placeholder="예: 회의록, 정다온, 춘천, OH-2024"><button class="btn primary" type="submit">검색</button></form>' +
+      '<div class="modes" role="group" aria-label="결과 단위">' + [["ses", "채록(구술 건) 단위"], ["seg", "세그먼트(대목) 단위"]].map(function(m){
+        return '<button type="button" data-mode="' + m[0] + '" aria-pressed="' + (st.mode === m[0]) + '">' + m[1] + '</button>'; }).join("") + '</div></div></section>' +
+      '<div class="wrap"><div class="sgrid"><aside class="sfacets" aria-label="상세 조건"><details class="sfold" open><summary>상세 조건</summary>' +
+        groups.map(function(gname){
+          return '<fieldset><legend>' + gname + '</legend>' + F.filter(function(f){ return f.g === gname; }).map(facetHTML).join("") +
+            (gname === "채록 정보" ? '<div class="fac"><p class="fl">면담 일자</p><div class="drange"><label class="sr" for="sdf">시작일</label><input type="date" id="sdf" value="' + esc(st.df) + '"><span>~</span><label class="sr" for="sdt">종료일</label><input type="date" id="sdt" value="' + esc(st.dt) + '"></div></div>' : '') +
+            (gname === "내용" ? '<div class="fac"><p class="fl"><label for="sasm">다룬 시기(국회 대수)</label></p><select id="sasm" class="sel"><option value="">전체</option>' + D.assemblies.map(function(a){
+              return '<option value="' + a.no + '"' + (st.asm === String(a.no) ? " selected" : "") + '>' + a.label + ' 국회(' + a.from + '–' + a.to + ')</option>'; }).join("") + '</select></div>' : '') +
+            '</fieldset>';
+        }).join("") +
+        '<button class="btn" id="sreset" type="button">조건 초기화</button></details></aside>' +
+      '<div class="sres"><div class="shead"><p id="scount" aria-live="polite"></p><label class="sr" for="ssort">정렬</label><select id="ssort" class="sel">' +
+        [["rel", "관련도순"], ["new", "면담 일자 최신순"], ["old", "면담 일자 오래된순"], ["name", "구술자 가나다순"]].map(function(o){ return '<option value="' + o[0] + '"' + (st.sort === o[0] ? " selected" : "") + '>' + o[1] + '</option>'; }).join("") +
+        '</select></div><div class="chips0" id="schips"></div><div id="sresults"></div></div></div></div>';
+    if (window.innerWidth < 1024) $(".sfold").open = false;
+    $$("[data-f]").forEach(function(c){ c.onchange = function(){
+      var a = st[c.dataset.f], i = a.indexOf(c.value);
+      if (c.checked && i < 0) a.push(c.value); if (!c.checked && i > -1) a.splice(i, 1);
+      renderSearch(); }; });
+    $("#sdf").onchange = function(){ st.df = this.value; renderSearch(); };
+    $("#sdt").onchange = function(){ st.dt = this.value; renderSearch(); };
+    $("#sasm").onchange = function(){ st.asm = this.value; renderSearch(); };
+    $("#ssort").onchange = function(){ st.sort = this.value; renderSearch(); };
+    $$("[data-mode]").forEach(function(b){ b.onclick = function(){ st.mode = b.dataset.mode; renderSearch(); }; });
+    $("#sform").onsubmit = function(ev){ ev.preventDefault(); st.q = $("#sq").value.trim(); if (tq) tq.value = st.q; renderSearch(); };
+    $("#sreset").onclick = function(){ F.forEach(function(f){ st[f.k] = []; }); st.df = st.dt = st.asm = ""; $$("[data-f]").forEach(function(c){ c.checked = false; }); $("#sdf").value = $("#sdt").value = $("#sasm").value = ""; renderSearch(); };
+    renderSearch(true);
+    return "구술기록 검색";
+  }
+  function renderSearch(first){
+    var st = SQ.st, F = SQ.F, r = sMatch(st, null), unitSes = st.mode !== "seg";
+    /* 조건별 건수: 그 조건만 뺀 나머지 조건으로 셈 */
+    F.forEach(function(f){
+      var rr = sMatch(st, f.k), cnt = {};
+      if (unitSes) rr.ses.forEach(function(x){
+        var vals = f.lv === "ses" ? f.get(x.s) : uniq([].concat.apply([], x.segs.map(f.get)));
+        vals.forEach(function(v){ cnt[v] = (cnt[v] || 0) + 1; });
+      });
+      else rr.segs.forEach(function(x){ (f.lv === "ses" ? f.get(sesOf(x.seg)) : f.get(x.seg)).forEach(function(v){ cnt[v] = (cnt[v] || 0) + 1; }); });
+      f.opts.forEach(function(o){
+        var el = $('[data-cnt="' + f.k + '|' + o[0].replace(/"/g, '\\"') + '"]'); if (!el) return;
+        el.textContent = cnt[o[0]] || 0;
+        el.parentNode.classList.toggle("zero", !cnt[o[0]] && st[f.k].indexOf(o[0]) < 0);
+      });
+    });
+    $$("[data-mode]").forEach(function(b){ b.setAttribute("aria-pressed", String(st.mode === b.dataset.mode)); });
+    /* 적용 중인 조건 */
+    var chips = [];
+    if (st.q) chips.push(["q", "", "검색어: " + st.q]);
+    F.forEach(function(f){ st[f.k].forEach(function(v){ var o = f.opts.filter(function(x){ return x[0] === v; })[0]; chips.push([f.k, v, f.label + ": " + (o ? o[1] : v)]); }); });
+    if (st.df || st.dt) chips.push(["date", "", "면담 일자: " + (st.df ? dateK(st.df) : "") + " ~ " + (st.dt ? dateK(st.dt) : "")]);
+    if (st.asm) chips.push(["asm", "", "다룬 시기: 제" + st.asm + "대"]);
+    $("#schips").innerHTML = chips.map(function(c){ return '<button type="button" class="fchip" data-rm="' + esc(c[0] + "|" + c[1]) + '" aria-label="' + esc(c[2]) + ' 조건 해제">' + esc(c[2]) + ' ×</button>'; }).join("");
+    $$("[data-rm]").forEach(function(b){ b.onclick = function(){
+      var a = b.dataset.rm.split("|"), k = a[0], v = a.slice(1).join("|");
+      if (k === "q"){ st.q = ""; $("#sq").value = ""; } else if (k === "date"){ st.df = st.dt = ""; $("#sdf").value = $("#sdt").value = ""; }
+      else if (k === "asm"){ st.asm = ""; $("#sasm").value = ""; }
+      else { st[k].splice(st[k].indexOf(v), 1); var c = $('[data-f="' + k + '"][value="' + v.replace(/"/g, '\\"') + '"]'); if (c) c.checked = false; }
+      renderSearch(); }; });
+    /* 결과 */
+    function nm(x){ return X.nar[(x.s || sesOf(x.seg)).narrator_id].name; }
+    function dt(x){ return (x.s || sesOf(x.seg)).date; }
+    var list = unitSes ? r.ses : r.segs;
+    list.sort(function(a, b){
+      if (st.sort === "new") return dt(a) < dt(b) ? 1 : -1;
+      if (st.sort === "old") return dt(a) > dt(b) ? 1 : -1;
+      if (st.sort === "name") return nm(a).localeCompare(nm(b), "ko") || (dt(a) > dt(b) ? 1 : -1);
+      return (b.score - a.score) || (dt(a) < dt(b) ? 1 : -1);
+    });
+    $("#scount").innerHTML = unitSes ? '채록 <b>' + r.ses.length + '</b>건 · 해당 세그먼트 ' + r.segs.length + '개' : '세그먼트 <b>' + r.segs.length + '</b>개 · 채록 ' + r.ses.length + '건';
+    if (!list.length){ $("#sresults").innerHTML = '<p class="empty">조건에 맞는 구술기록이 없습니다. 조건을 줄여 보십시오.</p>'; }
+    else if (unitSes){
+      $("#sresults").innerHTML = '<div class="tblwrap"><table class="rtable"><caption class="sr">채록 단위 검색 결과</caption><thead><tr>' +
+        ['관리번호', '구술자', '회차', '면담 일자', '면담자', '구술 장소', '채록 사업', '분량·매체', '공개'].map(function(h){ return '<th scope="col">' + h + '</th>'; }).join("") + '</tr></thead><tbody>' +
+        list.map(function(x){
+          var s = x.s, n = X.nar[s.narrator_id], stt = sesStatus(s);
+          return '<tr><td class="tnum">' + esc(s.record_no) + '</td><td><a href="#/narrator/' + n.id + '?to=index">' + hi(n.name, st.q) + '</a><small>' + esc(n.headline_position) + '</small></td>' +
+            '<td>제' + s.seq + '차</td><td class="tnum">' + dateK(s.date) + '</td><td>' + hi(s.interviewer, st.q) + '</td><td>' + hi(s.place, st.q) + '</td><td>' + hi(s.project_name, st.q) + '</td>' +
+            '<td class="tnum">' + durK(sec(s.duration)) + '<small>' + esc(s.media) + '</small></td><td><span class="lvl ' + (stt === "online" ? "full" : "onsite") + '">' + esc(D.site.narrator_status[stt]) + '</span>' +
+            (x.segs.length ? '<small>세그먼트 ' + x.segs.length + '개</small>' : '') + '</td></tr>' +
+            (x.matched.length ? '<tr class="sub"><td></td><td colspan="8">' + x.matched.slice(0, 3).map(function(m){
+              var h = m.h.hits[0];
+              return '<a href="' + segHref(m.g, h ? h.t : null) + '">' + pad(m.g.seq) + ' ' + esc(m.g.title) + '</a>' + (h ? ' <span class="tnum muted">' + clock(h.t) + '</span> <span class="hl1">' + h.html + '</span>' : '');
+            }).join("<br>") + (x.matched.length > 3 ? '<br><span class="muted">외 ' + (x.matched.length - 3) + '개</span>' : '') + '</td></tr>' : '');
+        }).join("") + '</tbody></table></div><p class="note">구술자 이름을 누르면 구술자 카드(상세)의 구술 목록·색인으로 이동합니다. 정리 중인 채록은 채록 정보만 검색됩니다.</p>';
+    } else {
+      $("#sresults").innerHTML = '<ul class="res">' + list.map(function(x){
+        var g = x.seg, n = narOf(g);
+        return '<li><div class="who">' + esc(n.name) + ' · 제' + sesOf(g).seq + '차 · ' + dateK(sesOf(g).date) + ' · 면담 ' + esc(sesOf(g).interviewer) + ' · ' + pad(g.seq) + ' ' + lvl(g.access_level, true) + '</div>' +
+          '<h3><a href="' + segHref(g) + '">' + hi(g.title, st.q) + '</a></h3>' +
+          (x.h.inSum || !st.q ? '<p class="mq">' + hi(g.summary, st.q) + '</p>' : '') +
+          (x.h.inKw ? '<p class="mq">키워드: ' + g.keywords.map(function(k){ return hi(k, st.q); }).join(", ") + '</p>' : '') +
+          x.h.hits.slice(0, 3).map(function(h){ return '<div class="hit"><a href="' + segHref(g, h.t) + '">' + clock(h.t) + '</a><span>' + h.html + '</span></div>'; }).join("") + '</li>';
+      }).join("") + '</ul>';
+    }
+    if (!first){
+      var qs = [];
+      if (st.q) qs.push("q=" + encodeURIComponent(st.q));
+      if (st.mode !== "ses") qs.push("mode=" + st.mode);
+      if (st.sort !== "rel") qs.push("sort=" + st.sort);
+      ["df", "dt", "asm"].forEach(function(k){ if (st[k]) qs.push(k + "=" + encodeURIComponent(st[k])); });
+      F.forEach(function(f){ if (st[f.k].length) qs.push(f.k + "=" + encodeURIComponent(st[f.k].join(","))); });
+      history.replaceState(null, "", "#/search" + (qs.length ? "?" + qs.join("&") : ""));
+    }
   }
   function hi(text, term){
     if (!term) return esc(text);
@@ -939,25 +1324,6 @@
     if (i < 0) return esc(text);
     return esc(text.slice(0, i)) + "<mark>" + esc(text.slice(i, i + term.length)) + "</mark>" + hi(text.slice(i + term.length), term);
   }
-  function searchAll(term){
-    var lt = term.toLowerCase(), out = [];
-    X.order.forEach(function(s){
-      var r = {seg:s, hits:[], inSummary:false, score:0};
-      if (s.title.toLowerCase().indexOf(lt) > -1) r.score += 3;
-      if (s.summary.toLowerCase().indexOf(lt) > -1){ r.inSummary = true; r.score += 1; }
-      if (s.access_level !== "onsite") s.transcript_sync.forEach(function(p){
-        var i = p.text.toLowerCase().indexOf(lt);
-        if (i < 0) return;
-        var a = Math.max(p.text.lastIndexOf(". ", i), p.text.lastIndexOf("? ", i)); a = a < 0 ? 0 : a + 2;
-        var b = p.text.slice(i).search(/[.?!](\s|$)/); b = b < 0 ? p.text.length : i + b + 1;
-        r.hits.push({t: sec(p.tc), html: hi(p.text.slice(a, b), term)});
-        r.score += 2;
-      });
-      if (r.score) out.push(r);
-    });
-    return out.sort(function(a, b){ return b.score - a.score; });
-  }
-
   /* ============================================================ OH-07 지도로 보는 구술 */
   var MAPSTATE = null;
   function viewMap(q){
@@ -1129,7 +1495,7 @@
       '<header class="phero"><p class="kicker">인명 사전' + (p.is_sample ? ' · 표본(가상 인물)' : '') + '</p><h1>' + esc(p.name) + (p.hanja ? '<small>' + esc(p.hanja) + '</small>' : '') + '</h1>' +
         '<p class="dis">' + esc(p.disambiguation) + '</p><p class="summary">' + esc(p.summary) + '</p>' +
         '<div class="links">' + (n ? '<a class="btn primary" href="#/narrator/' + n.id + '">' + esc(n.name) + ' 본인의 구술 보기</a>' : '') +
-          (p.links.member_collection_id ? '<button class="btn" data-toast="국회의원 컬렉션(1차 과제)과 같은 인물 식별자로 연결됩니다 — 연동 예정">국회의원 컬렉션에서 보기</button>' : '') + '</div>' +
+          (X.member[id] ? '<a class="btn" href="#/member/' + id + '">국회의원 컬렉션에서 보기</a>' : '') + '</div>' +
         (same.length ? '<p class="samename">같은 이름의 다른 인물이 있습니다: ' + same.map(function(o){ return '<a href="#/person/' + o.person_id + '">' + esc(o.name) + '(' + esc(o.disambiguation) + ')</a>'; }).join(", ") + '. 인명 사전은 동명이인을 구분하여 연결합니다.</p>' : '') +
         '<p class="note" style="margin-top:14px">구술 속 표기: ' + surfaces.map(function(s){ return "‘" + esc(s) + "’"; }).join(", ") + '</p>' +
       '</header>' +
@@ -1141,6 +1507,61 @@
         }).join("") + '</div>' : '<p class="empty">공개된 구술에서 이 인물을 언급한 대목이 없습니다.</p>') +
       '</section><div style="height:90px"></div></div>';
     return p.name + " — 인명 사전";
+  }
+
+  /* ============================================================ 국회의원 컬렉션 연계 예시 — 1차 과제 SC-01·SC-02 문법에 '구술기록' 영역을 더함 */
+  function memCard(m){
+    var p = X.person[m.person_id], nm = {name:p.name, photo:m.photo};
+    return '<article class="ncard' + (m.has_records ? "" : " gray") + '"><div class="ph">' + sceneSVG(nm) + '</div>' +
+      '<h3><a class="cardlink" href="#/member/' + m.person_id + '" aria-label="' + esc(p.name + ", " + m.party + ", " + (m.has_records ? "기증된 기록 있음" : "기증 대기")) + '">' + esc(p.name) + '</a></h3>' +
+      '<div class="pos">' + esc(m.party) + '</div></article>';
+  }
+  function viewMembers(){
+    main.innerHTML = '<section class="lhead"><div class="art" aria-hidden="true">' + abstractSVG(90210, 4) + '</div><div class="wrap">' +
+      '<p class="kicker">국회의원 컬렉션 · 구술기록 연계 예시</p><h1>국회의원 컬렉션</h1>' +
+      '<p class="lede">1차 과제에서 설계한 국회의원 컬렉션 화면에 구술기록을 잇는 방식을 보이기 위한 예시입니다. 목록 카드는 1차 설계대로 사진·성명·정당만 두고, 구술기록은 의원 상세 화면에서 연결합니다.</p></div></section>' +
+      '<div class="wrap"><div class="resline"><span><b>' + D.members.length + '</b>명(예시)</span><span class="lg"><span><i class="c" aria-hidden="true"></i>기록 있음</span><span><i class="g" aria-hidden="true"></i>기증 대기</span></span></div>' +
+      '<div class="ngrid">' + D.members.map(memCard).join("") + '</div>' +
+      '<p class="note" style="padding:6px 0 80px;max-width:62em">예시 의원은 모두 가상 인물이며 구술자 표본과 같은 인물 식별자를 씁니다. 1차 설계서의 카드 단순화 원칙(사진·성명·정당, 기증 여부는 색으로만)을 그대로 따릅니다.</p></div>';
+    return "국회의원 컬렉션(연계 예시)";
+  }
+  function viewMember(pid, q){
+    var m = X.member[pid], p = X.person[pid];
+    if (!m || !p){ main.innerHTML = '<div class="wrap"><p class="empty">의원을 찾을 수 없습니다.</p></div>'; return ""; }
+    var nm = {name:p.name, photo:m.photo};
+    var n = p.links.narrator_id ? X.nar[p.links.narrator_id] : null;
+    var others = (X.byEnt["PERSON|" + pid] || []).filter(function(x){ return !n || sesOf(X.seg[x.segment_id]).narrator_id !== n.id; });
+    var oral = "";
+    if (n || others.length){
+      var ss = n ? (X.sesByNar[n.id] || []) : [], segs = n ? narSegs(n) : [], st = n ? narStatus(n) : "", qt = n && n.representative_quotes[0];
+      oral = '<section class="block oralblk" id="oral"><p class="kicker">구술기록</p><h2>' + esc(p.name) + '의 목소리</h2>' +
+        '<p class="d">국회기록원 구술기록과 같은 인물 기준으로 연결했습니다. 기증 기록이 남긴 결론과 구술이 남긴 과정을 함께 볼 수 있습니다.</p>' +
+        (n ? '<div class="oral"><div class="oc">' + narCard(n) + '</div><div class="ot"><p class="k">본인 구술</p><h3>' + esc(n.name) + ' 구술</h3>' +
+          '<p class="m">' + ss.length + '차례 채록(' + narYears(n) + ') · ' + esc(D.site.narrator_status[st]) + (segs.length ? ' · 세그먼트 ' + segs.length + '개' : '') + '</p>' +
+          (qt ? '<blockquote>“' + esc(qt.text) + '”</blockquote>' : '<p class="m">' + esc(ss[0] ? ss[0].summary : "") + '</p>') +
+          '<div class="acts"><a class="btn primary" href="#/narrator/' + n.id + '">구술자 카드로 가기 →</a></div>' +
+          (segs.length ? '<ul class="olist">' + segs.filter(function(g){ return g.access_level !== "onsite"; }).slice(0, 4).map(function(g){
+            return '<li><a href="' + segHref(g) + '">' + esc(g.title) + '</a><span class="tnum">' + clock(segDur(g)) + ' · ' + esc(D.site.access_levels[g.access_level].short) + '</span></li>'; }).join("") + '</ul>' : '') +
+          '</div></div>' : '') +
+        (others.length ? '<h3 class="oh3">다른 구술 속의 ' + esc(p.name) + '</h3><div class="pair-cols">' + groupBySeg(others).map(function(g){
+          return segCard(g.seg, {t:firstMentionT(g.ms), snip:sentenceOf(g.ms[0]), noThumb:true});
+        }).join("") + '</div>' : '') +
+        '<p class="note" style="margin-top:14px">1차 설계서 SC-02(의원 컬렉션 상세)에 「구술기록」 영역을 더하는 개정안의 예시입니다. 목록 카드에는 표시하지 않고(카드 단순화 원칙) 상세 화면에서만 연결합니다.</p></section>';
+    }
+    main.innerHTML =
+      '<section class="dhero"><div class="band' + (m.has_records ? "" : " gray") + '" aria-hidden="true"><div>' + sceneSVG(nm) + '</div><div>' + sceneSVG(nm, 1) + '</div><div>' + sceneSVG(nm, 2) + '</div></div>' +
+      '<div class="wrap"><p class="cap">의정활동 사진이 들어갈 자리(예시 이미지)</p>' +
+      '<nav class="crumb" aria-label="현재 위치"><a href="#/members">국회의원 컬렉션</a><span aria-hidden="true">›</span><span aria-current="page">' + esc(p.name) + '</span></nav>' +
+      '<div class="top"><p class="kicker">국회의원 컬렉션 · 연계 예시(가상 인물)</p><h1>' + esc(p.name) + (p.hanja ? '<small>' + esc(p.hanja) + '</small>' : '') + '</h1>' +
+      '<p class="oneline">' + esc(m.party) + ' · ' + esc(m.terms_label) + ' · ' + esc(m.period) + '</p>' +
+      '<div class="share"><button class="btn" data-copy="url">링크 복사</button>' + (oral ? '<a class="btn" href="#/member/' + pid + '?to=oral">구술기록으로</a>' : '') + '</div></div></div></section>' +
+      '<div class="article"><div class="bio col">' + m.bio.map(function(x){ return "<p>" + esc(x) + "</p>"; }).join("") + '</div>' +
+        (m.rounds.length ? '<section class="ledger"><div class="lh"><h2>기록의 내력</h2><span class="sum">' + m.rounds.length + '회 기증</span></div><ol class="tl">' + m.rounds.map(function(r){
+          return '<li' + (r.arranged ? '' : ' class="wip"') + '><span class="ym">' + r.date.slice(0, 4) + '. ' + (+r.date.slice(5, 7)) + '</span><span class="tx2">' + esc(r.text) + '</span></li>'; }).join("") + '</ol></section>'
+          : '<section class="invite"><h2>기록을 기다립니다</h2><p>의정활동 기록은 기증을 통해 국회기록원의 영구 보존 대상이 되며, 정리·기술을 거쳐 이 컬렉션에 더해집니다.</p><a href="#/members" data-toast="기증 안내 화면은 1차 과제(SC-04)와 연계됩니다">기록물 기증 안내</a></section>') +
+        oral + '<div style="height:80px"></div></div>';
+    scrollToParam(q);
+    return p.name + " — 국회의원 컬렉션(연계 예시)";
   }
 
   /* ============================================================ 이벤트 위임 */
@@ -1161,6 +1582,7 @@
       else if (k === "urlt" && P) copy(location.href.split("?")[0] + "?t=" + now().toFixed(1), "현재 위치 링크를 복사했습니다");
       else if (k === "cite") copy($("#cite").textContent, "인용 표기를 복사했습니다");
       else if (k === "text") copy(cp.dataset.text, "공유 문구를 복사했습니다");
+      else if (k === "seglink") copy(location.href.split("#")[0] + "#/segment/" + cp.dataset.id, "구간 링크를 복사했습니다");
       return;
     }
     var dl = t.closest("[data-dl]");
@@ -1194,7 +1616,7 @@
     var S = D.site;
     $("#notice").innerHTML = '<div class="wrap"><span><b>' + esc(S.prototype_version) + '</b> — 국회기록원 홈페이지 개편 참조물</span><span><b>표본 데이터</b> — ' + esc(S.sample_notice) + '</span></div>';
     $("#foot").innerHTML = '<div class="wrap"><span class="brand" aria-hidden="true"></span><p>' + esc(S.footer.address) + '</p><p>' + esc(S.footer.contact) + '</p><p>' + esc(S.footer.copyright) + '</p>' +
-      '<p class="proto">' + esc(S.prototype_version) + ' · 기준일 ' + dateK(S.base_date) + ' · 화면 코드: OH-01·03·04·05·07·08</p></div>';
+      '<p class="proto">' + esc(S.prototype_version) + ' · 기준일 ' + dateK(S.base_date) + ' · 화면 코드: OH-01·02·03·04·05·07·08, 구술기록 검색, 국회의원 컬렉션 연계 예시</p></div>';
   }
   loadData().then(function(d){
     D = d; buildIndex(); chrome();

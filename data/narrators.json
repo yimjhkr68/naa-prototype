@@ -78,7 +78,13 @@
         }
       ]
     },
-    "full_transcript_pdf": "downloads/n01-full-transcript-index.pdf"
+    "full_transcript_pdf": "downloads/n01-full-transcript-index.pdf",
+    "category": "의장단",
+    "assembly_range": [
+      9,
+      16
+    ],
+    "member_id": "P-N01"
   },
   {
     "id": "n02",
@@ -136,7 +142,13 @@
         }
       ]
     },
-    "full_transcript_pdf": null
+    "full_transcript_pdf": null,
+    "category": "의장단",
+    "assembly_range": [
+      13,
+      16
+    ],
+    "member_id": "P-N02"
   },
   {
     "id": "n03",
@@ -186,6 +198,246 @@
         }
       ]
     },
-    "full_transcript_pdf": null
+    "full_transcript_pdf": null,
+    "category": "국회 직원",
+    "assembly_range": [
+      8,
+      16
+    ],
+    "member_id": null
+  },
+  {
+    "id": "n04",
+    "name": "박종우",
+    "name_hanja": "朴鍾宇",
+    "is_sample": true,
+    "person_id": "P-N04",
+    "headline_position": "前 국회사무총장",
+    "photo": {
+      "scene": 2,
+      "palette": 5,
+      "caption": "사무처 회의 장면(예시 이미지)"
+    },
+    "positions": [
+      {
+        "title": "국회사무총장",
+        "assembly_no": null,
+        "period": "제14대~제17대"
+      }
+    ],
+    "bio_narrative": [
+      "박종우는 국회사무처 의사국에서 일을 시작해 사무총장을 지냈다. 두 차례에 걸친 이 구술은 국회 운영의 행정 실무와 사무처 조직의 변화를 다룬다.",
+      "채록은 끝났으며 세그먼트 분할과 녹취문 검수를 진행하고 있다."
+    ],
+    "representative_quotes": [],
+    "access_level": null,
+    "related": {
+      "series_book": null,
+      "curations": [],
+      "donated_collection": null,
+      "records": []
+    },
+    "full_transcript_pdf": null,
+    "category": "국회 직원",
+    "assembly_range": [
+      14,
+      17
+    ],
+    "member_id": null
+  },
+  {
+    "id": "n05",
+    "name": "김혜련",
+    "name_hanja": "金惠蓮",
+    "is_sample": true,
+    "person_id": "P-N05",
+    "headline_position": "前 국회의원(3선)",
+    "photo": {
+      "scene": 3,
+      "palette": 2,
+      "caption": "의정보고회 장면(예시 이미지)"
+    },
+    "positions": [
+      {
+        "title": "국회의원(3선)",
+        "assembly_no": null,
+        "period": "제15대~제17대"
+      }
+    ],
+    "bio_narrative": [
+      "김혜련은 부산에서 세 차례 당선된 국회의원이다. 보건복지 분야 입법 활동과 지역구 활동을 중심으로 구술하였다.",
+      "채록은 끝났으며 세그먼트 분할과 녹취문 검수를 진행하고 있다."
+    ],
+    "representative_quotes": [],
+    "access_level": null,
+    "related": {
+      "series_book": null,
+      "curations": [],
+      "donated_collection": null,
+      "records": []
+    },
+    "full_transcript_pdf": null,
+    "category": "국회의원",
+    "assembly_range": [
+      15,
+      17
+    ],
+    "member_id": "P-N05"
+  },
+  {
+    "id": "n06",
+    "name": "장민호",
+    "name_hanja": "張敏浩",
+    "is_sample": true,
+    "person_id": "P-N06",
+    "headline_position": "前 국회 경위",
+    "photo": {
+      "scene": 5,
+      "palette": 4,
+      "caption": "본회의장 경호 장면(예시 이미지)"
+    },
+    "positions": [
+      {
+        "title": "국회 경위",
+        "assembly_no": null,
+        "period": "제11대~제15대"
+      }
+    ],
+    "bio_narrative": [
+      "장민호는 국회 경위로 일하며 본회의장과 의사당의 질서 유지를 맡았다. 이 구술은 의원이 아닌 자리에서 본 본회의장의 긴장과 일상을 담고 있다.",
+      "음성으로 채록하였으며 녹취문을 작성하고 있다."
+    ],
+    "representative_quotes": [],
+    "access_level": null,
+    "related": {
+      "series_book": null,
+      "curations": [],
+      "donated_collection": null,
+      "records": []
+    },
+    "full_transcript_pdf": null,
+    "category": "국회 직원",
+    "assembly_range": [
+      11,
+      15
+    ],
+    "member_id": null
+  },
+  {
+    "id": "n07",
+    "name": "오정란",
+    "name_hanja": "吳貞蘭",
+    "is_sample": true,
+    "person_id": "P-N07",
+    "headline_position": "前 국회의원 보좌관",
+    "photo": {
+      "scene": 1,
+      "palette": 1,
+      "caption": "의원실 회의 장면(예시 이미지)"
+    },
+    "positions": [
+      {
+        "title": "국회의원 보좌관",
+        "assembly_no": null,
+        "period": "제14대~제19대"
+      }
+    ],
+    "bio_narrative": [
+      "오정란은 여러 의원실에서 보좌관으로 일하며 법안 준비와 국정감사 실무를 맡았다. 보좌진의 시선에서 본 입법 과정을 구술하였다.",
+      "채록은 끝났으며 세그먼트 분할을 진행하고 있다."
+    ],
+    "representative_quotes": [],
+    "access_level": null,
+    "related": {
+      "series_book": null,
+      "curations": [],
+      "donated_collection": null,
+      "records": []
+    },
+    "full_transcript_pdf": null,
+    "category": "보좌진",
+    "assembly_range": [
+      14,
+      19
+    ],
+    "member_id": null
+  },
+  {
+    "id": "n08",
+    "name": "류승철",
+    "name_hanja": "柳承哲",
+    "is_sample": true,
+    "person_id": "P-N08",
+    "headline_position": "前 국회부의장",
+    "photo": {
+      "scene": 0,
+      "palette": 4,
+      "caption": "본회의 사회 장면(예시 이미지)"
+    },
+    "positions": [
+      {
+        "title": "국회부의장",
+        "assembly_no": null,
+        "period": "제12대~제16대"
+      }
+    ],
+    "bio_narrative": [
+      "류승철은 네 차례 국회의원에 당선되었고 국회부의장을 지냈다. 두 차례에 걸친 이 구술은 원 구성과 여야 협상, 부의장의 사회 경험을 다룬다.",
+      "구술자의 요청에 따라 영상과 녹취문 전체를 국회기록원 열람실에서만 제공한다. 온라인에는 회차별 요약만 게시한다."
+    ],
+    "representative_quotes": [],
+    "access_level": null,
+    "related": {
+      "series_book": null,
+      "curations": [],
+      "donated_collection": null,
+      "records": []
+    },
+    "full_transcript_pdf": null,
+    "category": "의장단",
+    "assembly_range": [
+      12,
+      16
+    ],
+    "member_id": "P-N08"
+  },
+  {
+    "id": "n09",
+    "name": "백인숙",
+    "name_hanja": "白仁淑",
+    "is_sample": true,
+    "person_id": "P-N09",
+    "headline_position": "前 국회 출입기자",
+    "photo": {
+      "scene": 4,
+      "palette": 3,
+      "caption": "기자실 장면(예시 이미지)"
+    },
+    "positions": [
+      {
+        "title": "국회 출입기자",
+        "assembly_no": null,
+        "period": "제12대~제18대"
+      }
+    ],
+    "bio_narrative": [
+      "백인숙은 일간지 정치부 기자로 국회를 오래 출입하였다. 기자실의 변화와 국회 보도의 관행을 구술하였다.",
+      "채록은 끝났으며 세그먼트 분할과 녹취문 검수를 진행하고 있다."
+    ],
+    "representative_quotes": [],
+    "access_level": null,
+    "related": {
+      "series_book": null,
+      "curations": [],
+      "donated_collection": null,
+      "records": []
+    },
+    "full_transcript_pdf": null,
+    "category": "언론인",
+    "assembly_range": [
+      12,
+      18
+    ],
+    "member_id": null
   }
 ]

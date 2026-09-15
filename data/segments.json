@@ -59,7 +59,15 @@
         "speaker": "홍석진",
         "text": "충청도 고향 집에 내려갔을 때, 동네 어른들이 기사만 쓰지 말고 직접 해 보라고 하시더군요. 농담처럼 들었는데, 그 말이 몇 해 동안 귀에서 떠나지 않았습니다."
       }
-    ]
+    ],
+    "keywords": [
+      "정치부 기자",
+      "기자석",
+      "휴회",
+      "제헌국회",
+      "출마 권유"
+    ],
+    "hyperlinks": []
   },
   {
     "id": "n01-s1-02",
@@ -92,27 +100,52 @@
         "id": "n01-s1-02-p01",
         "tc": "00:01:13.388",
         "speaker": "정다온",
-        "text": "여의도 의사당으로 옮겨 가던 때를 기억하십니까?"
+        "text": "여의도 의사당으로 옮겨 가던 때를 기억하십니까?",
+        "text_en": "Do you remember when the Assembly moved to the Yeouido building?"
       },
       {
         "id": "n01-s1-02-p02",
         "tc": "00:01:17.103",
         "speaker": "홍석진",
-        "text": "그럼요. 제가 초선 의원이던 해였습니다. 태평로 의사당은 본래 공연장으로 지은 건물이라, 의원 수가 늘면서 자리가 모자랐어요. 여의도에 새 의사당이 선다고 했을 때, 다들 모래밭 한가운데에 무슨 국회냐고 했지요."
+        "text": "그럼요. 제가 초선 의원이던 해였습니다. 태평로 의사당은 본래 공연장으로 지은 건물이라, 의원 수가 늘면서 자리가 모자랐어요. 여의도에 새 의사당이 선다고 했을 때, 다들 모래밭 한가운데에 무슨 국회냐고 했지요.",
+        "text_en": "Of course. It was my first year as a member. The Taepyeong-ro hall had originally been built as a performance venue, so there were not enough seats as the number of members grew. When we heard a new hall would go up in Yeouido, everyone asked what kind of Assembly belongs in the middle of a sandbank."
       },
       {
         "id": "n01-s1-02-p03",
         "tc": "00:01:35.046",
         "speaker": "정다온",
-        "text": "처음 들어가 보신 새 의사당은 어땠습니까?"
+        "text": "처음 들어가 보신 새 의사당은 어땠습니까?",
+        "text_en": "What was the new building like when you first went in?"
       },
       {
         "id": "n01-s1-02-p04",
         "tc": "00:01:38.699",
         "speaker": "홍석진",
-        "text": "돔 아래 본회의장에 처음 섰을 때, 천장이 너무 높아서 목소리가 어디로 가는지 모르겠더군요. 그때 사무처에 최동환 과장이라는 분이 계셨는데, 마이크 위치며 좌석 배치를 다시 맞추느라 며칠을 집에 못 들어갔습니다. 저는 국회가 제 집을 가졌다는 게 이런 뜻이구나 싶었어요."
+        "text": "돔 아래 본회의장에 처음 섰을 때, 천장이 너무 높아서 목소리가 어디로 가는지 모르겠더군요. 그때 사무처에 최동환 과장이라는 분이 계셨는데, 마이크 위치며 좌석 배치를 다시 맞추느라 며칠을 집에 못 들어갔습니다. 저는 국회가 제 집을 가졌다는 게 이런 뜻이구나 싶었어요.",
+        "text_en": "When I first stood in the chamber under the dome, the ceiling was so high I couldn't tell where my voice went. There was a section chief at the Secretariat named Choi Dong-hwan, and he didn't go home for days, readjusting the microphones and the seating. I thought, so this is what it means for the Assembly to have a home of its own."
       }
-    ]
+    ],
+    "keywords": [
+      "여의도 의사당",
+      "태평로 의사당",
+      "본회의장 음향",
+      "좌석 배치",
+      "초선"
+    ],
+    "hyperlinks": [
+      {
+        "type": "연표",
+        "label": "국회연표 — 1975년 국회의사당 여의도 이전(연결 예정)",
+        "url": null
+      },
+      {
+        "type": "회의록",
+        "label": "국회 회의록시스템",
+        "url": "https://record.assembly.go.kr/"
+      }
+    ],
+    "title_en": "From Taepyeong-ro to Yeouido — Memories of Moving the Assembly Hall",
+    "summary_en": "He recalls the 1975 move, in his first year as a member, from the Taepyeong-ro Assembly Hall to the new building in Yeouido: the sound scattering under the high dome, and the Secretariat official who rearranged the seats through the night."
   },
   {
     "id": "n01-s1-03",
@@ -144,27 +177,41 @@
         "id": "n01-s1-03-p01",
         "tc": "00:02:02.974",
         "speaker": "정다온",
-        "text": "원 구성 협상에 여러 번 참여하셨다고 들었습니다."
+        "text": "원 구성 협상에 여러 번 참여하셨다고 들었습니다.",
+        "text_en": "I heard you took part in the committee negotiations several times."
       },
       {
         "id": "n01-s1-03-p02",
         "tc": "00:02:06.970",
         "speaker": "홍석진",
-        "text": "원내총무를 맡았던 시절입니다. 상임위원장 자리를 어떻게 나눌지 정하는 협상인데, 낮에는 공식 회담을 하고 진짜 이야기는 밤에 했습니다. 상대 당 총무가 서재윤 총무였는데, 둘이서 의사당 뒤뜰을 몇 바퀴씩 돌면서 숫자를 맞췄지요."
+        "text": "원내총무를 맡았던 시절입니다. 상임위원장 자리를 어떻게 나눌지 정하는 협상인데, 낮에는 공식 회담을 하고 진짜 이야기는 밤에 했습니다. 상대 당 총무가 서재윤 총무였는데, 둘이서 의사당 뒤뜰을 몇 바퀴씩 돌면서 숫자를 맞췄지요.",
+        "text_en": "That was when I served as floor leader. The negotiations decided how the standing committee chairs would be divided. We held formal talks by day, but the real conversations happened at night. The other party's floor leader was Seo Jae-yun, and the two of us walked round and round the garden behind the Assembly hall until the numbers matched."
       },
       {
         "id": "n01-s1-03-p03",
         "tc": "00:02:28.023",
         "speaker": "정다온",
-        "text": "합의가 어려웠던 이유는 무엇이었습니까?"
+        "text": "합의가 어려웠던 이유는 무엇이었습니까?",
+        "text_en": "What made it so hard to reach an agreement?"
       },
       {
         "id": "n01-s1-03-p04",
         "tc": "00:02:31.170",
         "speaker": "홍석진",
-        "text": "자리 하나가 아니라 체면이 걸려 있었기 때문입니다. 서 총무는 끝까지 물러서지 않는 사람이었지만, 약속한 것은 반드시 지켰습니다. 그래서 믿고 협상할 수 있었어요. 새벽 네 시에 합의문에 서명하고 나오는데, 같은 당 초선이던 윤미경 의원이 보온병에 커피를 담아 기다리고 있더군요."
+        "text": "자리 하나가 아니라 체면이 걸려 있었기 때문입니다. 서 총무는 끝까지 물러서지 않는 사람이었지만, 약속한 것은 반드시 지켰습니다. 그래서 믿고 협상할 수 있었어요. 새벽 네 시에 합의문에 서명하고 나오는데, 같은 당 초선이던 윤미경 의원이 보온병에 커피를 담아 기다리고 있더군요.",
+        "text_en": "It wasn't just about a post; it was about saving face. Floor leader Seo never backed down, but he always kept a promise. That's why I could negotiate with him in trust. When I came out after signing the agreement at four in the morning, Yoon Mi-kyung, a first-term member of our party, was waiting with coffee in a thermos."
       }
-    ]
+    ],
+    "keywords": [
+      "원내총무",
+      "상임위원장 배분",
+      "심야 협상",
+      "합의문",
+      "보온병 커피"
+    ],
+    "hyperlinks": [],
+    "title_en": "A Night of Negotiating the Committee Posts",
+    "summary_en": "As floor leader, he recalls negotiating the allocation of standing committee chairs with the opposing floor leader. Agreements came out of late-night talks rather than formal meetings; because his counterpart never backed down but always kept his word, the two could negotiate in trust."
   },
   {
     "id": "n01-s1-04",
@@ -214,6 +261,19 @@
         "tc": "00:03:21.757",
         "speaker": "홍석진",
         "text": "부끄러웠지요. 그 뒤로는 발언하기 전에 원고를 두 번씩 읽었습니다. 나중에 의장이 되고 나서도 속기사들 자리를 가장 먼저 챙겼습니다. 말은 사라지지만 기록은 남는다는 걸, 그분들이 가르쳐 줬으니까요."
+      }
+    ],
+    "keywords": [
+      "회의록 수정 요청",
+      "속기사",
+      "발언 원고",
+      "회의록의 원칙"
+    ],
+    "hyperlinks": [
+      {
+        "type": "회의록",
+        "label": "국회 회의록시스템",
+        "url": "https://record.assembly.go.kr/"
       }
     ]
   },
@@ -267,6 +327,19 @@
         "speaker": "홍석진",
         "text": "돌아와서 이경수 의원과 함께, 국회 기록을 제대로 보존해야 한다는 건의서를 냈습니다. 그때는 아무도 관심을 두지 않았지만, 지금 이렇게 국회기록원이 생긴 걸 보면 씨앗 하나는 뿌린 셈이지요."
       }
+    ],
+    "keywords": [
+      "의원 대표단",
+      "의회 기록 관리",
+      "건의서",
+      "국회기록원"
+    ],
+    "hyperlinks": [
+      {
+        "type": "소장기록",
+        "label": "국회기록원 소장기록 — 의원외교 자료(연결 예정)",
+        "url": null
+      }
     ]
   },
   {
@@ -318,7 +391,14 @@
         "speaker": "홍석진",
         "text": "매일이 그랬습니다. 옛 동지들은 섭섭하다 하고, 상대 당은 믿지 않았지요. 그때 윤미경 부의장이 큰 힘이 됐습니다. 의장실 문을 닫고 둘이 앉아, 오늘 결정이 십 년 뒤 회의록으로 읽혀도 부끄럽지 않겠느냐고 서로 물었습니다. 그 질문이 제 원칙이 됐어요."
       }
-    ]
+    ],
+    "keywords": [
+      "당적 이탈",
+      "의장 중립",
+      "부의장",
+      "판단 원칙"
+    ],
+    "hyperlinks": []
   },
   {
     "id": "n01-s2-02",
@@ -369,6 +449,19 @@
         "tc": "00:01:09.723",
         "speaker": "홍석진",
         "text": "그날 표결을 강행했다면 법은 통과됐겠지만, 국회는 졌을 겁니다. 다음 날 아침 양당 대표를 의장실로 불러 수정안을 만들었지요. 사흘이 늦어졌지만 후회하지 않습니다. 서두르지 않는 것도 사회자의 일입니다."
+      }
+    ],
+    "keywords": [
+      "사회봉",
+      "정회",
+      "표결 연기",
+      "수정안 합의"
+    ],
+    "hyperlinks": [
+      {
+        "type": "의안",
+        "label": "의안정보시스템",
+        "url": "https://likms.assembly.go.kr/bill/main.do"
       }
     ]
   },
@@ -423,6 +516,18 @@
         "speaker": "홍석진",
         "text": "훗날 원 구성 협상에서 맞서게 되는 서재윤 의원이, 이때는 같은 소위원회에 앉았습니다. 서 의원은 조문마다 이 문장이 어떻게 오해될 수 있는지를 먼저 따졌지요. 그 까다로움 덕분에 문장이 단단해졌다고 저는 생각합니다."
       }
+    ],
+    "keywords": [
+      "헌법 개정 특별위원회",
+      "소위원회",
+      "조문 심사"
+    ],
+    "hyperlinks": [
+      {
+        "type": "연표",
+        "label": "국회연표 — 1987년 제9차 헌법 개정(연결 예정)",
+        "url": null
+      }
     ]
   },
   {
@@ -475,7 +580,14 @@
         "speaker": "홍석진",
         "text": "국회기록원에 기증하기로 했습니다. 최동환 총장이 살아 계셨다면 누구보다 기뻐했을 겁니다. 후배 의원들에게 부탁하고 싶어요. 기록은 자랑하려고 남기는 게 아니라, 나중에 틀렸다는 걸 알 수 있게 남기는 겁니다."
       }
-    ]
+    ],
+    "keywords": [
+      "의원 수첩",
+      "기록 기증",
+      "옛 회의록",
+      "후배 의원"
+    ],
+    "hyperlinks": []
   },
   {
     "id": "n02-s1-01",
@@ -525,7 +637,14 @@
         "speaker": "윤미경",
         "text": "시내를 걸어서 다 돌았습니다. 운동화를 세 켤레 버렸어요. 연설보다 듣는 걸 더 많이 했습니다. 당선되고 나서 제일 먼저 한 일이, 그 도서관 준공식에 가는 것이었지요."
       }
-    ]
+    ],
+    "keywords": [
+      "교사",
+      "도서관 짓기 운동",
+      "첫 선거",
+      "학부모 모임"
+    ],
+    "hyperlinks": []
   },
   {
     "id": "n02-s1-02",
@@ -577,7 +696,14 @@
         "text": "여성 의원들이 당을 가리지 않고 모였습니다. 몇 해 뒤 홍석진 의장께 건의서를 들고 갔더니, 회의록에 남을 일이라며 그 자리에서 사무처를 불렀어요. 작은 변화였지만, 뒤에 오는 사람들에게는 큰 문이 됐다고 생각합니다."
       }
     ],
-    "clip_offset_tc": "00:00:40.580"
+    "clip_offset_tc": "00:00:40.580",
+    "keywords": [
+      "여성 의원",
+      "본회의장 환경",
+      "건의서",
+      "의장 면담"
+    ],
+    "hyperlinks": []
   },
   {
     "id": "n02-s1-03",
@@ -629,7 +755,14 @@
         "speaker": "윤미경",
         "text": "상대 당 서재윤 총무가 먼저 문을 열고 나오면 합의가 된 거고, 홍 총무가 먼저 나오면 결렬이었어요. 그걸 알아채고 나서는 누가 먼저 나오나만 봤습니다. 마지막 날에는 두 사람이 같이 나오더군요. 그날 커피는 세 잔을 따랐습니다."
       }
-    ]
+    ],
+    "keywords": [
+      "초선",
+      "원내총무",
+      "협상장 복도",
+      "보온병 커피"
+    ],
+    "hyperlinks": []
   },
   {
     "id": "n02-s1-04",
@@ -684,6 +817,19 @@
         "speaker": "윤미경",
         "text": "강원도 작은 학교들의 통학 버스 예산을 두고 이경수 의원과 크게 부딪혔습니다. 이 의원은 효율을 말했고 저는 아이들을 말했지요. 결국 절반씩 양보했는데, 나중에 이 의원이 그 버스를 직접 타 보고 와서 제 손을 잡더군요. 싸워도 같이 현장에 가 보면 답이 보입니다."
       }
+    ],
+    "keywords": [
+      "교육위원회",
+      "예산결산특별위원회",
+      "통학 버스",
+      "현장 방문"
+    ],
+    "hyperlinks": [
+      {
+        "type": "의안",
+        "label": "의안정보시스템",
+        "url": "https://likms.assembly.go.kr/bill/main.do"
+      }
     ]
   },
   {
@@ -704,7 +850,9 @@
     "access_level": "onsite",
     "license": null,
     "citation": null,
-    "transcript_sync": []
+    "transcript_sync": [],
+    "keywords": [],
+    "hyperlinks": []
   },
   {
     "id": "n03-s1-01",
@@ -754,7 +902,14 @@
         "speaker": "한정희",
         "text": "태평로 의사당 뒤편 계단으로 들어갔습니다. 선배가 속기용 원고지 한 묶음과 연필 열두 자루를 주면서, 오늘부터 이 방에서 나가는 말은 전부 네 손을 거친다고 하더군요. 그 말이 무서우면서도 자랑스러웠습니다."
       }
-    ]
+    ],
+    "keywords": [
+      "속기 학원",
+      "공채 시험",
+      "속기용 원고지",
+      "첫 출근"
+    ],
+    "hyperlinks": []
   },
   {
     "id": "n03-s1-02",
@@ -788,27 +943,51 @@
         "id": "n03-s1-02-p01",
         "tc": "00:00:41.189",
         "speaker": "문채원",
-        "text": "여의도로 이전할 때 속기과는 무엇을 옮겼습니까?"
+        "text": "여의도로 이전할 때 속기과는 무엇을 옮겼습니까?",
+        "text_en": "What did the stenography section move when the Assembly relocated to Yeouido?"
       },
       {
         "id": "n03-s1-02-p02",
         "tc": "00:00:45.176",
         "speaker": "한정희",
-        "text": "속기 원고와 녹음테이프를 전부 옮겼습니다. 상자에 번호를 붙이고, 어느 회의 원고인지 목록을 두 벌씩 만들었어요. 한 벌은 상자에 넣고, 한 벌은 제가 품에 안고 트럭에 탔습니다."
+        "text": "속기 원고와 녹음테이프를 전부 옮겼습니다. 상자에 번호를 붙이고, 어느 회의 원고인지 목록을 두 벌씩 만들었어요. 한 벌은 상자에 넣고, 한 벌은 제가 품에 안고 트럭에 탔습니다.",
+        "text_en": "We moved all the stenographic manuscripts and recording tapes. We numbered the boxes and made two copies of the list of which meeting each manuscript came from. One copy went into the box, and I held the other in my arms on the truck."
       },
       {
         "id": "n03-s1-02-p03",
         "tc": "00:00:59.174",
         "speaker": "문채원",
-        "text": "새 의사당에서의 첫 회의는 기억하십니까?"
+        "text": "새 의사당에서의 첫 회의는 기억하십니까?",
+        "text_en": "Do you remember the first meeting in the new building?"
       },
       {
         "id": "n03-s1-02-p04",
         "tc": "00:01:02.643",
         "speaker": "한정희",
-        "text": "여의도 의사당 본회의장은 소리가 울려서 발언이 잘 안 들렸어요. 사무처 최동환 과장님이 속기석 위치를 세 번이나 옮겨 주셨습니다. 결국 의장석 바로 아래로 자리를 잡았지요. 그 자리에서 이십 년을 앉았습니다."
+        "text": "여의도 의사당 본회의장은 소리가 울려서 발언이 잘 안 들렸어요. 사무처 최동환 과장님이 속기석 위치를 세 번이나 옮겨 주셨습니다. 결국 의장석 바로 아래로 자리를 잡았지요. 그 자리에서 이십 년을 앉았습니다.",
+        "text_en": "The chamber in Yeouido echoed so much that it was hard to hear the speeches. Section chief Choi Dong-hwan of the Secretariat moved the stenographers' desk three times for us. In the end we settled right below the Speaker's chair. I sat in that spot for twenty years."
       }
-    ]
+    ],
+    "keywords": [
+      "속기 원고 이송",
+      "녹음테이프",
+      "속기석",
+      "본회의장 음향"
+    ],
+    "hyperlinks": [
+      {
+        "type": "연표",
+        "label": "국회연표 — 1975년 국회의사당 여의도 이전(연결 예정)",
+        "url": null
+      },
+      {
+        "type": "회의록",
+        "label": "국회 회의록시스템",
+        "url": "https://record.assembly.go.kr/"
+      }
+    ],
+    "title_en": "The Assembly on the Move — The Day We Carried the Stenographic Records",
+    "summary_en": "She recalls packing the stenographic manuscripts and tapes into boxes for the 1975 move to Yeouido, and finding a place for the stenographers' desk in the echoing new chamber."
   },
   {
     "id": "n03-s1-03",
@@ -840,27 +1019,45 @@
         "id": "n03-s1-03-p01",
         "tc": "00:01:19.939",
         "speaker": "문채원",
-        "text": "의원이 회의록 수정을 요청하는 경우도 있었습니까?"
+        "text": "의원이 회의록 수정을 요청하는 경우도 있었습니까?",
+        "text_en": "Were there times when members asked to have the minutes corrected?"
       },
       {
         "id": "n03-s1-03-p02",
         "tc": "00:01:23.899",
         "speaker": "한정희",
-        "text": "자주 있었지요. 기억나는 분이 홍석진 의원입니다. 발언 중에 말을 더듬은 부분을 빼 달라고 하셨는데, 회의록은 의원님 것이 아니라 역사의 것이라고 말씀드렸어요. 속으로는 떨렸습니다."
+        "text": "자주 있었지요. 기억나는 분이 홍석진 의원입니다. 발언 중에 말을 더듬은 부분을 빼 달라고 하셨는데, 회의록은 의원님 것이 아니라 역사의 것이라고 말씀드렸어요. 속으로는 떨렸습니다.",
+        "text_en": "Often. The one I remember is Hong Seok-jin. He asked me to take out the part where he stammered during a speech, and I told him the minutes don't belong to the member, they belong to history. Inside, I was trembling."
       },
       {
         "id": "n03-s1-03-p03",
         "tc": "00:01:38.499",
         "speaker": "문채원",
-        "text": "그 뒤에 어떤 일이 있었습니까?"
+        "text": "그 뒤에 어떤 일이 있었습니까?",
+        "text_en": "What happened after that?"
       },
       {
         "id": "n03-s1-03-p04",
         "tc": "00:01:41.032",
         "speaker": "한정희",
-        "text": "그 뒤로 홍 의원님은 발언 전에 늘 원고를 다듬어 오셨습니다. 세월이 지나 의장이 되셨을 때, 속기사 휴게실부터 고쳐 주셨지요. 그때 알았습니다. 그 한마디를 기억하고 계셨다는 걸요."
+        "text": "그 뒤로 홍 의원님은 발언 전에 늘 원고를 다듬어 오셨습니다. 세월이 지나 의장이 되셨을 때, 속기사 휴게실부터 고쳐 주셨지요. 그때 알았습니다. 그 한마디를 기억하고 계셨다는 걸요.",
+        "text_en": "After that, Mr. Hong always came with his remarks polished before he spoke. Years later, when he became Speaker, the first thing he did was fix up the stenographers' lounge. That's when I realized he had remembered those words."
       }
-    ]
+    ],
+    "keywords": [
+      "회의록 수정 요청",
+      "회의록의 원칙",
+      "속기사 휴게실"
+    ],
+    "hyperlinks": [
+      {
+        "type": "회의록",
+        "label": "국회 회의록시스템",
+        "url": "https://record.assembly.go.kr/"
+      }
+    ],
+    "title_en": "Not a Single Character Left Out — The Principle of the Minutes",
+    "summary_en": "She recalls answering a member's request to edit the minutes by saying the minutes belong to history, and how that member, years later as Speaker, first had the stenographers' lounge renovated."
   },
   {
     "id": "n03-s1-04",
@@ -915,6 +1112,13 @@
         "speaker": "한정희",
         "text": "인사과에 이경수 주사라는 분이 있었는데, 이경수 의원과 이름이 같아서 전화가 늘 잘못 걸려 왔습니다. 회의록 뒤에 붙는 색인도 그분과 같이 만들었어요. 이름이 같으면 색인에서 반드시 구분해야 한다는 걸, 그때 배웠습니다."
       }
-    ]
+    ],
+    "keywords": [
+      "출입기자",
+      "속기록 확인",
+      "회의록 색인",
+      "동명이인"
+    ],
+    "hyperlinks": []
   }
 ]

@@ -1,74 +1,312 @@
 [
   {
-    "person_id": "P-N01", "name": "홍석진", "hanja": "洪錫振", "birth_death": null,
+    "person_id": "P-N01",
+    "name": "홍석진",
+    "hanja": "洪錫振",
+    "birth_death": null,
     "disambiguation": "前 국회의장",
-    "variants": ["홍석진 의원", "홍석진 의장", "홍 의원님", "홍 총무"],
-    "type": "MEMBER", "is_public_figure": true, "is_sample": true,
+    "variants": [
+      "홍석진 의원",
+      "홍석진 의장",
+      "홍 의원님",
+      "홍 총무"
+    ],
+    "type": "MEMBER",
+    "is_public_figure": true,
+    "is_sample": true,
     "summary": "신문기자 출신으로 국회의원 6선, 원내총무를 거쳐 국회의장을 지냈다.",
-    "links": { "narrator_id": "n01", "member_collection_id": "C-P-N01", "kac": null, "wikidata": null }
+    "links": {
+      "narrator_id": "n01",
+      "member_collection_id": "C-P-N01",
+      "kac": null,
+      "wikidata": null
+    }
   },
   {
-    "person_id": "P-N02", "name": "윤미경", "hanja": "尹美卿", "birth_death": null,
+    "person_id": "P-N02",
+    "name": "윤미경",
+    "hanja": "尹美卿",
+    "birth_death": null,
     "disambiguation": "前 국회부의장",
-    "variants": ["윤미경 의원", "윤미경 부의장"],
-    "type": "MEMBER", "is_public_figure": true, "is_sample": true,
+    "variants": [
+      "윤미경 의원",
+      "윤미경 부의장"
+    ],
+    "type": "MEMBER",
+    "is_public_figure": true,
+    "is_sample": true,
     "summary": "춘천의 중학교 교사 출신으로 국회의원 4선, 국회부의장을 지냈다.",
-    "links": { "narrator_id": "n02", "member_collection_id": "C-P-N02", "kac": null, "wikidata": null }
+    "links": {
+      "narrator_id": "n02",
+      "member_collection_id": "C-P-N02",
+      "kac": null,
+      "wikidata": null
+    }
   },
   {
-    "person_id": "P-N03", "name": "한정희", "hanja": "韓貞姬", "birth_death": null,
+    "person_id": "P-N03",
+    "name": "한정희",
+    "hanja": "韓貞姬",
+    "birth_death": null,
     "disambiguation": "前 국회사무처 속기사",
-    "variants": ["한정희 씨"],
-    "type": "STAFF", "is_public_figure": true, "is_sample": true,
+    "variants": [
+      "한정희 씨"
+    ],
+    "type": "STAFF",
+    "is_public_figure": true,
+    "is_sample": true,
     "summary": "1972년부터 서른 해 동안 국회사무처 속기사로 일했다.",
-    "links": { "narrator_id": "n03", "member_collection_id": null, "kac": null, "wikidata": null }
+    "links": {
+      "narrator_id": "n03",
+      "member_collection_id": null,
+      "kac": null,
+      "wikidata": null
+    }
   },
   {
-    "person_id": "P-004", "name": "서재윤", "hanja": null, "birth_death": null,
+    "person_id": "P-004",
+    "name": "서재윤",
+    "hanja": null,
+    "birth_death": null,
     "disambiguation": "前 국회의원·원내총무",
-    "variants": ["서재윤 총무", "서재윤 의원", "서 총무", "서 의원"],
-    "type": "MEMBER", "is_public_figure": true, "is_sample": true,
+    "variants": [
+      "서재윤 총무",
+      "서재윤 의원",
+      "서 총무",
+      "서 의원"
+    ],
+    "type": "MEMBER",
+    "is_public_figure": true,
+    "is_sample": true,
     "summary": "나래당 소속 국회의원으로 원내총무를 지냈다. 헌법 개정 논의에 참여했다.",
-    "links": { "narrator_id": null, "member_collection_id": null, "kac": null, "wikidata": null }
+    "links": {
+      "narrator_id": null,
+      "member_collection_id": "C-P-004",
+      "kac": null,
+      "wikidata": null
+    }
   },
   {
-    "person_id": "P-005", "name": "최동환", "hanja": null, "birth_death": null,
+    "person_id": "P-005",
+    "name": "최동환",
+    "hanja": null,
+    "birth_death": null,
     "disambiguation": "前 국회사무총장",
-    "variants": ["최동환 과장", "최동환 과장님", "최동환 총장"],
-    "type": "STAFF", "is_public_figure": true, "is_sample": true,
+    "variants": [
+      "최동환 과장",
+      "최동환 과장님",
+      "최동환 총장"
+    ],
+    "type": "STAFF",
+    "is_public_figure": true,
+    "is_sample": true,
     "summary": "국회사무처에서 일하며 여의도 의사당 이전 실무를 맡았고, 뒤에 사무총장을 지냈다.",
-    "links": { "narrator_id": null, "member_collection_id": null, "kac": null, "wikidata": null }
+    "links": {
+      "narrator_id": null,
+      "member_collection_id": null,
+      "kac": null,
+      "wikidata": null
+    }
   },
   {
-    "person_id": "P-006", "name": "이경수", "hanja": null, "birth_death": null,
+    "person_id": "P-006",
+    "name": "이경수",
+    "hanja": null,
+    "birth_death": null,
     "disambiguation": "前 국회의원",
-    "variants": ["이경수 의원", "이 의원"],
-    "type": "MEMBER", "is_public_figure": true, "is_sample": true,
+    "variants": [
+      "이경수 의원",
+      "이 의원"
+    ],
+    "type": "MEMBER",
+    "is_public_figure": true,
+    "is_sample": true,
     "summary": "국회의원으로 의원외교와 예산 심사에 참여했다.",
-    "links": { "narrator_id": null, "member_collection_id": null, "kac": null, "wikidata": null }
+    "links": {
+      "narrator_id": null,
+      "member_collection_id": "C-P-006",
+      "kac": null,
+      "wikidata": null
+    }
   },
   {
-    "person_id": "P-007", "name": "이경수", "hanja": null, "birth_death": null,
+    "person_id": "P-007",
+    "name": "이경수",
+    "hanja": null,
+    "birth_death": null,
     "disambiguation": "前 국회사무처 인사과 직원",
-    "variants": ["이경수 주사"],
-    "type": "STAFF", "is_public_figure": true, "is_sample": true,
+    "variants": [
+      "이경수 주사"
+    ],
+    "type": "STAFF",
+    "is_public_figure": true,
+    "is_sample": true,
     "summary": "국회사무처 인사과에서 일했으며 회의록 색인 작업에 참여했다. 같은 이름의 국회의원과 구분한다.",
-    "links": { "narrator_id": null, "member_collection_id": null, "kac": null, "wikidata": null }
+    "links": {
+      "narrator_id": null,
+      "member_collection_id": null,
+      "kac": null,
+      "wikidata": null
+    }
   },
   {
-    "person_id": "P-008", "name": "오세영", "hanja": null, "birth_death": null,
+    "person_id": "P-008",
+    "name": "오세영",
+    "hanja": null,
+    "birth_death": null,
     "disambiguation": "前 국회 출입기자",
-    "variants": ["오세영 기자"],
-    "type": "PRESS", "is_public_figure": true, "is_sample": true,
+    "variants": [
+      "오세영 기자"
+    ],
+    "type": "PRESS",
+    "is_public_figure": true,
+    "is_sample": true,
     "summary": "국회를 오래 출입한 신문기자.",
-    "links": { "narrator_id": null, "member_collection_id": null, "kac": null, "wikidata": null }
+    "links": {
+      "narrator_id": null,
+      "member_collection_id": null,
+      "kac": null,
+      "wikidata": null
+    }
   },
   {
-    "person_id": "P-009", "name": "김순자", "hanja": null, "birth_death": null,
+    "person_id": "P-009",
+    "name": "김순자",
+    "hanja": null,
+    "birth_death": null,
     "disambiguation": "구술자 가족",
-    "variants": ["김순자"],
-    "type": "PRIVATE", "is_public_figure": false, "is_sample": true,
+    "variants": [
+      "김순자"
+    ],
+    "type": "PRIVATE",
+    "is_public_figure": false,
+    "is_sample": true,
     "summary": "사인(私人). 내부 색인으로만 관리하며 이용자 화면에 인명 링크를 두지 않는다(8.4 공개 범위 규칙).",
-    "links": { "narrator_id": null, "member_collection_id": null, "kac": null, "wikidata": null }
+    "links": {
+      "narrator_id": null,
+      "member_collection_id": null,
+      "kac": null,
+      "wikidata": null
+    }
+  },
+  {
+    "person_id": "P-N04",
+    "name": "박종우",
+    "hanja": "朴鍾宇",
+    "birth_death": null,
+    "disambiguation": "前 국회사무총장",
+    "variants": [
+      "박종우"
+    ],
+    "type": "STAFF",
+    "is_public_figure": true,
+    "is_sample": true,
+    "summary": "국회사무처 의사국에서 일을 시작해 사무총장을 지냈다.",
+    "links": {
+      "narrator_id": "n04",
+      "member_collection_id": null,
+      "kac": null,
+      "wikidata": null
+    }
+  },
+  {
+    "person_id": "P-N05",
+    "name": "김혜련",
+    "hanja": "金惠蓮",
+    "birth_death": null,
+    "disambiguation": "前 국회의원",
+    "variants": [
+      "김혜련"
+    ],
+    "type": "MEMBER",
+    "is_public_figure": true,
+    "is_sample": true,
+    "summary": "부산에서 세 차례 당선된 국회의원.",
+    "links": {
+      "narrator_id": "n05",
+      "member_collection_id": "C-P-N05",
+      "kac": null,
+      "wikidata": null
+    }
+  },
+  {
+    "person_id": "P-N06",
+    "name": "장민호",
+    "hanja": "張敏浩",
+    "birth_death": null,
+    "disambiguation": "前 국회 경위",
+    "variants": [
+      "장민호"
+    ],
+    "type": "STAFF",
+    "is_public_figure": true,
+    "is_sample": true,
+    "summary": "국회 경위로 본회의장과 의사당의 질서 유지를 맡았다.",
+    "links": {
+      "narrator_id": "n06",
+      "member_collection_id": null,
+      "kac": null,
+      "wikidata": null
+    }
+  },
+  {
+    "person_id": "P-N07",
+    "name": "오정란",
+    "hanja": "吳貞蘭",
+    "birth_death": null,
+    "disambiguation": "前 국회의원 보좌관",
+    "variants": [
+      "오정란"
+    ],
+    "type": "AIDE",
+    "is_public_figure": true,
+    "is_sample": true,
+    "summary": "여러 의원실에서 보좌관으로 일했다.",
+    "links": {
+      "narrator_id": "n07",
+      "member_collection_id": null,
+      "kac": null,
+      "wikidata": null
+    }
+  },
+  {
+    "person_id": "P-N08",
+    "name": "류승철",
+    "hanja": "柳承哲",
+    "birth_death": null,
+    "disambiguation": "前 국회부의장",
+    "variants": [
+      "류승철"
+    ],
+    "type": "MEMBER",
+    "is_public_figure": true,
+    "is_sample": true,
+    "summary": "국회의원 4선, 국회부의장을 지냈다.",
+    "links": {
+      "narrator_id": "n08",
+      "member_collection_id": "C-P-N08",
+      "kac": null,
+      "wikidata": null
+    }
+  },
+  {
+    "person_id": "P-N09",
+    "name": "백인숙",
+    "hanja": "白仁淑",
+    "birth_death": null,
+    "disambiguation": "前 국회 출입기자",
+    "variants": [
+      "백인숙"
+    ],
+    "type": "PRESS",
+    "is_public_figure": true,
+    "is_sample": true,
+    "summary": "일간지 정치부 기자로 국회를 오래 출입했다.",
+    "links": {
+      "narrator_id": "n09",
+      "member_collection_id": null,
+      "kac": null,
+      "wikidata": null
+    }
   }
 ]

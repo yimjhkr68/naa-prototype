@@ -1,16 +1,39 @@
 {
   "service_name": "구술기록",
-  "menu_path": ["기록콘텐츠", "구술기록"],
-  "prototype_version": "구술콘텐츠 프로토타입 v1.0",
+  "menu_path": [
+    "기록콘텐츠",
+    "구술기록"
+  ],
+  "prototype_version": "구술콘텐츠 프로토타입 v1.1",
   "sample_notice": "구술자·면담자·언급 인물과 발언 내용은 모두 가상이며, 영상은 합성 음성으로 만든 표본 영상임. 지명은 실재 장소이나 연결된 녹취문은 표본임",
   "base_date": "2026-09-14",
   "home": {
     "kicker": "기록콘텐츠 · 구술기록",
-    "headline": ["문서에 남지 않은 의정사를", "목소리로 듣습니다"],
+    "headline": [
+      "문서에 남지 않은 의정사를",
+      "목소리로 듣습니다"
+    ],
     "lede": "회의록은 결론을 남기고, 구술은 그 결론에 이르는 밤을 남깁니다. 국회를 거쳐 간 사람들의 증언을 주제별 이야기 단위로 나누어, 필요한 대목부터 바로 들을 수 있게 했습니다.",
-    "featured_segments": ["n01-s2-04", "n03-s1-03", "n02-s1-04", "n01-s1-02"],
-    "topic_chips": ["T-RELOC", "T-NEGOT", "T-RECORD", "T-SPEAKER", "T-AMEND", "T-WOMEN", "T-DIPLO", "T-STAFF"],
-    "cross_example": { "topic": "T-RELOC", "note": "같은 1975년 여름을 의원과 속기사가 각자의 자리에서 기억합니다." }
+    "featured_segments": [
+      "n01-s2-04",
+      "n03-s1-03",
+      "n02-s1-04",
+      "n01-s1-02"
+    ],
+    "topic_chips": [
+      "T-RELOC",
+      "T-NEGOT",
+      "T-RECORD",
+      "T-SPEAKER",
+      "T-AMEND",
+      "T-WOMEN",
+      "T-DIPLO",
+      "T-STAFF"
+    ],
+    "cross_example": {
+      "topic": "T-RELOC",
+      "note": "같은 1975년 여름을 의원과 속기사가 각자의 자리에서 기억합니다."
+    }
   },
   "access_levels": {
     "full": {
@@ -47,5 +70,18 @@
     "address": "(07233) 서울시 영등포구 의사당대로1 (여의도동) 국회기록원",
     "contact": "시스템 문의 : webnaa@assembly.go.kr",
     "copyright": "Copyright ⓒ National Assembly Records and Archives. All rights reserved."
+  },
+  "categories": [
+    "의장단",
+    "국회의원",
+    "국회 직원",
+    "보좌진",
+    "언론인"
+  ],
+  "disclaimer": "구술은 구술자 개인의 기억과 인식, 견해를 담은 것으로 사실관계를 확정하는 기록이 아닙니다. 인용할 때는 회의록 등 다른 기록과 교차 확인하시기 바랍니다. 구술 내용은 국회기록원의 공식 입장이 아닙니다.",
+  "narrator_status": {
+    "online": "온라인 공개",
+    "onsite": "방문 열람",
+    "processing": "정리 중"
   }
 }

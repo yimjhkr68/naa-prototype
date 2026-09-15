@@ -11,7 +11,7 @@ import json, os, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
-FILES = ["site", "narrators", "sessions", "segments", "topics", "assemblies", "places", "persons", "mentions"]
+FILES = ["site", "narrators", "sessions", "segments", "topics", "assemblies", "places", "persons", "mentions", "members"]
 
 
 def load(n):
@@ -67,6 +67,19 @@ def main():
                 errs.append("구술자 %s: 대표 인용 출처 없음" % n["id"])
             elif q["text"] not in para[q["paragraph_id"]][1]["text"]:
                 errs.append("구술자 %s: 대표 인용문이 녹취문과 다름" % n["id"])
+    for m in d["members"]:
+        if m["person_id"] not in persons:
+            errs.append("국회의원 연계 %s: 인명 사전 항목 없음" % m["person_id"])
+    for n in d["narrators"]:
+        if n.get("member_id") and n["member_id"] not in {m["person_id"] for m in d["members"]}:
+            errs.append("구술자 %s: 국회의원 연계 항목 없음" % n["id"])
+    for s in d["sessions"]:
+        if s.get("status") not in ("online", "onsite", "processing"):
+            errs.append("세션 %s: status 값 오류" % s["id"])
+    for s in d["segments"]:
+        for p in s["transcript_sync"]:
+            if "text_en" in p and not p["text_en"].strip():
+                errs.append("문단 %s: 빈 번역" % p["id"])
     for sid in d["site"]["home"]["featured_segments"]:
         if sid not in seg:
             errs.append("오늘의 증언 %s 없음" % sid)

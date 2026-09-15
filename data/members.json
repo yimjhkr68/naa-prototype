@@ -1,0 +1,122 @@
+[
+  {
+    "person_id": "P-N01",
+    "party": "가온당",
+    "terms_label": "6선",
+    "period": "제9대~제16대 중",
+    "photo": {
+      "scene": 0,
+      "palette": 0
+    },
+    "has_records": true,
+    "bio": [
+      "홍석진은 신문사 정치부 기자로 일하다 정계에 들어서 여섯 차례 국회의원에 당선되었다. 원내총무로서 원 구성 협상을 이끌었고, 당적을 내려놓고 국회의장을 지냈다.",
+      "은퇴한 뒤 의원 시절 수첩과 의정보고서를 국회기록원에 기증하였다."
+    ],
+    "rounds": [
+      {
+        "seq": 1,
+        "date": "2025-12-09",
+        "text": "첫 기증. 의원 시절 수첩 22권과 의정보고서 묶음을 기증하였다. 현재 정리하고 있다.",
+        "arranged": false
+      }
+    ]
+  },
+  {
+    "person_id": "P-N02",
+    "party": "가온당",
+    "terms_label": "4선",
+    "period": "제13대~제16대",
+    "photo": {
+      "scene": 1,
+      "palette": 3
+    },
+    "has_records": true,
+    "bio": [
+      "윤미경은 춘천에서 중학교 교사로 일하다 국회에 들어와 네 차례 당선되었다. 교육위원회와 예산결산특별위원회에서 오래 활동했으며 국회부의장을 지냈다.",
+      "교육 예산 심사 자료와 의정보고서를 기증하였다."
+    ],
+    "rounds": [
+      {
+        "seq": 1,
+        "date": "2024-04-16",
+        "text": "첫 기증. 교육위원회 질의자료와 의정보고서 312건을 기증하였다.",
+        "arranged": true
+      }
+    ]
+  },
+  {
+    "person_id": "P-N05",
+    "party": "다솜당",
+    "terms_label": "3선",
+    "period": "제15대~제17대",
+    "photo": {
+      "scene": 3,
+      "palette": 2
+    },
+    "has_records": false,
+    "bio": [
+      "김혜련은 부산에서 세 차례 당선된 국회의원이다. 보건복지위원회에서 오래 활동하였다."
+    ],
+    "rounds": []
+  },
+  {
+    "person_id": "P-N08",
+    "party": "마루당",
+    "terms_label": "4선",
+    "period": "제12대~제16대 중",
+    "photo": {
+      "scene": 0,
+      "palette": 4
+    },
+    "has_records": true,
+    "bio": [
+      "류승철은 네 차례 국회의원에 당선되었고 국회부의장을 지냈다."
+    ],
+    "rounds": [
+      {
+        "seq": 1,
+        "date": "2023-05-22",
+        "text": "첫 기증. 부의장 재임 시기의 일정표와 사진첩을 기증하였다.",
+        "arranged": true
+      }
+    ]
+  },
+  {
+    "person_id": "P-004",
+    "party": "나래당",
+    "terms_label": "5선",
+    "period": "제11대~제16대 중",
+    "photo": {
+      "scene": 2,
+      "palette": 5
+    },
+    "has_records": false,
+    "bio": [
+      "서재윤은 나래당 소속으로 다섯 차례 당선되었고 원내총무를 지냈다. 헌법 개정 논의에 참여하였다."
+    ],
+    "rounds": []
+  },
+  {
+    "person_id": "P-006",
+    "party": "가온당",
+    "terms_label": "3선",
+    "period": "제13대~제15대",
+    "photo": {
+      "scene": 4,
+      "palette": 1
+    },
+    "has_records": true,
+    "bio": [
+      "이경수는 세 차례 당선된 국회의원으로 의원외교와 예산 심사에 참여하였다."
+    ],
+    "rounds": [
+      {
+        "seq": 1,
+        "date": "2025-02-11",
+        "text": "첫 기증. 의원외교 활동 자료와 사진을 기증하였다.",
+        "arranged": true
+      }
+    ]
+  }
+]

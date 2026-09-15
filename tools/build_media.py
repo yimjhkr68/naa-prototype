@@ -155,6 +155,8 @@ def main():
     for ses in sessions:
         nar = narrators[ses["narrator_id"]]
         segs = sorted(seg_by_session.get(ses["id"], []), key=lambda s: s["seq"])
+        if not segs:
+            continue   # 정리 중·방문 열람만 가능한 회차는 공개 세그먼트가 없어 영상을 만들지 않음
         wd = os.path.join(WORK, ses["id"])
         os.makedirs(wd, exist_ok=True)
         base = {"name": nar["name"], "position": nar["headline_position"], "session": ses["seq"],

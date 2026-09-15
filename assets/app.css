@@ -567,3 +567,172 @@ a.tag:hover, button.tag:hover{border-color:var(--ink); color:var(--ink)}
 .foot .proto{margin-top:14px; color:var(--copper)}
 
 @media (prefers-reduced-motion: reduce){ *{transition:none !important; scroll-behavior:auto !important} }
+
+/* ======================= v1.1 추가 — 구술자 카드 목록(OH-02), 색인, 구술기록 검색, 국회의원 컬렉션 연계 ======================= */
+/* 구술자 카드: 국회의원 컬렉션(SC-01) 문법 — 사진·성명·직위, 공개 상태는 사진의 색으로만 */
+.ncard{position:relative; display:block}
+.ncard .ph{position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--surface-2)}
+.ncard .ph svg{transition:transform .5s cubic-bezier(.2,.7,.3,1), filter .3s}
+.ncard:hover .ph svg{transform:scale(1.04)}
+.ncard.gray .ph svg{filter:grayscale(1)}
+.ncard.gray h3{color:var(--ink-2)} .ncard.gray .pos{color:var(--ink-3)}
+.ncard h3 a{text-decoration:none}
+.ncard .cardlink::after{content:""; position:absolute; inset:0; z-index:1}
+.ncard .cardlink:focus-visible::after{outline:2px solid var(--focus); outline-offset:2px}
+.ncard .pos{font-size:13px; color:var(--ink-2); margin-top:2px}
+.ncard .meta{font-size:12px; color:var(--ink-3); margin-top:4px}
+.ncard .qt{position:absolute; left:0; right:0; bottom:0; margin:0; padding:14px 16px; font-family:var(--font-serif); font-size:14.5px; line-height:1.6;
+  color:#fff; background:linear-gradient(180deg,rgba(23,24,26,0),rgba(23,24,26,.82) 38%); opacity:0; transform:translateY(8px); transition:opacity .25s, transform .25s}
+.ncard:hover .qt, .ncard:focus-within .qt{opacity:1; transform:none}
+.ngrid{display:grid; grid-template-columns:1fr; gap:28px 20px; padding-bottom:30px}
+@media (min-width:480px){ .ngrid{grid-template-columns:repeat(2,1fr)} }
+@media (min-width:768px){ .ngrid{grid-template-columns:repeat(3,1fr)} }
+@media (min-width:1024px){ .ngrid{grid-template-columns:repeat(4,1fr)} }
+@media (min-width:1280px){ .ngrid{grid-template-columns:repeat(5,1fr)} }
+.hscroll .ncard{min-width:0}
+
+.lhead{border-bottom:1px solid var(--line); background:var(--surface); position:relative; overflow:hidden}
+.lhead .art{position:absolute; right:-4%; top:-40%; width:34%; aspect-ratio:1/1; opacity:.6; pointer-events:none;
+  -webkit-mask-image:radial-gradient(closest-side,#000 62%,transparent 100%); mask-image:radial-gradient(closest-side,#000 62%,transparent 100%)}
+.lhead .wrap{position:relative; padding-top:40px; padding-bottom:30px}
+.lhead h1{font-family:var(--font-serif); font-size:clamp(28px,3.6vw,38px); margin-top:8px; letter-spacing:-.035em}
+.lhead .lede{margin-top:12px; color:var(--ink-2); max-width:52ch}
+.terms{display:flex; gap:6px 20px; margin-top:24px; font-size:14.5px; color:var(--ink-3); flex-wrap:wrap}
+.terms button{padding-bottom:5px; border-bottom:2px solid transparent}
+.terms button[aria-pressed="true"]{color:var(--ink); font-weight:600; border-bottom-color:var(--ink)}
+.terms .tag0{font-size:11.5px; color:var(--ink-3); margin-left:5px; font-weight:400}
+.toolbar{border-bottom:1px solid var(--line); background:var(--paper); position:sticky; top:46px; z-index:30}
+@media (min-width:1024px){ .toolbar{top:50px} }
+.toolbar .wrap{display:flex; align-items:center; gap:10px; padding-top:12px; padding-bottom:12px; flex-wrap:wrap}
+.seg{display:flex; border:1px solid var(--line-2)}
+.seg button{padding:7px 14px; font-size:13px; color:var(--ink-2); border-right:1px solid var(--line-2); white-space:nowrap}
+.seg button:last-child{border-right:none}
+.seg button[aria-pressed="true"]{background:var(--ink); color:var(--paper)}
+.toolbar .search{border:1px solid var(--line-2); background:var(--surface); color:var(--ink); padding:7px 12px; font-size:13px; width:170px}
+.sel{border:1px solid var(--line-2); background:var(--surface); color:var(--ink); padding:7px 10px; font-size:13px}
+.idx{display:flex; flex-wrap:wrap}
+@media (min-width:1024px){ .idx{margin-left:auto} }
+.idx button{width:27px; padding:6px 0; font-size:13px; color:var(--ink-2); text-align:center}
+.idx button[aria-pressed="true"]{color:var(--ink); font-weight:700; text-decoration:underline; text-underline-offset:4px}
+.idx button:disabled{color:var(--line-2); cursor:default}
+.resline{padding:22px 0 18px; font-size:13.5px; color:var(--ink-2); display:flex; gap:16px; align-items:center; flex-wrap:wrap}
+.resline b{color:var(--ink)}
+.resline .lg{display:flex; gap:18px; color:var(--ink-3); font-size:12.5px}
+.resline .lg span{display:flex; align-items:center; gap:7px}
+.resline .lg i{width:22px; height:14px; display:block; background:linear-gradient(135deg,#C6A87C,#5F8274)}
+.resline .lg i.g{background:linear-gradient(135deg,#C9C8C4,#8B8A86)}
+.estate{padding:60px 0; text-align:center; color:var(--ink-3)}
+.dhero .band.gray svg{filter:grayscale(1)}
+
+/* 색인(OHMS Index) */
+.ixl{border-top:1px solid var(--line)}
+.ixi{border-bottom:1px solid var(--line)}
+.ixi summary{position:relative; display:grid; grid-template-columns:30px minmax(0,1fr); gap:3px 12px; padding:14px 34px 14px 4px; cursor:pointer; list-style:none}
+.ixi summary::-webkit-details-marker{display:none}
+.ixi summary::after{content:"+"; position:absolute; right:10px; top:12px; font-size:19px; line-height:1; color:var(--ink-3)}
+.ixi[open] > summary::after{content:"−"}
+.ixi summary .n{font-size:12px; color:var(--ink-3); font-variant-numeric:tabular-nums; padding-top:3px}
+.ixi summary .t{font-family:var(--font-serif); font-size:17px; letter-spacing:-.03em}
+.ixi summary .m{grid-column:2; font-size:12px; color:var(--ink-3); display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+.ixi summary:hover{background:var(--accent-soft)}
+.ixi[open] > summary{background:var(--surface)}
+.ixi.cur > summary{box-shadow:inset 3px 0 0 var(--accent)}
+.ixi.hit > summary .n{color:var(--copper); font-weight:700}
+.ixi.hit > summary .t::after{content:"일치"; font-family:var(--font-sans); font-size:11px; letter-spacing:0; color:var(--copper); border:1px solid var(--copper); padding:0 5px; margin-left:8px; vertical-align:3px}
+.ixb{padding:4px 4px 18px 46px; font-size:14px; display:flex; flex-direction:column; gap:8px}
+.ixb p{display:grid; grid-template-columns:78px minmax(0,1fr); gap:10px}
+.ixb p b{font-size:12px; color:var(--ink-3); font-weight:600; padding-top:2px}
+.ixb .pt{font-family:var(--font-serif); color:var(--ink-2); letter-spacing:-.03em}
+.ixb .acts{display:flex; gap:8px; flex-wrap:wrap; margin-top:4px}
+.btn.sm{padding:6px 12px; font-size:12.5px}
+.xl{display:inline-block; margin-right:12px; font-size:13px; color:var(--accent)}
+.xl.off{color:var(--ink-3)}
+.ixs{margin:16px 0 6px}
+.ixs input{width:100%; border:1px solid var(--line-2); background:var(--surface); color:var(--ink); padding:9px 12px; font-size:14px}
+.ixs .note{margin-top:6px}
+.ixhits li{display:grid; grid-template-columns:52px minmax(0,1fr); gap:10px; padding:8px 0; border-bottom:1px dashed var(--line); font-size:13.5px}
+.ixhits .tcj{font-size:12px; color:var(--accent); font-variant-numeric:tabular-nums; text-align:left}
+.ixhits small{display:block; font-size:11.5px; color:var(--ink-3)}
+.ixhits i{font-style:normal; font-size:11.5px; color:var(--copper)}
+.ixhits mark, .ixi mark, .hl1 mark{background:var(--hl); color:inherit}
+.sesum{padding:14px 4px; font-size:14px; color:var(--ink-2); border-top:1px solid var(--line)}
+.tx .ixbody{padding:0 16px 16px}
+.ixsh{font-size:12px; letter-spacing:.06em; color:var(--ink-3); margin:18px 0 6px}
+.ixbody .ixb{padding-left:10px}
+.ixbody .ixb p{grid-template-columns:66px minmax(0,1fr)}
+.tabs2{display:flex; gap:16px}
+.tabs2 button{font-size:15px; font-weight:600; color:var(--ink-3); padding:2px 0 4px; border-bottom:2px solid transparent}
+.tabs2 button[aria-selected="true"]{color:var(--ink); border-bottom-color:var(--ink)}
+.tx .txh .opts select{border:1px solid var(--line-2); background:var(--surface); color:var(--ink); font-size:12.5px; padding:2px 4px}
+.tx .txt.en{color:var(--ink-2); font-size:14px; font-style:italic; margin-top:4px}
+.en-t{font-size:14px; color:var(--ink-3); margin-top:4px; font-style:italic}
+.sum.en{font-size:14px; color:var(--ink-3); font-style:italic; margin-top:12px}
+.disc{margin-top:12px; font-size:12.5px; color:var(--ink-2); border-left:2px solid var(--line-2); padding-left:10px; line-height:1.7}
+.rlink{display:block; border:1px solid var(--accent); background:var(--surface); padding:16px 18px; text-decoration:none}
+.rlink:hover{background:var(--accent-soft)}
+.rlink .go{display:block; margin-top:8px; font-size:12.5px; color:var(--accent)}
+
+/* 구술기록 검색 */
+.modes{display:flex; border:1px solid var(--line-2); width:max-content; max-width:100%; margin-top:16px}
+.modes button{padding:8px 16px; font-size:13.5px; color:var(--ink-2); border-right:1px solid var(--line-2); white-space:nowrap}
+.modes button:last-child{border-right:none}
+.modes button[aria-pressed="true"]{background:var(--ink); color:var(--paper)}
+.sgrid{display:grid; gap:22px; padding:26px 0 80px}
+@media (min-width:1024px){ .sgrid{grid-template-columns:270px minmax(0,1fr); gap:34px} .sfacets{position:sticky; top:66px; max-height:calc(100vh - 80px); overflow-y:auto; padding-right:6px} }
+.sgrid > *{min-width:0}
+.sfold > summary{font-weight:600; cursor:pointer; padding:10px 0; border-bottom:1px solid var(--ink)}
+@media (min-width:1024px){ .sfold > summary{pointer-events:none; list-style:none} .sfold > summary::-webkit-details-marker{display:none} }
+.sfacets fieldset{border:none; margin:0; padding:14px 0 6px; border-bottom:1px solid var(--line)}
+.sfacets legend{font-size:11.5px; letter-spacing:.14em; color:var(--ink-3); padding:0}
+.fac{margin-top:10px}
+.fac .fl{font-size:13px; font-weight:600; margin-bottom:4px}
+.scrollf{max-height:170px; overflow-y:auto}
+.opt{display:grid; grid-template-columns:18px minmax(0,1fr) auto; gap:6px; align-items:baseline; font-size:13.5px; padding:3px 0; cursor:pointer}
+.opt small{font-size:11.5px; color:var(--ink-3); font-variant-numeric:tabular-nums}
+.opt.zero{color:var(--ink-3)} .opt.zero span{opacity:.6}
+.drange{display:flex; gap:6px; align-items:center; flex-wrap:wrap}
+.drange input{border:1px solid var(--line-2); background:var(--surface); color:var(--ink); padding:5px 6px; font-size:12.5px; max-width:125px}
+.sfacets .sel{width:100%}
+#sreset{margin-top:14px}
+.shead{display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; padding-bottom:10px; border-bottom:1px solid var(--line)}
+.shead p{font-size:14px; color:var(--ink-2)} .shead b{color:var(--ink)}
+.chips0{display:flex; gap:6px; flex-wrap:wrap; margin:10px 0 4px}
+.fchip{font-size:12px; border:1px solid var(--accent); color:var(--accent); background:var(--accent-soft); padding:3px 10px}
+.fchip:hover{background:var(--accent); color:var(--paper)}
+.tblwrap{overflow-x:auto; border:1px solid var(--line); background:var(--surface); margin:14px 0 10px}
+.rtable{border-collapse:collapse; width:100%; min-width:900px; font-size:13.5px}
+.rtable th{text-align:left; font-size:11.5px; font-weight:600; color:var(--ink-3); padding:11px 12px; border-bottom:1px solid var(--line); background:var(--surface-2); white-space:nowrap}
+.rtable td{padding:11px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+.rtable td small{display:block; font-size:11.5px; color:var(--ink-3); margin-top:2px}
+.rtable td a{color:var(--accent)}
+.rtable tr.sub td{background:var(--paper); font-size:13px; padding-top:6px}
+.rtable tbody tr:not(.sub):hover td{background:var(--accent-soft)}
+
+/* 국회의원 컬렉션 연계 */
+.ledger{margin-top:48px; max-width:40em}
+.ledger .lh{display:flex; align-items:baseline; gap:14px; padding-bottom:12px; border-bottom:1px solid var(--ink)}
+.ledger h2{font-family:var(--font-serif); font-size:21px}
+.ledger .sum{margin-left:auto; font-size:12.5px; color:var(--ink-3)}
+.ledger .tl li{position:relative; display:grid; grid-template-columns:70px 1fr; gap:16px; padding:12px 0 12px 20px}
+.ledger .tl li::before{content:""; position:absolute; left:0; top:20px; width:7px; height:7px; border-radius:50%; background:var(--accent)}
+.ledger .tl li.wip::before{background:var(--paper); border:1.5px solid var(--copper)}
+.ledger .ym{font-size:12.5px; color:var(--ink-3)}
+.ledger .tx2{font-size:15px; color:var(--ink-2)}
+.invite{margin-top:48px; padding:26px 28px; border:1px solid var(--line); border-left:2px solid var(--copper); background:var(--surface); max-width:40em}
+.invite h2{font-family:var(--font-serif); font-size:20px}
+.invite p{margin-top:10px; color:var(--ink-2)}
+.invite a{display:inline-block; margin-top:16px; background:var(--ink); color:var(--paper); padding:10px 22px; text-decoration:none; font-size:14px}
+.oralblk{border-top:2px solid var(--accent)}
+.oralblk > h2{margin-top:6px}
+.oral{display:grid; gap:24px; margin-top:22px; align-items:start}
+@media (min-width:768px){ .oral{grid-template-columns:260px minmax(0,1fr)} }
+.oral .ot .k{font-size:12px; letter-spacing:.12em; color:var(--accent)}
+.oral .ot h3{font-family:var(--font-serif); font-size:24px; letter-spacing:-.035em; margin-top:4px}
+.oral .ot .m{font-size:13.5px; color:var(--ink-2); margin-top:6px}
+.oral blockquote{margin:14px 0 0; padding-left:16px; border-left:2px solid var(--accent); font-family:var(--font-serif); font-size:17px; line-height:1.7}
+.oral .acts{margin-top:16px}
+.olist{margin-top:16px; border-top:1px solid var(--line)}
+.olist li{display:flex; justify-content:space-between; gap:12px; padding:9px 0; border-bottom:1px solid var(--line); font-size:14px}
+.olist li a{text-decoration:none} .olist li a:hover{text-decoration:underline}
+.olist li span{font-size:12px; color:var(--ink-3); white-space:nowrap}
+.oh3{font-size:15px; margin:30px 0 12px}
