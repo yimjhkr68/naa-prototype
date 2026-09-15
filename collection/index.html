@@ -1,5 +1,16 @@
-<!doctype html><html><head><meta charset=utf8><meta name="robots" content="noindex,nofollow,noarchive"><meta name="googlebot" content="noindex,nofollow"><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>국회기록원 아카이브</title>
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow">
+<title>국회의원 컬렉션 — 국회기록원 아카이브</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%23004890'/%3E%3C/svg%3E">
+<style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<script>window.NAA = {"page": "collection", "root": "../", "oh": "../contents/oral-history/", "ext": false};</script>
+</head><body>
+<!-- 자동 생성 파일(tools/build_site.py). 고칠 때는 tools/naa_site.src.html을 고친 뒤 다시 생성함 -->
+
 <script>document.documentElement.lang = "ko";</script>
 <style>
   :root{
@@ -161,6 +172,10 @@
   /* 타일형 섹션 */
   .tiles{display:grid; grid-template-columns:repeat(4,1fr); gap:22px}
   .tile{text-align:left; display:block; text-decoration:none}
+  .tiles-more{display:inline-block; margin-top:30px; font-size:13.5px; color:var(--accent); text-decoration:none;
+    border-bottom:1px solid var(--line-2); padding-bottom:4px}
+  .tiles-more:hover{border-bottom-color:var(--accent)}
+  .contents-body{padding-top:44px; padding-bottom:96px}
   .tile .img{display:block; aspect-ratio:4/5; overflow:hidden; background:var(--surface-2)}
   .tile .img svg{transition:transform .5s cubic-bezier(.2,.7,.3,1)}
   .tile:hover .img svg{transform:scale(1.04)}
@@ -425,7 +440,7 @@
 
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="#" data-go="home" aria-label="국회기록원 메인화면 바로가기"></a>
+    <a class="brand" href="../" data-go="home" aria-label="국회기록원 메인화면 바로가기"></a>
     <nav class="nav" aria-label="주요 메뉴">
       <div class="m">
         <button type="button">국회기록물</button>
@@ -447,7 +462,7 @@
         <button type="button" id="nav-collection">국회의원 컬렉션</button>
         <div class="mega">
           <p class="d">한 사람이 남긴 기록으로 읽는 의정활동</p>
-          <ul><li><a href="#" data-go="list">제22대 국회의원<span class="new">신설</span></a></li>
+          <ul><li><a href="../collection/" data-go="list">제22대 국회의원<span class="new">신설</span></a></li>
               <li><a href="#">제21대 이하 국회의원</a></li>
               <li><a href="#">의장단 컬렉션</a></li>
               <li><a href="#">기록물 기증 안내</a></li></ul>
@@ -457,7 +472,7 @@
         <button type="button">기록콘텐츠</button>
         <div class="mega">
           <p class="d">다양한 주제와 유형의 컬렉션으로 살펴 보는 의정사</p>
-          <ul><li><a href="../index.html">구술기록</a></li><li><a href="#">국회의장 선물</a></li>
+          <ul><li><a href="../contents/oral-history/">구술기록</a></li><li><a href="#">국회의장 선물</a></li>
               <li><a href="#">기록물 큐레이션</a></li><li><a href="#">디지털 전시</a></li></ul>
         </div>
       </div>
@@ -573,6 +588,18 @@
   <div id="detail"></div>
 </main>
 
+<!-- ================= SC-03 기록콘텐츠 ================= -->
+<main id="view-contents" hidden>
+  <section class="lhead">
+    <div class="art" id="art4" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1 class="serif">기록콘텐츠</h1>
+      <p class="lede">다양한 주제와 유형의 컬렉션으로 살펴 보는 의정사</p>
+    </div>
+  </section>
+  <div class="wrap contents-body"><div id="contents-tiles"></div></div>
+</main>
+
 <!-- ================= SC-02-1 기록 전체 목록 ================= -->
 <main id="view-items" hidden>
   <div class="backbar">
@@ -587,6 +614,17 @@
 <script>
 (function(){
   "use strict";
+
+  /* 화면 구성 — single: 한 파일 안에서 모든 화면을 전환함(claude.ai 시연본)
+     home·collection·contents: 사이트 계층(첫 화면 / 국회의원 컬렉션 / 기록콘텐츠)별 페이지. tools/build_site.py가 지정함 */
+  var NAA = window.NAA || { page:"single", root:"", oh:"https://yimjhkr68.github.io/naa-prototype/contents/oral-history/", ext:true };
+  var EXT = NAA.ext ? ' target="_blank" rel="noopener"' : '';
+  var LOCAL = { single:["home","list","detail","items","contents"], home:["home"],
+                collection:["list","detail","items"], contents:["contents"] }[NAA.page];
+  function pageURL(p, hash){
+    if (NAA.page === "single") return "#" + (hash || "");
+    return NAA.root + (p === "home" ? "" : p + "/") + (hash ? "#" + hash : "");
+  }
 
   var TYPES = [
     {c:"DOC", n:"문서"},   {c:"PHO", n:"사진"},   {c:"MOV", n:"영상"},
@@ -720,7 +758,7 @@
 
   /* 구술기록 연계 — 의원이 구술자이면 구술콘텐츠(구술자 카드)로 연결함.
      키는 의원 식별자(member_id), 값은 구술기록의 구술자 식별자. 인명 사전의 같은 인물 식별자로 잇는 구조임 */
-  var ORAL_BASE = "../index.html#/narrator/";
+  var ORAL_BASE = NAA.oh + "#/narrator/";
   var ORAL = {
     "22-000001": { narrator:"n10", ready:true,  note:"기증을 결심한 이유와 질의서 초안, 골목에서 찍은 사진에 관해 직접 이야기한 구술입니다." },
     "22-000031": { narrator:"n11", ready:false, note:"채록을 마치고 정리하고 있습니다. 채록 정보와 요약은 구술자 카드에서 볼 수 있습니다." }
@@ -1157,7 +1195,8 @@
     home: document.getElementById("view-home"),
     list: document.getElementById("view-list"),
     detail: document.getElementById("view-detail"),
-    items: document.getElementById("view-items")
+    items: document.getElementById("view-items"),
+    contents: document.getElementById("view-contents")
   };
   var scrollMem = { list:0, detail:0 };
   var itemState = { id:null, type:"ALL" };
@@ -1165,14 +1204,20 @@
     Object.keys(views).forEach(function(k){ views[k].hidden = (k !== which); });
     /* 홈이 아닌 화면에서는 「국회의원 컬렉션」 메뉴를 활성 표시 */
     if (which === "home"){ if (window.__clearNav) window.__clearNav(); }
-    else if (window.__markNav) window.__markNav(2);
+    else if (window.__markNav) window.__markNav(which === "contents" ? 3 : 2);
   }
+  /* 같은 페이지에서 보여 줄 수 있는 화면이면 전환하고, 아니면 링크 주소대로 해당 페이지로 이동함 */
   document.querySelectorAll("[data-go]").forEach(function(b){
-    b.onclick = function(){
-      show(b.dataset.go === "list" ? "list" : "home");
+    b.onclick = function(ev){
+      var w = b.dataset.go === "list" ? "list" : "home";
+      if (LOCAL.indexOf(w) < 0) return;
+      ev.preventDefault();
+      if (w === "list") clearHash();
+      show(w);
       window.scrollTo(0,0);
     };
   });
+  function clearHash(){ if (location.hash && history.replaceState) history.replaceState(null, "", location.pathname + location.search); }
   document.querySelector(".banner .close").onclick = function(){
     document.querySelector(".banner").hidden = true;
   };
@@ -1228,9 +1273,9 @@
       {
         id:"s-contents", menu:3, title:"기록콘텐츠",
         desc:"다양한 주제와 유형의 컬렉션으로 살펴 보는 의정사",
-        type:"tiles",
+        type:"tiles", more:"기록콘텐츠 전체 보기",
         tiles:[
-          ["구술기록", "문서가 담지 못한 자리의 공기를 목소리로 남깁니다", 3, 3, "../index.html"],
+          ["구술기록", "문서가 담지 못한 자리의 공기를 목소리로 남깁니다", 3, 3, "OH"],
           ["국회의장 선물", "의장에게 전해진 외교 선물과 기념물 186점", 5, 2],
           ["기록물 큐레이션", "주제를 정해 기록을 골라 엮은 읽을거리", 0, 4],
           ["디지털 전시", "전시장을 찾지 않고도 둘러보는 온라인 전시", 4, 1]
@@ -1258,6 +1303,16 @@
       return '<button class="pick"' + (p.id ? ' data-id="' + p.id + '"' : ' type="button"') + '>' +
         '<span class="th">' + sceneSVG(p.m, false) + '</span>' +
         '<span><b>' + p.t + '</b><span>' + p.s + '</span></span></button>';
+    }
+
+    /* 주소가 있는 타일은 상단 메뉴(기록콘텐츠 → 해당 항목)와 같은 곳으로 연결함 */
+    function tilesHTML(tiles){
+      return '<div class="tiles">' + tiles.map(function(t){
+        var open = t[4] ? '<a class="tile" href="' + (t[4] === "OH" ? NAA.oh : t[4]) + '"' + EXT + '>' : '<button class="tile" type="button">';
+        return open +
+          '<span class="img">' + sceneSVG(fake(t[0]), false, t[2]) + '</span>' +
+          '<span class="cap"><b class="serif">' + t[0] + '</b><span>' + t[1] + '</span></span>' + (t[4] ? '</a>' : '</button>');
+      }).join("") + '</div>';
     }
 
     function sectionHTML(sec, i){
@@ -1296,13 +1351,8 @@
       }
 
       else if (sec.type === "tiles"){
-        body = '<div class="tiles">' + sec.tiles.map(function(t){
-          /* 주소가 있는 타일은 상단 메뉴(기록콘텐츠 → 해당 항목)와 같은 곳으로 연결함 */
-          var open = t[4] ? '<a class="tile" href="' + t[4] + '">' : '<button class="tile" type="button">';
-          return open +
-            '<span class="img">' + sceneSVG(fake(t[0]), false, t[2]) + '</span>' +
-            '<span class="cap"><b class="serif">' + t[0] + '</b><span>' + t[1] + '</span></span>' + (t[4] ? '</a>' : '</button>');
-        }).join("") + '</div>';
+        body = tilesHTML(sec.tiles) +
+          (sec.more ? '<a class="tiles-more" href="' + pageURL("contents", NAA.page === "single" ? "contents" : "") + '" data-page="contents">' + sec.more + ' →</a>' : '');
       }
 
       else if (sec.type === "about"){
@@ -1339,11 +1389,26 @@
 
     document.getElementById("sections").innerHTML = SECTIONS.map(sectionHTML).join("");
 
+    /* 기록콘텐츠 페이지(SC-03) — 첫 화면 기록콘텐츠 섹션과 같은 타일 */
+    var cs = SECTIONS.filter(function(x){ return x.id === "s-contents"; })[0];
+    document.getElementById("contents-tiles").innerHTML = tilesHTML(cs.tiles);
+    var a4 = document.getElementById("art4");
+    if (a4) a4.innerHTML = abstractSVG(424242, 3, false, true);
+    document.querySelectorAll('#sections [data-page="contents"]').forEach(function(b){
+      b.onclick = function(ev){ if (LOCAL.indexOf("contents") < 0) return; ev.preventDefault(); show("contents"); window.scrollTo(0,0); };
+    });
+
     document.querySelectorAll("#sections .pick[data-id]").forEach(function(b){
-      b.onclick = function(){ scrollMem.list = window.scrollY; openDetail(b.dataset.id); };
+      b.onclick = function(){
+        if (LOCAL.indexOf("detail") < 0){ location.href = pageURL("collection", "member/" + b.dataset.id); return; }
+        scrollMem.list = window.scrollY; openDetail(b.dataset.id);
+      };
     });
     document.querySelectorAll("#sections [data-open-list]").forEach(function(b){
-      b.onclick = function(){ show("list"); window.scrollTo(0,0); };
+      b.onclick = function(){
+        if (LOCAL.indexOf("list") < 0){ location.href = pageURL("collection"); return; }
+        show("list"); window.scrollTo(0,0);
+      };
     });
 
     /* ---- 스크롤 위치에 따라 해당 1차 메뉴를 활성 표시 ---- */
@@ -1381,6 +1446,8 @@
       b.addEventListener("click", function(){
         var target = document.querySelector('#sections .sec[data-menu="' + k + '"]');
         if (!target) return;
+        /* 첫 화면이 없는 페이지에서는 첫 화면의 해당 섹션으로 이동함 */
+        if (LOCAL.indexOf("home") < 0){ location.href = pageURL("home", target.id); return; }
         if (views.home.hidden){ show("home"); }
         var top = target.offsetTop - 76;
         window.scrollTo({ top: top < 0 ? 0 : top, behavior: "smooth" });
@@ -1471,7 +1538,7 @@
   /* ============================================================
      상세
      ============================================================ */
-  document.getElementById("back").onclick = function(){ show("list"); window.scrollTo(0, scrollMem.list); };
+  document.getElementById("back").onclick = function(){ clearHash(); show("list"); window.scrollTo(0, scrollMem.list); };
 
   function figureHTML(m, it, i, cls){
     return '<figure class="' + (cls || "") + '">' +
@@ -1516,7 +1583,7 @@
       out += '<aside class="oral-link" aria-label="구술기록 연계">' +
         '<div class="txt"><p class="k">구술기록</p><b>' + m.name + ' 의원의 구술' + (oral.ready ? '이 있습니다' : '을 정리하고 있습니다') + '</b>' +
         '<span>' + oral.note + '</span></div>' +
-        '<a href="' + ORAL_BASE + oral.narrator + '">' + (oral.ready ? '구술 듣기' : '구술자 카드 보기') + ' ↗</a></aside>';
+        '<a href="' + ORAL_BASE + oral.narrator + '"' + EXT + '>' + (oral.ready ? '구술 듣기' : '구술자 카드 보기') + ' ↗</a></aside>';
     }
 
     if (m.hasRecords){
@@ -1591,6 +1658,7 @@
     var tl = document.getElementById("tolist");
     if (tl) tl.onclick = function(){ scrollMem.detail = window.scrollY; openItems(m.id, "ALL"); };
     show("detail"); window.scrollTo(0,0);
+    if (history.replaceState) history.replaceState(null, "", "#member/" + m.id);
     document.getElementById("back").focus();
   }
 
@@ -1650,12 +1718,24 @@
 
   render();
 
-  /* 바로 가기 주소 — #list 는 목록, #member/22-000001 은 의원 상세(구술기록 프로토타입에서 들어올 때 씀) */
+  /* 바로 가기 주소
+     첫 화면 #s-members 등은 해당 섹션, 국회의원 컬렉션 #member/22-000001 은 의원 상세
+     예전 주소(첫 화면의 #list·#member/…, 구술기록의 #/…)는 새 위치로 옮겨 줌 */
   function route(){
-    var h = location.hash.replace(/^#\/?/, "");
-    if (h === "list"){ show("list"); window.scrollTo(0,0); }
-    else if (h.indexOf("member/") === 0){ openDetail(h.slice(7)); }
+    var raw = location.hash.replace(/^#/, ""), h = raw.replace(/^\//, "");
+    if (NAA.page !== "single" && raw.charAt(0) === "/"){ location.replace(NAA.oh + "#" + raw); return; }
+    if (h === "list" || h.indexOf("member/") === 0){
+      if (LOCAL.indexOf("list") < 0){ location.replace(pageURL("collection", h === "list" ? "" : h)); return; }
+      if (h === "list"){ clearHash(); show("list"); window.scrollTo(0,0); }
+      else openDetail(h.slice(7));
+    }
+    else if (h === "contents" && LOCAL.indexOf("contents") > -1){ show("contents"); window.scrollTo(0,0); }
+    else if (h.indexOf("s-") === 0 && LOCAL.indexOf("home") > -1){
+      var el = document.getElementById(h);
+      if (el){ show("home"); var top = el.offsetTop - 76; window.scrollTo(0, top < 0 ? 0 : top); }
+    }
   }
+  show(LOCAL.indexOf("home") > -1 ? "home" : LOCAL[0]);
   window.addEventListener("hashchange", route);
   route();
 })();

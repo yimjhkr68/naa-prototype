@@ -473,7 +473,7 @@
       "donated_collection": {
         "title": "국회의원 컬렉션 — 강윤서",
         "note": "1차 국회의원 컬렉션의 의원 상세로 이동합니다. 의원 상세에서도 이 구술로 연결됩니다",
-        "href": "collection/index.html#member/22-000001"
+        "href": "../../collection/#member/22-000001"
       },
       "records": []
     },
@@ -515,7 +515,7 @@
       "donated_collection": {
         "title": "국회의원 컬렉션 — 안태경",
         "note": "1차 국회의원 컬렉션의 의원 상세로 이동합니다. 의원 상세에서도 이 구술로 연결됩니다",
-        "href": "collection/index.html#member/22-000031"
+        "href": "../../collection/#member/22-000031"
       },
       "records": []
     },

@@ -239,7 +239,7 @@
 
   /* ============================================================ 공통 조각 */
   function crumb(items){
-    return '<nav class="crumb" aria-label="현재 위치"><a href="#/">구술기록</a>' + items.map(function(it){
+    return '<nav class="crumb" aria-label="현재 위치"><a href="../../">홈</a><span aria-hidden="true">›</span><a href="../">기록콘텐츠</a><span aria-hidden="true">›</span><a href="#/">구술기록</a>' + items.map(function(it){
       return '<span aria-hidden="true">›</span>' + (it[1] ? '<a href="' + it[1] + '">' + esc(it[0]) + '</a>' : '<span aria-current="page">' + esc(it[0]) + '</span>');
     }).join("") + '</nav>';
   }
@@ -462,7 +462,7 @@
     }
     main.innerHTML =
       '<section class="hero"><div class="art" aria-hidden="true">' + abstractSVG(20260914, 1, true) + '</div><div class="wrap"><div class="txt">' +
-        '<p class="kicker">' + esc(S.kicker) + '</p>' +
+        '<p class="kicker">' + esc(S.kicker).replace("기록콘텐츠", '<a href="../">기록콘텐츠</a>') + '</p>' +
         '<h1>' + S.headline.map(esc).join("<br>") + '</h1>' +
         '<p class="lede">' + esc(S.lede) + '</p>' +
         '<dl class="figs"><div><dt>구술자</dt><dd class="tnum">' + D.narrators.length + '<small>명</small></dd></div>' +
@@ -1548,7 +1548,7 @@
       '<header class="phero"><p class="kicker">인명 사전' + (p.is_sample ? ' · 표본(가상 인물)' : '') + '</p><h1>' + esc(p.name) + (p.hanja ? '<small>' + esc(p.hanja) + '</small>' : '') + '</h1>' +
         '<p class="dis">' + esc(p.disambiguation) + '</p><p class="summary">' + esc(p.summary) + '</p>' +
         '<div class="links">' + (n ? '<a class="btn primary" href="#/narrator/' + n.id + '">' + esc(n.name) + ' 본인의 구술 보기</a>' : '') +
-          (p.links.member_collection_id ? '<a class="btn" href="collection/index.html#member/' + esc(p.links.member_collection_id) + '">국회의원 컬렉션에서 보기</a>' : '') + '</div>' +
+          (p.links.member_collection_id ? '<a class="btn" href="../../collection/#member/' + esc(p.links.member_collection_id) + '">국회의원 컬렉션에서 보기</a>' : '') + '</div>' +
         (same.length ? '<p class="samename">같은 이름의 다른 인물이 있습니다: ' + same.map(function(o){ return '<a href="#/person/' + o.person_id + '">' + esc(o.name) + '(' + esc(o.disambiguation) + ')</a>'; }).join(", ") + '. 인명 사전은 동명이인을 구분하여 연결합니다.</p>' : '') +
         '<p class="note" style="margin-top:14px">구술 속 표기: ' + surfaces.map(function(s){ return "‘" + esc(s) + "’"; }).join(", ") + '</p>' +
       '</header>' +

@@ -1,16 +1,4 @@
-<!doctype html>
-<html lang="ko"><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
-<meta name="googlebot" content="noindex,nofollow">
 <title>국회기록원 아카이브</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%23004890'/%3E%3C/svg%3E">
-<style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
-<script>window.NAA = {"page": "home", "root": "", "oh": "contents/oral-history/", "ext": false};</script>
-</head><body>
-<!-- 자동 생성 파일(tools/build_site.py). 고칠 때는 tools/naa_site.src.html을 고친 뒤 다시 생성함 -->
-
 <script>document.documentElement.lang = "ko";</script>
 <style>
   :root{
@@ -440,7 +428,7 @@
 
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="./" data-go="home" aria-label="국회기록원 메인화면 바로가기"></a>
+    <a class="brand" href="{{HOME}}" data-go="home" aria-label="국회기록원 메인화면 바로가기"></a>
     <nav class="nav" aria-label="주요 메뉴">
       <div class="m">
         <button type="button">국회기록물</button>
@@ -462,7 +450,7 @@
         <button type="button" id="nav-collection">국회의원 컬렉션</button>
         <div class="mega">
           <p class="d">한 사람이 남긴 기록으로 읽는 의정활동</p>
-          <ul><li><a href="collection/" data-go="list">제22대 국회의원<span class="new">신설</span></a></li>
+          <ul><li><a href="{{COLL}}" data-go="list">제22대 국회의원<span class="new">신설</span></a></li>
               <li><a href="#">제21대 이하 국회의원</a></li>
               <li><a href="#">의장단 컬렉션</a></li>
               <li><a href="#">기록물 기증 안내</a></li></ul>
@@ -472,7 +460,7 @@
         <button type="button">기록콘텐츠</button>
         <div class="mega">
           <p class="d">다양한 주제와 유형의 컬렉션으로 살펴 보는 의정사</p>
-          <ul><li><a href="contents/oral-history/">구술기록</a></li><li><a href="#">국회의장 선물</a></li>
+          <ul><li><a href="{{OH}}"{{EXT}}>구술기록</a></li><li><a href="#">국회의장 선물</a></li>
               <li><a href="#">기록물 큐레이션</a></li><li><a href="#">디지털 전시</a></li></ul>
         </div>
       </div>
@@ -1741,4 +1729,3 @@
 })();
 </script>
 
-</body></html>

@@ -9,7 +9,8 @@
 import json, os, sys, html, subprocess
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA = os.path.join(ROOT, "data")
+OH = os.path.join(ROOT, "contents", "oral-history")  # 구술기록 페이지 폴더(데이터·매체·내려받기)
+DATA = os.path.join(OH, "data")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 
@@ -151,7 +152,7 @@ h3 span{font-family:"Apple SD Gothic Neo",sans-serif; font-size:9pt; color:#0048
     src = os.path.join(ROOT, "tools", "build", "transcript_%s.html" % nid)
     with open(src, "w", encoding="utf-8") as f:
         f.write(doc)
-    out = os.path.join(ROOT, "downloads", "%s-full-transcript-index.pdf" % nid)
+    out = os.path.join(OH, "downloads", "%s-full-transcript-index.pdf" % nid)
     os.makedirs(os.path.dirname(out), exist_ok=True)
     subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer", "--print-to-pdf-no-header",
                     "--print-to-pdf=" + out, "file://" + src], capture_output=True)

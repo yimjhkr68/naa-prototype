@@ -4,13 +4,29 @@
 - 기준 문서: 구술콘텐츠_서비스_기획설계서_v3.md, 노션 「구술콘텐츠 서비스 개편 — 현황 분석·벤치마킹·기획안」 8장(지명·인명 사전)
 - 작성: 2026. 9. 14.
 - 1차 과제(홈·국회의원 컬렉션) 프로토타입과는 코드가 독립적이며, 디자인 토큰(색·서체·카드 문법)만 같은 값을 씀
+- 웹 주소: https://yimjhkr68.github.io/naa-prototype/ (검색엔진 색인 차단). 예전 주소(oral-history-prototype)는 새 주소로 자동 이동함
+
+## 사이트 계층과 주소
+
+홈페이지 첫 화면 아래에 국회의원 컬렉션과 기록콘텐츠가 있고, 기록콘텐츠 아래에 구술기록이 있는 계층을 주소에 그대로 반영함
+
+| 계층 | 화면 | 주소 | 파일 |
+| --- | --- | --- | --- |
+| 1 | 국회기록원 첫 화면 | `/` | `index.html` |
+| 2 | 국회의원 컬렉션 | `/collection/` (의원 상세 `#member/22-000001`) | `collection/index.html` |
+| 2 | 기록콘텐츠 | `/contents/` | `contents/index.html` |
+| 3 | 구술기록 | `/contents/oral-history/` (구술자 `#/narrator/n10`, 대목 `#/segment/n01-s1-03` 등) | `contents/oral-history/` |
+
+- 첫 화면·국회의원 컬렉션·기록콘텐츠는 1차 과제 화면(`tools/naa_site.src.html`) 하나에서 `tools/build_site.py`로 생성함. 1차 화면의 내용은 바꾸지 않았고, 페이지 사이 이동과 구술기록 연결만 더함
+- 메뉴 규칙(모든 페이지 공통): 상단 1차 메뉴를 누르면 첫 화면의 해당 섹션으로, 하위 메뉴를 누르면 해당 페이지로 이동함
+- 구술기록 화면의 현재 위치 표시: 홈 › 기록콘텐츠 › 구술기록 › …
 
 ## 시연 방법
 
-1. `시연하기.command`를 더블클릭함(처음에는 우클릭 → 열기). 브라우저가 `http://localhost:8000/`으로 열림
-2. Google 지도를 쓰려면 `config.js`의 `googleMapsApiKey`에 키를 넣음. 키가 없으면 지도 화면이 권역별 간이 좌표도로 바뀜
-   - 키는 HTTP 리퍼러를 `http://localhost:*/*`로 제한하여 발급함
-3. `index.html`을 파일로 바로 열어도 대부분 동작하지만(`data/bundle.js` 사용), 자막(WebVTT)과 Google 지도는 서버로 열어야 동작함
+1. `시연하기.command`를 더블클릭함(처음에는 우클릭 → 열기). 브라우저가 첫 화면 `http://localhost:8000/`으로 열리며, 구술기록은 `http://localhost:8000/contents/oral-history/`
+2. Google 지도를 쓰려면 `contents/oral-history/config.js`의 `googleMapsApiKey`에 키를 넣음. 키가 없으면 지도 화면이 권역별 간이 좌표도로 바뀜
+   - 키는 HTTP 리퍼러를 `http://localhost:8000/*`, `https://yimjhkr68.github.io/*`로 제한하여 발급함
+3. 영상 구간 이동·자막(WebVTT)·Google 지도는 서버로 열어야 동작함
 
 ## 표본 데이터 원칙
 
@@ -26,8 +42,7 @@
 - 1차 프로토타입(claude.ai 「국회기록원 아카이브」)의 기존 콘텐츠는 그대로 두고, 의원 상세(SC-02) 인물 소개 아래에 「구술기록」 연결 상자 하나만 추가함
 - 구술자인 의원(강윤서 → `#/narrator/n10`, 안태경 → `#/narrator/n11`)에게만 나타나며, 구술자가 아닌 의원에게는 표시하지 않음
 - 연결 근거: 인명 사전 `persons.json`의 `links.member_collection_id`가 1차 컬렉션의 의원 식별자(22-000001 등)와 같음
-- 다른 PC에서도 오갈 수 있도록 1차 국회의원 컬렉션 화면을 내용 변경 없이 `collection/index.html`에 함께 둠. 구술기록 상단 「국회의원 컬렉션」 메뉴, 인명 사전의 [국회의원 컬렉션에서 보기], 구술자 상세의 관련 자료 카드가 이 화면으로 연결됨
-  - 바로 가기 주소: `collection/index.html#list`(의원 목록), `collection/index.html#member/22-000001`(의원 상세)
+- 구술기록의 인명 사전 [국회의원 컬렉션에서 보기]와 구술자 상세의 관련 자료 카드가 `/collection/#member/…`(의원 상세)로 연결됨
 
 ## 구현 화면
 
@@ -66,14 +81,20 @@
 ## 폴더 구성
 
 ```
-index.html, config.js, 시연하기.command
-collection/ 1차 국회의원 컬렉션 화면(사본, 구술 연결 상자만 추가)
-assets/   app.css, app.js(화면 렌더링), logo.png
-data/     site, narrators, sessions, segments, topics, assemblies, places, persons, mentions (.json)
-          bundle.js — 파일로 바로 열 때 쓰는 묶음(자동 생성)
-media/    세션 원본 영상(mp4)·자막(vtt)·표지, 하이라이트 클립, thumbs/ 세그먼트 화면
-downloads/ 색인 포함 전문 PDF 표본(홍석진 편)
-tools/    build_media.py(표본 영상·타임코드 생성), build_bundle.py(데이터 검증·묶음), build_pdf.py(전문 PDF), frame.html, voices.json
+index.html                 국회기록원 첫 화면(자동 생성)
+collection/index.html      국회의원 컬렉션(자동 생성)
+contents/index.html        기록콘텐츠(자동 생성)
+contents/oral-history/     구술기록
+  index.html, config.js
+  assets/    app.css, app.js(화면 렌더링), logo.png
+  data/      site, narrators, sessions, segments, topics, assemblies, places, persons, mentions (.json)
+             bundle.js — 파일로 바로 열 때 쓰는 묶음(자동 생성)
+  media/     세션 원본 영상(mp4)·자막(vtt)·표지, 하이라이트 클립, thumbs/ 세그먼트 화면
+  downloads/ 색인 포함 전문 PDF 표본(홍석진 편)
+tools/     build_site.py(첫 화면·국회의원 컬렉션·기록콘텐츠 생성), naa_site.src.html(1차 화면 원본),
+           build_media.py(표본 영상·타임코드 생성), build_bundle.py(데이터 검증·묶음), build_pdf.py(전문 PDF),
+           serve.py(구간 이동 지원 로컬 서버), frame.html, voices.json
+시연하기.command, robots.txt(색인 차단)
 ```
 
 ## 데이터를 고친 뒤 다시 만드는 순서
@@ -82,6 +103,8 @@ tools/    build_media.py(표본 영상·타임코드 생성), build_bundle.py(�
 python3 tools/build_media.py    # 녹취문 → 합성 음성 → 타임코드·영상·자막 (ffmpeg, Chrome 필요, 약 2분)
 python3 tools/build_bundle.py   # 참조 검증, persons[] 재계산, bundle.js 생성
 python3 tools/build_pdf.py n01  # 색인 포함 전문 PDF
+python3 tools/build_site.py     # 1차 화면 원본을 고친 뒤 첫 화면·국회의원 컬렉션·기록콘텐츠 다시 생성
+python3 tools/build_site.py --single 경로.html   # claude.ai 게시용 한 파일 시연본
 ```
 
 - 녹취문 문장을 고치면 build_media.py부터 다시 실행해야 타임코드가 맞음

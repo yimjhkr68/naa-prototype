@@ -14,8 +14,9 @@
 import json, os, re, subprocess, shutil, urllib.parse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA = os.path.join(ROOT, "data")
-MEDIA = os.path.join(ROOT, "media")
+OH = os.path.join(ROOT, "contents", "oral-history")  # 구술기록 페이지 폴더(데이터·매체·내려받기)
+DATA = os.path.join(OH, "data")
+MEDIA = os.path.join(OH, "media")
 WORK = os.path.join(ROOT, "tools", "build")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 SR = 24000
@@ -224,8 +225,8 @@ def main():
         jpg(intro_png, os.path.join(MEDIA, ses["id"] + ".jpg"), 960)
         if ses.get("video_url"):
             # 전면 공개 세션: 원본 영상과 자막을 공개 경로에 둠
-            encode(frames, master_wav, os.path.join(ROOT, ses["video_url"]))
-            write_vtt(vtt_cues(all_paras), os.path.join(ROOT, ses["captions_url"]))
+            encode(frames, master_wav, os.path.join(OH, ses["video_url"]))
+            write_vtt(vtt_cues(all_paras), os.path.join(OH, ses["captions_url"]))
             print("  영상", ses["video_url"], ses["duration"])
         else:
             # 원본 비공개 세션: 하이라이트 등급 세그먼트만 물리 클립으로 잘라 냄
@@ -233,7 +234,7 @@ def main():
             encode(frames, master_wav, master_mp4)
             for s in segs:
                 if s["access_level"] == "highlight" and s.get("video_url"):
-                    out = os.path.join(ROOT, s["video_url"])
+                    out = os.path.join(OH, s["video_url"])
                     a, b = s["_start"], s["_end"] - GAP_SEG / 2
                     run(["ffmpeg", "-y", "-v", "error", "-ss", "%.3f" % a, "-to", "%.3f" % b, "-i", master_mp4,
                          "-c:v", "libx264", "-preset", "slow", "-crf", "31", "-c:a", "aac", "-b:a", "64k",
