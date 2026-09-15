@@ -160,7 +160,7 @@
 
   /* 타일형 섹션 */
   .tiles{display:grid; grid-template-columns:repeat(4,1fr); gap:22px}
-  .tile{text-align:left; display:block}
+  .tile{text-align:left; display:block; text-decoration:none}
   .tile .img{display:block; aspect-ratio:4/5; overflow:hidden; background:var(--surface-2)}
   .tile .img svg{transition:transform .5s cubic-bezier(.2,.7,.3,1)}
   .tile:hover .img svg{transform:scale(1.04)}
@@ -1230,7 +1230,7 @@
         desc:"다양한 주제와 유형의 컬렉션으로 살펴 보는 의정사",
         type:"tiles",
         tiles:[
-          ["구술기록", "문서가 담지 못한 자리의 공기를 목소리로 남깁니다", 3, 3],
+          ["구술기록", "문서가 담지 못한 자리의 공기를 목소리로 남깁니다", 3, 3, "../index.html"],
           ["국회의장 선물", "의장에게 전해진 외교 선물과 기념물 186점", 5, 2],
           ["기록물 큐레이션", "주제를 정해 기록을 골라 엮은 읽을거리", 0, 4],
           ["디지털 전시", "전시장을 찾지 않고도 둘러보는 온라인 전시", 4, 1]
@@ -1297,9 +1297,11 @@
 
       else if (sec.type === "tiles"){
         body = '<div class="tiles">' + sec.tiles.map(function(t){
-          return '<button class="tile" type="button">' +
+          /* 주소가 있는 타일은 상단 메뉴(기록콘텐츠 → 해당 항목)와 같은 곳으로 연결함 */
+          var open = t[4] ? '<a class="tile" href="' + t[4] + '">' : '<button class="tile" type="button">';
+          return open +
             '<span class="img">' + sceneSVG(fake(t[0]), false, t[2]) + '</span>' +
-            '<span class="cap"><b class="serif">' + t[0] + '</b><span>' + t[1] + '</span></span></button>';
+            '<span class="cap"><b class="serif">' + t[0] + '</b><span>' + t[1] + '</span></span>' + (t[4] ? '</a>' : '</button>');
         }).join("") + '</div>';
       }
 
