@@ -353,7 +353,7 @@
 
       '<section class="sec"><div class="wrap">' +
         '<div class="sec-head"><div><div class="no">05</div><h2>장소와 인물로 찾기</h2></div><p class="d">구술에서 언급된 지명과 인명을 사전으로 정리했습니다. 같은 장소, 같은 사람을 이야기한 대목이 한곳에 모입니다.</p></div>' +
-        '<div class="finders"><div class="finder"><h3>지도로 보는 구술</h3><p>핀을 누르면 그 장소를 언급한 대목으로 바로 이동합니다.</p><ul>' +
+        '<div class="finders"><div class="finder"><h3>지도로 보는 구술</h3><p>핀을 누르면 그 장소를 언급한 대목 목록이 나오고, 대목을 누르면 그 위치부터 재생합니다.</p><ul>' +
           places.map(function(p){ return '<li><a href="#/map?place=' + p.place_id + '"><span>' + esc(p.name) + '</span><span>언급 ' + X.byEnt["PLACE|" + p.place_id].length + '회</span></a></li>'; }).join("") +
           '</ul><a class="btn go" href="#/map">지도 열기</a></div>' +
         '<div class="finder"><h3>인명 사전</h3><p>호칭이 달라도 같은 사람이면 하나로 묶었습니다. 동명이인은 구분해 두었습니다.</p><ul>' +
@@ -964,7 +964,7 @@
     var st = { place: q.get("place") || "", nar: q.get("nar") || "", topic: q.get("topic") || "" };
     var topics = D.topics.topics.filter(function(t){ return t.broader; });
     main.innerHTML = '<section class="phead"><div class="art" aria-hidden="true">' + abstractSVG(3131, 5) + '</div><div class="wrap"><p class="kicker">구술기록</p><h1>지도로 보는 구술</h1>' +
-      '<p class="lede">구술에 등장한 장소를 지명 사전으로 정리해 지도에 두었습니다. 핀을 누르면 그 장소를 언급한 대목으로 바로 이동합니다.</p></div></section>' +
+      '<p class="lede">구술에 등장한 장소를 지명 사전으로 정리해 지도에 두었습니다. 핀이나 오른쪽 장소 목록을 누르면 그 장소를 언급한 대목이 나오고, 대목을 누르면 그 위치부터 재생합니다.</p></div></section>' +
       '<div class="wrap"><div class="mgrid"><div class="mapbox" id="mapbox"><div id="gmap"></div></div>' +
       '<aside class="mside" aria-label="지명 목록"><div class="filters">' +
         '<label class="sr" for="fnar">구술자</label><select id="fnar"><option value="">구술자 전체</option>' + D.narrators.map(function(n){ return '<option value="' + n.id + '"' + (st.nar === n.id ? " selected" : "") + '>' + esc(n.name) + '</option>'; }).join("") + '</select>' +
@@ -1018,7 +1018,7 @@
           var n = narOf(g.seg);
           return '<li><a href="' + segHref(g.seg, firstMentionT(g.ms)) + '">' + esc(g.seg.title) + '<span>' + esc(n.name) + ' 구술 · ' + g.ms.length + '회 언급 · ' + clock(firstMentionT(g.ms)) + '부터 · ' + D.site.access_levels[g.seg.access_level].label + '</span></a></li>';
         }).join("") + '</ul></div>';
-    } else $("#pdetail").innerHTML = '<p class="note" style="margin-top:16px">목록이나 지도의 핀을 누르면 그 장소를 언급한 대목이 나옵니다.</p>';
+    } else $("#pdetail").innerHTML = '<p class="note" style="margin-top:16px">지도의 핀이나 위 장소 목록을 누르면 그 장소를 언급한 대목이 여기에 나옵니다. 대목을 누르면 재생 화면으로 이동합니다.</p>';
     /* 마커 갱신 */
     if (MAPSTATE.map){
       pl.forEach(function(x){
