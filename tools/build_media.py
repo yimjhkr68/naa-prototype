@@ -14,7 +14,7 @@
 import json, os, re, subprocess, shutil, urllib.parse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OH = os.path.join(ROOT, "contents", "oral-history")  # 구술기록 페이지 폴더(데이터·매체·내려받기)
+OH = os.path.join(ROOT, "records", "oral-history")  # 구술기록 페이지 폴더(데이터·매체·내려받기)
 DATA = os.path.join(OH, "data")
 MEDIA = os.path.join(OH, "media")
 WORK = os.path.join(ROOT, "tools", "build")

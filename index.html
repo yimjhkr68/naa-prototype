@@ -7,7 +7,7 @@
 <title>국회기록원 아카이브</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' fill='%23004890'/%3E%3C/svg%3E">
 <style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
-<script>window.NAA = {"page": "home", "root": "", "oh": "contents/oral-history/", "ext": false};</script>
+<script>window.NAA = {"page": "home", "root": "", "oh": "records/oral-history/", "ext": false};</script>
 </head><body>
 <!-- 자동 생성 파일(tools/build_site.py). 고칠 때는 tools/naa_site.src.html을 고친 뒤 다시 생성함 -->
 
@@ -139,15 +139,15 @@
   .idxlist{list-style:none; margin:0; padding:0}
   .idxlist li{border-bottom:1px solid var(--line)}
   .idxlist li:first-child{border-top:1px solid var(--line)}
-  .idxlist button{display:grid; grid-template-columns:64px minmax(150px,232px) minmax(0,1fr) auto;
+  .idxlist button, .idxlist a.idxrow{display:grid; grid-template-columns:64px minmax(150px,232px) minmax(0,1fr) auto;
     gap:24px; align-items:baseline; width:100%; text-align:left; padding:26px 6px}
   .idxlist .n{font-size:11.5px; color:var(--ink-3); font-variant-numeric:tabular-nums; letter-spacing:.1em}
   .idxlist .t{font-size:22px; font-weight:700; letter-spacing:-.01em}
   .idxlist .dd{font-size:14px; color:var(--ink-2)}
   .idxlist .go{font-size:12.5px; color:var(--ink-3); white-space:nowrap}
-  .idxlist button:hover{background:var(--accent-soft)}
-  .idxlist button:hover .go{color:var(--accent)}
-  .idxlist button:hover .t{text-decoration:underline; text-underline-offset:5px; text-decoration-thickness:1px}
+  .idxlist button:hover, .idxlist a.idxrow:hover{background:var(--accent-soft)}
+  .idxlist button:hover .go, .idxlist a.idxrow:hover .go{color:var(--accent)}
+  .idxlist button:hover .t, .idxlist a.idxrow:hover .t{text-decoration:underline; text-underline-offset:5px; text-decoration-thickness:1px}
 
   /* 대표 사례형 섹션 */
   .feature{position:relative}
@@ -176,6 +176,8 @@
     border-bottom:1px solid var(--line-2); padding-bottom:4px}
   .tiles-more:hover{border-bottom-color:var(--accent)}
   .contents-body{padding-top:44px; padding-bottom:96px}
+  @media (min-width:1024px){ .tiles.n3{grid-template-columns:repeat(3,1fr)} }
+  a.idxrow{text-decoration:none}
   .tile .img{display:block; aspect-ratio:4/5; overflow:hidden; background:var(--surface-2)}
   .tile .img svg{transition:transform .5s cubic-bezier(.2,.7,.3,1)}
   .tile:hover .img svg{transform:scale(1.04)}
@@ -389,7 +391,7 @@
     .feature .visual{width:100%}
     .feature.rev .visual{margin-left:0}
     .feature .panel{width:100%; margin-top:-44px}
-    .idxlist button{grid-template-columns:44px 1fr; gap:8px 18px}
+    .idxlist button, .idxlist a.idxrow{grid-template-columns:44px 1fr; gap:8px 18px}
     .idxlist .dd{grid-column:2}
     .idxlist .go{grid-column:2}
     .grid{grid-template-columns:repeat(3,1fr)}
@@ -446,7 +448,7 @@
         <button type="button">국회기록물</button>
         <div class="mega">
           <p class="d">대한민국 의정사의 흐름과 민주주의 발전을 보여주는 국회의 기록유산</p>
-          <ul><li><a href="#">일반문서</a></li><li><a href="#">국회간행물</a></li>
+          <ul><li><a href="#">일반문서</a></li><li><a href="records/oral-history/">구술기록</a></li><li><a href="#">국회간행물</a></li>
               <li><a href="#">국회특별위원회 기록</a></li></ul>
         </div>
       </div>
@@ -472,7 +474,7 @@
         <button type="button">기록콘텐츠</button>
         <div class="mega">
           <p class="d">다양한 주제와 유형의 컬렉션으로 살펴 보는 의정사</p>
-          <ul><li><a href="contents/oral-history/">구술기록</a></li><li><a href="#">국회의장 선물</a></li>
+          <ul><li><a href="#">국회의장 선물</a></li>
               <li><a href="#">기록물 큐레이션</a></li><li><a href="#">디지털 전시</a></li></ul>
         </div>
       </div>
@@ -588,6 +590,18 @@
   <div id="detail"></div>
 </main>
 
+<!-- ================= SC-04 국회기록물 ================= -->
+<main id="view-records" hidden>
+  <section class="lhead">
+    <div class="art" id="art5" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1 class="serif">국회기록물</h1>
+      <p class="lede">대한민국 의정사의 흐름과 민주주의 발전을 보여주는 국회의 기록유산</p>
+    </div>
+  </section>
+  <div class="wrap contents-body"><div id="records-list"></div></div>
+</main>
+
 <!-- ================= SC-03 기록콘텐츠 ================= -->
 <main id="view-contents" hidden>
   <section class="lhead">
@@ -616,11 +630,11 @@
   "use strict";
 
   /* 화면 구성 — single: 한 파일 안에서 모든 화면을 전환함(claude.ai 시연본)
-     home·collection·contents: 사이트 계층(첫 화면 / 국회의원 컬렉션 / 기록콘텐츠)별 페이지. tools/build_site.py가 지정함 */
-  var NAA = window.NAA || { page:"single", root:"", oh:"https://yimjhkr68.github.io/naa-prototype/contents/oral-history/", ext:true };
+     home·collection·records·contents: 사이트 계층(첫 화면 / 국회의원 컬렉션 / 국회기록물 / 기록콘텐츠)별 페이지. tools/build_site.py가 지정함 */
+  var NAA = window.NAA || { page:"single", root:"", oh:"https://yimjhkr68.github.io/naa-prototype/records/oral-history/", ext:true };
   var EXT = NAA.ext ? ' target="_blank" rel="noopener"' : '';
-  var LOCAL = { single:["home","list","detail","items","contents"], home:["home"],
-                collection:["list","detail","items"], contents:["contents"] }[NAA.page];
+  var LOCAL = { single:["home","list","detail","items","records","contents"], home:["home"],
+                collection:["list","detail","items"], records:["records"], contents:["contents"] }[NAA.page];
   function pageURL(p, hash){
     if (NAA.page === "single") return "#" + (hash || "");
     return NAA.root + (p === "home" ? "" : p + "/") + (hash ? "#" + hash : "");
@@ -1196,7 +1210,8 @@
     list: document.getElementById("view-list"),
     detail: document.getElementById("view-detail"),
     items: document.getElementById("view-items"),
-    contents: document.getElementById("view-contents")
+    contents: document.getElementById("view-contents"),
+    records: document.getElementById("view-records")
   };
   var scrollMem = { list:0, detail:0 };
   var itemState = { id:null, type:"ALL" };
@@ -1204,7 +1219,7 @@
     Object.keys(views).forEach(function(k){ views[k].hidden = (k !== which); });
     /* 홈이 아닌 화면에서는 「국회의원 컬렉션」 메뉴를 활성 표시 */
     if (which === "home"){ if (window.__clearNav) window.__clearNav(); }
-    else if (window.__markNav) window.__markNav(which === "contents" ? 3 : 2);
+    else if (window.__markNav) window.__markNav(which === "contents" ? 3 : which === "records" ? 0 : 2);
   }
   /* 같은 페이지에서 보여 줄 수 있는 화면이면 전환하고, 아니면 링크 주소대로 해당 페이지로 이동함 */
   document.querySelectorAll("[data-go]").forEach(function(b){
@@ -1241,9 +1256,10 @@
       {
         id:"s-records", menu:0, title:"국회기록물",
         desc:"대한민국 의정사의 흐름과 민주주의 발전을 보여주는 국회의 기록유산",
-        type:"index",
+        type:"index", more:"국회기록물 전체 보기",
         rows:[
           ["일반문서", "제헌국회 이래 국회가 생산하고 접수한 문서 기록", "생산기관·연도·유형으로 검색"],
+          ["구술기록", "문서가 담지 못한 자리의 공기를 목소리로 남깁니다", "구술자·주제·장소로 찾기", "OH"],
           ["국회간행물", "의안과 회의록, 연구보고서를 비롯한 국회의 발간물", "원문 열람 제공"],
           ["국회특별위원회 기록", "특별위원회의 구성부터 활동 종료까지 남은 기록", "위원회별 활동 기간순"]
         ]
@@ -1275,7 +1291,6 @@
         desc:"다양한 주제와 유형의 컬렉션으로 살펴 보는 의정사",
         type:"tiles", more:"기록콘텐츠 전체 보기",
         tiles:[
-          ["구술기록", "문서가 담지 못한 자리의 공기를 목소리로 남깁니다", 3, 3, "OH"],
           ["국회의장 선물", "의장에게 전해진 외교 선물과 기념물 186점", 5, 2],
           ["기록물 큐레이션", "주제를 정해 기록을 골라 엮은 읽을거리", 0, 4],
           ["디지털 전시", "전시장을 찾지 않고도 둘러보는 온라인 전시", 4, 1]
@@ -1307,12 +1322,23 @@
 
     /* 주소가 있는 타일은 상단 메뉴(기록콘텐츠 → 해당 항목)와 같은 곳으로 연결함 */
     function tilesHTML(tiles){
-      return '<div class="tiles">' + tiles.map(function(t){
+      return '<div class="tiles n' + tiles.length + '">' + tiles.map(function(t){
         var open = t[4] ? '<a class="tile" href="' + (t[4] === "OH" ? NAA.oh : t[4]) + '"' + EXT + '>' : '<button class="tile" type="button">';
         return open +
           '<span class="img">' + sceneSVG(fake(t[0]), false, t[2]) + '</span>' +
           '<span class="cap"><b class="serif">' + t[0] + '</b><span>' + t[1] + '</span></span>' + (t[4] ? '</a>' : '</button>');
       }).join("") + '</div>';
+    }
+
+    /* 목록형 행 — 주소가 있는 행(구술기록)은 상단 메뉴(국회기록물 → 구술기록)와 같은 곳으로 연결함 */
+    function rowsHTML(rows){
+      return '<ul class="idxlist">' + rows.map(function(r, k){
+        var inner = '<span class="n">' + String(k+1).padStart(2,"0") + '</span>' +
+          '<span class="t serif">' + r[0] + '</span>' +
+          '<span class="dd">' + r[1] + '</span>' +
+          '<span class="go">' + r[2] + ' →</span>';
+        return '<li>' + (r[3] ? '<a class="idxrow" href="' + (r[3] === "OH" ? NAA.oh : r[3]) + '"' + EXT + '>' + inner + '</a>' : '<button type="button">' + inner + '</button>') + '</li>';
+      }).join("") + '</ul>';
     }
 
     function sectionHTML(sec, i){
@@ -1325,20 +1351,14 @@
       var body = "";
 
       if (sec.type === "index"){
-        body = '<ul class="idxlist">' + sec.rows.map(function(r, k){
-          return '<li><button type="button">' +
-            '<span class="n">' + String(k+1).padStart(2,"0") + '</span>' +
-            '<span class="t serif">' + r[0] + '</span>' +
-            '<span class="dd">' + r[1] + '</span>' +
-            '<span class="go">' + r[2] + ' →</span></button></li>';
-        }).join("") + '</ul>' +
-        (sec.donate
+        body = rowsHTML(sec.rows) +
+          (sec.more ? '<a class="tiles-more" href="' + pageURL("records", NAA.page === "single" ? "records" : "") + '" data-page="records">' + sec.more + ' →</a>' : '') +
+          (sec.donate
           ? '<div class="donatebox"><div><h3 class="serif">임기가 끝나면 기록은 흩어집니다</h3>' +
             '<p>의원실의 자료는 임기 종료와 함께 사라지기 쉽습니다. 한 번에 전부 맡기실 필요는 없으며, 정리된 분량부터 나누어 기증하실 수 있습니다.</p></div>' +
             '<a href="#" onclick="return false">기증 상담 신청</a></div>'
           : '');
       }
-
       else if (sec.type === "feature"){
         body = '<div class="feature' + (i % 2 ? " rev" : "") + '">' +
           '<div class="visual">' + sceneSVG(fake(sec.title), false, sec.scene) + '</div>' +
@@ -1394,8 +1414,13 @@
     document.getElementById("contents-tiles").innerHTML = tilesHTML(cs.tiles);
     var a4 = document.getElementById("art4");
     if (a4) a4.innerHTML = abstractSVG(424242, 3, false, true);
-    document.querySelectorAll('#sections [data-page="contents"]').forEach(function(b){
-      b.onclick = function(ev){ if (LOCAL.indexOf("contents") < 0) return; ev.preventDefault(); show("contents"); window.scrollTo(0,0); };
+    /* 국회기록물 페이지(SC-04) — 첫 화면 국회기록물 섹션과 같은 목록 */
+    var rs = SECTIONS.filter(function(x){ return x.id === "s-records"; })[0];
+    document.getElementById("records-list").innerHTML = rowsHTML(rs.rows);
+    var a5 = document.getElementById("art5");
+    if (a5) a5.innerHTML = abstractSVG(515151, 0, false, true);
+    document.querySelectorAll('#sections [data-page]').forEach(function(b){
+      b.onclick = function(ev){ var pg = b.dataset.page; if (LOCAL.indexOf(pg) < 0) return; ev.preventDefault(); show(pg); window.scrollTo(0,0); };
     });
 
     document.querySelectorAll("#sections .pick[data-id]").forEach(function(b){
@@ -1729,7 +1754,7 @@
       if (h === "list"){ clearHash(); show("list"); window.scrollTo(0,0); }
       else openDetail(h.slice(7));
     }
-    else if (h === "contents" && LOCAL.indexOf("contents") > -1){ show("contents"); window.scrollTo(0,0); }
+    else if ((h === "contents" || h === "records") && LOCAL.indexOf(h) > -1){ show(h); window.scrollTo(0,0); }
     else if (h.indexOf("s-") === 0 && LOCAL.indexOf("home") > -1){
       var el = document.getElementById(h);
       if (el){ show("home"); var top = el.offsetTop - 76; window.scrollTo(0, top < 0 ? 0 : top); }

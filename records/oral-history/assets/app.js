@@ -239,7 +239,7 @@
 
   /* ============================================================ 공통 조각 */
   function crumb(items){
-    return '<nav class="crumb" aria-label="현재 위치"><a href="../../">홈</a><span aria-hidden="true">›</span><a href="../">기록콘텐츠</a><span aria-hidden="true">›</span><a href="#/">구술기록</a>' + items.map(function(it){
+    return '<nav class="crumb" aria-label="현재 위치"><a href="../../">홈</a><span aria-hidden="true">›</span><a href="../">국회기록물</a><span aria-hidden="true">›</span><a href="#/">구술기록</a>' + items.map(function(it){
       return '<span aria-hidden="true">›</span>' + (it[1] ? '<a href="' + it[1] + '">' + esc(it[0]) + '</a>' : '<span aria-current="page">' + esc(it[0]) + '</span>');
     }).join("") + '</nav>';
   }
@@ -462,7 +462,7 @@
     }
     main.innerHTML =
       '<section class="hero"><div class="art" aria-hidden="true">' + abstractSVG(20260914, 1, true) + '</div><div class="wrap"><div class="txt">' +
-        '<p class="kicker">' + esc(S.kicker).replace("기록콘텐츠", '<a href="../">기록콘텐츠</a>') + '</p>' +
+        '<p class="kicker">' + esc(S.kicker).replace("국회기록물", '<a href="../">국회기록물</a>') + '</p>' +
         '<h1>' + S.headline.map(esc).join("<br>") + '</h1>' +
         '<p class="lede">' + esc(S.lede) + '</p>' +
         '<dl class="figs"><div><dt>구술자</dt><dd class="tnum">' + D.narrators.length + '<small>명</small></dd></div>' +

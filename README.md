@@ -8,23 +8,25 @@
 
 ## 사이트 계층과 주소
 
-홈페이지 첫 화면 아래에 국회의원 컬렉션과 기록콘텐츠가 있고, 기록콘텐츠 아래에 구술기록이 있는 계층을 주소에 그대로 반영함
+홈페이지 첫 화면 아래에 국회의원 컬렉션·국회기록물·기록콘텐츠가 있고, 국회기록물 아래에 구술기록이 있는 계층을 주소에 그대로 반영함(원장 지시에 따라 2026. 9. 15. 구술기록을 기록콘텐츠에서 국회기록물 아래로 옮김. 국회기록물 하위 메뉴 순서: 일반문서, 구술기록, 국회간행물, 국회특별위원회 기록)
 
 | 계층 | 화면 | 주소 | 파일 |
 | --- | --- | --- | --- |
 | 1 | 국회기록원 첫 화면 | `/` | `index.html` |
 | 2 | 국회의원 컬렉션 | `/collection/` (의원 상세 `#member/22-000001`) | `collection/index.html` |
+| 2 | 국회기록물 | `/records/` | `records/index.html` |
+| 3 | 구술기록 | `/records/oral-history/` (구술자 `#/narrator/n10`, 대목 `#/segment/n01-s1-03` 등) | `records/oral-history/` |
 | 2 | 기록콘텐츠 | `/contents/` | `contents/index.html` |
-| 3 | 구술기록 | `/contents/oral-history/` (구술자 `#/narrator/n10`, 대목 `#/segment/n01-s1-03` 등) | `contents/oral-history/` |
 
-- 첫 화면·국회의원 컬렉션·기록콘텐츠는 1차 과제 화면(`tools/naa_site.src.html`) 하나에서 `tools/build_site.py`로 생성함. 1차 화면의 내용은 바꾸지 않았고, 페이지 사이 이동과 구술기록 연결만 더함
+- 첫 화면·국회의원 컬렉션·국회기록물·기록콘텐츠는 1차 과제 화면(`tools/naa_site.src.html`) 하나에서 `tools/build_site.py`로 생성함. 1차 화면의 내용은 바꾸지 않았고, 페이지 사이 이동과 구술기록 연결만 더함
 - 메뉴 규칙(모든 페이지 공통): 상단 1차 메뉴를 누르면 첫 화면의 해당 섹션으로, 하위 메뉴를 누르면 해당 페이지로 이동함
-- 구술기록 화면의 현재 위치 표시: 홈 › 기록콘텐츠 › 구술기록 › …
+- 구술기록 화면의 현재 위치 표시: 홈 › 국회기록물 › 구술기록 › …
+- 예전 주소 `/contents/oral-history/…`는 `contents/oral-history/index.html`(이동 안내)과 `404.html`이 새 위치로 넘김
 
 ## 시연 방법
 
-1. `시연하기.command`를 더블클릭함(처음에는 우클릭 → 열기). 브라우저가 첫 화면 `http://localhost:8000/`으로 열리며, 구술기록은 `http://localhost:8000/contents/oral-history/`
-2. Google 지도를 쓰려면 `contents/oral-history/config.js`의 `googleMapsApiKey`에 키를 넣음. 키가 없으면 지도 화면이 권역별 간이 좌표도로 바뀜
+1. `시연하기.command`를 더블클릭함(처음에는 우클릭 → 열기). 브라우저가 첫 화면 `http://localhost:8000/`으로 열리며, 구술기록은 `http://localhost:8000/records/oral-history/`
+2. Google 지도를 쓰려면 `records/oral-history/config.js`의 `googleMapsApiKey`에 키를 넣음. 키가 없으면 지도 화면이 권역별 간이 좌표도로 바뀜
    - 키는 HTTP 리퍼러를 `http://localhost:8000/*`, `https://yimjhkr68.github.io/*`로 제한하여 발급함
 3. 영상 구간 이동·자막(WebVTT)·Google 지도는 서버로 열어야 동작함
 
@@ -83,15 +85,17 @@
 ```
 index.html                 국회기록원 첫 화면(자동 생성)
 collection/index.html      국회의원 컬렉션(자동 생성)
-contents/index.html        기록콘텐츠(자동 생성)
-contents/oral-history/     구술기록
+records/index.html         국회기록물(자동 생성)
+records/oral-history/      구술기록
   index.html, config.js
   assets/    app.css, app.js(화면 렌더링), logo.png
   data/      site, narrators, sessions, segments, topics, assemblies, places, persons, mentions (.json)
              bundle.js — 파일로 바로 열 때 쓰는 묶음(자동 생성)
   media/     세션 원본 영상(mp4)·자막(vtt)·표지, 하이라이트 클립, thumbs/ 세그먼트 화면
   downloads/ 색인 포함 전문 PDF 표본(홍석진 편)
-tools/     build_site.py(첫 화면·국회의원 컬렉션·기록콘텐츠 생성), naa_site.src.html(1차 화면 원본),
+contents/index.html        기록콘텐츠(자동 생성)
+contents/oral-history/     예전 구술기록 주소 이동 안내, 404.html(예전 주소의 파일을 새 위치로 넘김)
+tools/     build_site.py(첫 화면·국회의원 컬렉션·국회기록물·기록콘텐츠 생성), naa_site.src.html(1차 화면 원본),
            build_media.py(표본 영상·타임코드 생성), build_bundle.py(데이터 검증·묶음), build_pdf.py(전문 PDF),
            serve.py(구간 이동 지원 로컬 서버), frame.html, voices.json
 시연하기.command, robots.txt(색인 차단)
@@ -103,7 +107,7 @@ tools/     build_site.py(첫 화면·국회의원 컬렉션·기록콘텐츠 생
 python3 tools/build_media.py    # 녹취문 → 합성 음성 → 타임코드·영상·자막 (ffmpeg, Chrome 필요, 약 2분)
 python3 tools/build_bundle.py   # 참조 검증, persons[] 재계산, bundle.js 생성
 python3 tools/build_pdf.py n01  # 색인 포함 전문 PDF
-python3 tools/build_site.py     # 1차 화면 원본을 고친 뒤 첫 화면·국회의원 컬렉션·기록콘텐츠 다시 생성
+python3 tools/build_site.py     # 1차 화면 원본을 고친 뒤 첫 화면·국회의원 컬렉션·국회기록물·기록콘텐츠 다시 생성
 python3 tools/build_site.py --single 경로.html   # claude.ai 게시용 한 파일 시연본
 ```
 

@@ -6,10 +6,11 @@ tools/naa_site.src.html(1차 과제 「국회기록원 아카이브」 화면 �
 
     /                        국회기록원 첫 화면            index.html
     /collection/             국회의원 컬렉션               collection/index.html
+    /records/                국회기록물                    records/index.html
+    /records/oral-history/   구술기록(별도 코드, 이 스크립트 대상 아님)
     /contents/               기록콘텐츠                    contents/index.html
-    /contents/oral-history/  구술기록(별도 코드, 이 스크립트 대상 아님)
 
-  python3 tools/build_site.py                  # 위 세 페이지 생성
+  python3 tools/build_site.py                  # 위 네 페이지 생성
   python3 tools/build_site.py --single 경로    # 한 파일 시연본(claude.ai 게시용) 생성
 """
 import json, os, sys
@@ -21,9 +22,10 @@ TITLE_TAG = "<title>국회기록원 아카이브</title>"
 
 PAGES = [
     # 파일, 화면, 최상위까지의 상대 경로, 구술기록 경로, 제목
-    ("index.html", "home", "", "contents/oral-history/", "국회기록원 아카이브"),
-    ("collection/index.html", "collection", "../", "../contents/oral-history/", "국회의원 컬렉션 — 국회기록원 아카이브"),
-    ("contents/index.html", "contents", "../", "oral-history/", "기록콘텐츠 — 국회기록원 아카이브"),
+    ("index.html", "home", "", "records/oral-history/", "국회기록원 아카이브"),
+    ("collection/index.html", "collection", "../", "../records/oral-history/", "국회의원 컬렉션 — 국회기록원 아카이브"),
+    ("records/index.html", "records", "../", "oral-history/", "국회기록물 — 국회기록원 아카이브"),
+    ("contents/index.html", "contents", "../", "../records/oral-history/", "기록콘텐츠 — 국회기록원 아카이브"),
 ]
 
 HEAD = """<!doctype html>
@@ -52,7 +54,7 @@ def main():
     src = open(SRC, encoding="utf-8").read()
     assert src.count(TITLE_TAG) == 1
     if len(sys.argv) == 3 and sys.argv[1] == "--single":
-        out = fill(src, "#", "#", SITE_URL + "contents/oral-history/", ' target="_blank" rel="noopener"')
+        out = fill(src, "#", "#", SITE_URL + "records/oral-history/", ' target="_blank" rel="noopener"')
         open(sys.argv[2], "w", encoding="utf-8").write(out)
         print("생성(한 파일 시연본):", sys.argv[2])
         return
