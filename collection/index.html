@@ -1,0 +1,1662 @@
+<!doctype html><html><head><meta charset=utf8><meta name="robots" content="noindex,nofollow,noarchive"><meta name="googlebot" content="noindex,nofollow"><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>국회기록원 아카이브</title>
+<script>document.documentElement.lang = "ko";</script>
+<style>
+  :root{
+    --font-sans:"Pretendard","Apple SD Gothic Neo",-apple-system,BlinkMacSystemFont,
+      "Malgun Gothic","맑은 고딕","Noto Sans KR","Nanum Gothic","Helvetica Neue",Arial,sans-serif;
+    --font-serif:"AppleMyungjo","Apple SD Gothic Neo","Nanum Myeongjo",
+      "Batang","바탕","Gungsuh","궁서",Georgia,serif;
+
+    --paper:#F3F2EE;
+    --surface:#FFFFFF;
+    --surface-2:#E8E7E1;
+    --ink:#17181A;
+    --ink-2:#55585C;
+    --ink-3:#86898D;
+    --line:#DBDAD3;
+    --line-2:#C2C1B9;
+    --ci-navy:#004890;
+    --ci-teal:#0090A8;
+    --accent:#004890;
+    --accent-soft:#E4EBF3;
+    --copper:#8A5A33;
+    --copper-soft:#F0E5DA;
+    --focus:#B8892B;
+    --logo-filter:none;
+  }
+  :root:not([data-theme="light"]){ color-scheme: light dark; }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141513; --surface:#1B1D1B; --surface-2:#252724;
+      --ink:#EDEDE9; --ink-2:#B0B3AF; --ink-3:#838682; --line:#2C2E2B; --line-2:#3E413D;
+      --ci-navy:#7FAEDC; --ci-teal:#5FBCCE;
+      --accent:#7FAEDC; --accent-soft:#152131; --copper:#C99263; --copper-soft:#2A2018;
+      --focus:#D9AE55;
+      --logo-filter:brightness(1.6) saturate(1.05);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141513; --surface:#1B1D1B; --surface-2:#252724;
+    --ink:#EDEDE9; --ink-2:#B0B3AF; --ink-3:#838682; --line:#2C2E2B; --line-2:#3E413D;
+    --ci-navy:#7FAEDC; --ci-teal:#5FBCCE;
+    --accent:#7FAEDC; --accent-soft:#152131; --copper:#C99263; --copper-soft:#2A2018;
+    --focus:#D9AE55; --logo-filter:brightness(1.6) saturate(1.05); color-scheme: dark;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--font-sans); font-size:15px; line-height:1.75; -webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{margin:0; text-wrap:balance; font-weight:700; letter-spacing:-.012em;
+    word-break:keep-all; overflow-wrap:break-word}
+  p, li, figcaption, dt, dd{word-break:keep-all; overflow-wrap:break-word}
+  p{margin:0}
+  button{font:inherit; color:inherit; cursor:pointer; background:none; border:none; padding:0}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--focus); outline-offset:3px}
+  .serif{font-family:var(--font-serif)}
+  .tnum{font-variant-numeric:tabular-nums}
+  .wrap{max-width:1260px; margin:0 auto; padding:0 30px}
+  [hidden]{display:none !important}
+  .sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+  svg.viz{display:block; width:100%; height:100%}
+
+  /* ---------- 안내 / 배너 / 헤더 ---------- */
+  .notice{background:var(--copper-soft); border-bottom:1px solid var(--line); font-size:12.5px; color:var(--ink-2)}
+  .notice .wrap{display:flex; gap:12px; flex-wrap:wrap; padding-top:8px; padding-bottom:8px}
+  .notice b{color:var(--copper); font-weight:600}
+  .banner{background:var(--ink); color:var(--paper); font-size:13px}
+  .banner .wrap{display:flex; align-items:center; gap:14px; padding-top:10px; padding-bottom:10px}
+  .banner .tagb{border:1px solid rgba(255,255,255,.5); padding:1px 8px; font-size:11px; white-space:nowrap}
+  .banner .close{margin-left:auto; opacity:.6; font-size:16px; line-height:1}
+
+  .site{background:var(--paper); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:40}
+  .site .wrap{display:flex; align-items:center; gap:34px; height:70px}
+  .brand{display:block; width:132px; height:39px; flex:none;
+    background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQgAAABOCAYAAADcgIg6AAAKY0lEQVR4AeycjZHcNgyF164iJbmElOFSUkZKcEnpwvF3O5jACMDlSiJF6V5m3hEA8fskYS7Oz9eH/hIDYkAMFAxoQRTEyCwGxMDjoQWht0AMiIGSAS2IkhpdiIFzGVihuhbECk9BPYiBRRnQglj0wagtMbACA1oQKzwF9SAGFmVAC2LRB6O2zmVA1Z8MaEE8edBPMSAGEga0IBJSZBIDYuDJgBbEkwf9FANiIGFACyIhRaZzGVD1dRjYtiC+/fXz0YN15hzXSQ8P+IzrQJnFwDAGti2I3nbu/GEwG+jlQn5i4IIMjF0QEHK3j4h5ALMJYuDmDIxfEBB4hw/qr79/PgDz3BgaTQx4BuYsCCpedUmwFAAzgG9/8FMQA5+CgXkLAjqvtiT8YqB/8OMffgpi4FMwMG5B/Pj+JWWQJQHSy0WMLAaQteN/g2BGkPnJJgZuwMC4BQE5rY9nxSVBT4DeK/AbBHOBymejXWFiYDUGxi4IpuVDAsgRrz7G6D9Kpw/Qyv/9zy8PUM3SitWdGLgoA+MXhBFTfVivPkyLH3FSG7RysxRAy0d3YuCmDMxbEBC4ypJgKQB6irA/Y2ApgHgvXQx8IgbmLgiIPXtJFIuB1j7AUgAfSvKDP7w0JNcyiYE7MTB/QcAeSwIge/DxAm87SiYvqPLRD6juz14K9H40qllb9qqHo2Kq/C17Vrvyz3zNVsVstVvenvNVjVaOKrYV03k3Z0EwQNZQ9UFW/lmOVzZygcqPHkB1f/ZiqPo6y97iquqpN6b1nKrc2IkDyIbemuZ/5hl7z3rBB2R3A2edsyAY6t3hKn9y9YB4UPlCKqjuV7PP7hXuKmTcZL6ZX8s2e8bYyxn14c33QQ8e/g45+mMbiHkLgiGK4R4Qwn1E5R/9ot6KoxaIMabzG4PJq530vQez52k9h6qX3vmq+L323vqZ37u1e/ihzrt5D/SfuyBoHFIAsgdEAG9DznyxvwtygyqOxQCqe9nFQIuBI97T1vvpax9Ry+dryPMXhDVTDZmRVPlaruokl6HyYSmA6v6z2o03zi0cEAe2xJ4Rwzu2B2f0PKHmeQuC4XggnBHZi1X5xlh04gGycDwDcBtxfJW5GW2euVV/r9b7jtPr75HDtK/DMu9NnJEAgWBrbn5TMGzN8dniIt/Zc8k4iXGZz5G23r7erUnerXhVi7yvfGbzGPo59zcI30xGBAQC74ec+WJvgcXQutfdPgay57QvYx295fnX2da6YTaP2N1Mnn/VXmdB/GrmATGcERkplW+MlS4G9jDAe7YVPXV5t0Gvb4/fgT5rLQgG42FwRmQkVr4x9qo68x2JyEPMHe+vomfvxlV6tz6ZAZjOacAOTJ94rrcgGN5eXGSPjCR8vY/ksQxUfFf2o7sZXSd7x46eoZWP+hEt/8F3ay6I1tBGnvcZ/dL4WjNlZp1Vr6pV2X1fGf89cT7HVnlEHXJmiD1mPt4W/U2Hr6NgOQed11sQRgQPwmROCOe8G5izB9ncPXHmk8WbDR+TOeHaA5tH9Pd3e2Rq7onPYsnZixjfG2d+Mf4C+nUWRPZPIeKLeOEHsfy7ErmuGu71q+LfsY+s9U4f7/rSd4WYq/Ize/Q/WL/OgmDwniWBH4uC06P1/3jwfpJrBlovZeuuzth/E58p9fqj7+MJDxkGTXitBQEJ1ZKILwwk4u/BkjB4u+S1Gcie5VEd897MwlE9T8xzvQXRIocH7e9Hvli+zgyZWVrIemj5c5fFmI37Cubjz8rX7N73HZn46B+fc7yXfhgD91oQ0BJfHl4wwJ3Qx8DZfNElPQBkA88WmH70Sb0jsaU/5vOIOfydl6PfQfr9FgTEQBynBw/e6ybztxwmr3wy0170zkedXt8RftmzOrunLXNmc2R58MuQ+U62XXNBZH8OEYnLXigeQvRDv8qSoNdZgL8j0dM3zwdEX/qIthH6rDqxd+qCaH9HJz7infjC95oLohjmf2YIi8bsBcRHSwIW1gLPD8zsinpbMbPPSbWuuSDe+Zh52JFMlgSIdvKCaP9M+pmz2rPiBGf2otofDFxvQWz5gHnZwMfI7ke2JNy1xBMYyJ7TCW0sUXKB9/M6C4LFAPY8uezlW+Ah7BlJsTdngPdzKw6g5joLohrWk1f5eLuWhGdDshhoMrDugsg+ZD+KLQZv65Wz3FU+fmv58U9v5n1+d46OnEd9xOwzahzZN/2CI3IelGe9BcFgoCKp+pBbMVmuyp/80R9fFkW0X01nDo/Z/Z9R29dEHjkz+SO21Is5tuhb6iYx6ywIIyFp8sPEhws+lPCD2GDqUqu4qs4dlkQXMXISA08Gzl0Q1Qf67O3x8f+o5GMFZvMn8cDb3pWJBzGuqqklEZmSfmMGzlkQfJCgIpaPE1T3xILqfos9y0cPIOZjSYBoly4GbsbA3AXBRwgqEvkYQXWPvRXP/R5UuV/1tKemYsXAwgzMWRB8eKAigv+2AlT32IkHyCNR1dCSGMm6ci/KwJwFUQ3PUgDVPXY+WIA8C1W9M5aEr2kyJzA+kAG6P5EBduBldIANIAMvoxuwA697Od6hA3w4ATIwmdPg7V7mHt2AbsDmZdPjaT6cdoecwe45MxBjdmSA7k9kgN3D25AN5oOO3HuaL/4AHXgZfQfOWRAsBWCNc8Z/14CPFHB3BqrakA9m9vSqHr2C2BM24OO9bP7Rx+y9J/GZb2bP6lexvb5VvNnpA5hup7d5mfusttnsxC9DzIWPxdiJzQO7xdnp7zPZx8R77qJtgz5vQdAwiIvBmv72x1OCHPDUzv3Z6oNZZnRnPWT1MturnsgX46LeymG+lqfSYw7zj/ZXOnFH+LzK4e+tps3m7zK51y+L3Wpr1aR/0PLprDt+QdAkeNUQ/1SAoV75zb6nJ5DV7Zkri3vX5utTEx28m8f7kweQB3CHzhmBHR/g71p6vLO4aI+6+bXOLTExHzmYK9pN595kTvON9qjjWyH6ogNy21nFeju+6HZGGf0gjFsQDA18o/Zbgrchsxw4V4Z/GL7POKO/O1K2+naS28voHtzRG0Dmzp/IADtABsjEAGRgdi9zD+wOGaADZOBjsEfdfLADdIBs/sgGs/nT/PHBjg6izp3Z7DQb/l72evQ1v3jiB2IstuhrerwjFhvwPugV8CMO4MMJsKPvwNfHjuDdoSwGsDvRpAQHEL6r05763gcZvFMUf0MrLvq80qtcPs5kzso/s0d/dGC+yMD0eHIHzI4MTO85zZ8T9MRkPlms2ewkzsumm40TYN+Jcb9BZI3ZH0SyFEDms7rtIOJXH1P9iQEYmLwgvn95XHUxwJZBS8KY0HlzBuYsCD4ocCcy7zbPnZ7NbWY5f5CxC4KPCJw/55gO7jzbGMaU9WIMbFsQfBg9uBgZm9rt4QGfTckVJAbOZWDbgji3Z1UXA2JgEgNaEJOIVpmrMaB+YUALAhYEMSAGUga0IFJaZBQDYgAGtCBgQRADYiBlQAsipUXGcxlQ9VUY0IJY5UmoDzGwIANaEAs+FLUkBlZhQAtilSehPsTAggxoQSz4UM5tSdXFwH8M/AsAAP//QxWrbwAAAAZJREFUAwBZ2kAGmWNxkAAAAABJRU5ErkJggg==") no-repeat left center / contain}
+  .brand{filter:var(--logo-filter)}
+  .nav{display:flex; gap:30px; font-size:15px; color:var(--ink-2); align-items:center}
+  .nav > .m{position:relative}
+  .nav > .m > button{padding:24px 0; border-bottom:2px solid transparent}
+  .nav > .m > button:hover, .nav > .m:focus-within > button{color:var(--ci-navy)}
+  .nav > .m > button[aria-current="true"]{color:var(--ci-navy); font-weight:600; border-bottom-color:var(--ci-navy)}
+  .mega{
+    position:absolute; left:50%; transform:translateX(-50%); top:100%;
+    min-width:230px; background:var(--surface); border:1px solid var(--line);
+    box-shadow:0 12px 28px -18px rgba(0,0,0,.35); padding:18px 22px 20px;
+    opacity:0; visibility:hidden; transition:opacity .14s; z-index:50;
+  }
+  .nav > .m:hover .mega, .nav > .m:focus-within .mega{opacity:1; visibility:visible}
+  .mega .d{font-size:12px; color:var(--ink-3); line-height:1.6; padding-bottom:12px;
+    margin-bottom:12px; border-bottom:1px solid var(--line); max-width:26ch}
+  .mega ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px}
+  .mega a{font-size:13.5px; color:var(--ink-2); text-decoration:none; white-space:nowrap; display:block}
+  .mega a:hover{color:var(--ci-navy); text-decoration:underline; text-underline-offset:3px}
+  .mega .new{font-size:10px; color:var(--ci-teal); border:1px solid var(--ci-teal); padding:0 5px; margin-left:6px}
+  .site .right{margin-left:auto; font-size:13px; color:var(--ink-3); display:flex; gap:16px; align-items:center}
+  .site .right span{cursor:pointer}
+  .site .right .sch{width:17px; height:17px; display:block;
+    border:1.7px solid var(--ink-3); border-radius:50%; position:relative}
+  .site .right .sch::after{content:""; position:absolute; right:-5px; bottom:-3px; width:7px; height:1.7px;
+    background:var(--ink-3); transform:rotate(45deg)}
+
+  /* ---------- 홈: 히어로 (겹치는 도형) ---------- */
+  .hero{position:relative; overflow:hidden; border-bottom:1px solid var(--line)}
+  .hero .art{position:absolute; inset:0; pointer-events:none}
+  .hero .art > div, .lhead .art{
+    -webkit-mask-image:radial-gradient(closest-side, #000 62%, transparent 100%);
+    mask-image:radial-gradient(closest-side, #000 62%, transparent 100%);
+  }
+  .hero .art .a1{position:absolute; right:-8%; top:-22%; width:56%; aspect-ratio:1/1; opacity:.92}
+  .hero .art .a2{position:absolute; right:30%; bottom:-30%; width:26%; aspect-ratio:1/1; opacity:.6}
+  .hero .wrap{position:relative; padding-top:112px; padding-bottom:118px}
+  .hero .txt{max-width:min(52%, 620px)}
+  .hero h1{font-family:var(--font-serif); font-size:clamp(31px,4.2vw,54px); line-height:1.32}
+  .hero .lede{margin-top:28px; color:var(--ink-2); font-size:16px}
+  .hero .scrollhint{margin-top:52px; font-size:12.5px; color:var(--ink-3); letter-spacing:.08em}
+
+  /* ---------- 홈: 섹션 공통 ---------- */
+  .sec{padding:96px 0; border-bottom:1px solid var(--line)}
+  .sec:nth-child(even){background:var(--surface)}
+  .sec-head{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:56px;
+    align-items:end; padding-bottom:34px; margin-bottom:44px; border-bottom:1px solid var(--line)}
+  .sec-head .no{font-size:11.5px; letter-spacing:.24em; color:var(--ink-3); font-variant-numeric:tabular-nums}
+  .sec-head h2{font-family:var(--font-serif); font-size:clamp(26px,3vw,38px); margin-top:14px; letter-spacing:-.02em}
+  .sec-head .d{color:var(--ink-2); font-size:15px; max-width:44ch; padding-bottom:5px}
+
+  /* 목록형 섹션 */
+  .idxlist{list-style:none; margin:0; padding:0}
+  .idxlist li{border-bottom:1px solid var(--line)}
+  .idxlist li:first-child{border-top:1px solid var(--line)}
+  .idxlist button{display:grid; grid-template-columns:64px minmax(150px,232px) minmax(0,1fr) auto;
+    gap:24px; align-items:baseline; width:100%; text-align:left; padding:26px 6px}
+  .idxlist .n{font-size:11.5px; color:var(--ink-3); font-variant-numeric:tabular-nums; letter-spacing:.1em}
+  .idxlist .t{font-size:22px; font-weight:700; letter-spacing:-.01em}
+  .idxlist .dd{font-size:14px; color:var(--ink-2)}
+  .idxlist .go{font-size:12.5px; color:var(--ink-3); white-space:nowrap}
+  .idxlist button:hover{background:var(--accent-soft)}
+  .idxlist button:hover .go{color:var(--accent)}
+  .idxlist button:hover .t{text-decoration:underline; text-underline-offset:5px; text-decoration-thickness:1px}
+
+  /* 대표 사례형 섹션 */
+  .feature{position:relative}
+  .feature .visual{width:64%; aspect-ratio:16/10; overflow:hidden; background:var(--surface-2)}
+  .feature.rev .visual{margin-left:36%}
+  .feature .panel{position:relative; z-index:2; width:47%; margin-top:-108px; margin-left:auto;
+    background:var(--paper); border:1px solid var(--line); padding:32px 34px 34px}
+  .sec:nth-child(even) .feature .panel{background:var(--surface)}
+  .feature.rev .panel{margin-left:0; margin-right:auto}
+  .feature .note{font-size:14px; color:var(--ink-2); padding-bottom:20px; margin-bottom:20px;
+    border-bottom:1px solid var(--line)}
+  .picks{display:flex; flex-direction:column; gap:16px}
+  .pick{display:flex; gap:15px; align-items:flex-start; text-align:left; width:100%}
+  .pick .th{width:82px; height:60px; flex:none; overflow:hidden; background:var(--surface-2)}
+  .pick b{display:block; font-size:14.5px; font-weight:600}
+  .pick span span{display:block; font-size:12.5px; color:var(--ink-3); margin-top:3px; line-height:1.55}
+  .pick:hover b{text-decoration:underline; text-underline-offset:3px}
+  .feature .go{margin-top:26px; font-size:13.5px; color:var(--accent);
+    border-bottom:1px solid var(--line-2); padding-bottom:4px}
+  .feature .go:hover{border-bottom-color:var(--accent)}
+
+  /* 타일형 섹션 */
+  .tiles{display:grid; grid-template-columns:repeat(4,1fr); gap:22px}
+  .tile{text-align:left; display:block}
+  .tile .img{display:block; aspect-ratio:4/5; overflow:hidden; background:var(--surface-2)}
+  .tile .img svg{transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+  .tile:hover .img svg{transform:scale(1.04)}
+  .tile .cap{display:block; padding-top:15px}
+  .tile .cap b{display:block; font-size:18px}
+  .tile .cap span{display:block; font-size:13px; color:var(--ink-3); margin-top:6px; line-height:1.6}
+  .tile:hover .cap b{text-decoration:underline; text-underline-offset:4px}
+
+  /* 기증 안내 박스 */
+  .donatebox{display:flex; gap:34px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    margin-top:48px; background:var(--ink); color:var(--paper); padding:40px 40px}
+  .donatebox h3{font-family:var(--font-serif); font-size:23px}
+  .donatebox p{margin-top:10px; opacity:.72; font-size:14px; max-width:52ch}
+  .donatebox a{border:1px solid rgba(255,255,255,.45); padding:12px 26px; text-decoration:none;
+    font-size:14px; white-space:nowrap}
+  .donatebox a:hover{background:rgba(255,255,255,.12)}
+
+  /* 기관 소개 섹션 */
+  .about{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:56px; align-items:start}
+  .about .prose p{color:var(--ink-2); font-size:15px}
+  .about .prose p + p{margin-top:16px}
+  .figs3{display:flex; gap:36px; flex-wrap:wrap; margin-top:32px; padding-top:26px; border-top:1px solid var(--line)}
+  .figs3 div dt{font-size:12.5px; color:var(--ink-3)}
+  .figs3 div dd{margin:4px 0 0; font-family:var(--font-serif); font-size:27px; font-weight:600}
+  .figs3 div dd small{font-family:var(--font-sans); font-size:13px; font-weight:400; margin-left:2px}
+  .newsbox .nh{display:flex; align-items:baseline; gap:16px; padding-bottom:14px; border-bottom:1px solid var(--line)}
+  .newsbox .nh h3{font-family:var(--font-serif); font-size:20px}
+  .newsbox .nh span{margin-left:auto; font-size:12.5px; color:var(--ink-3)}
+  .newsbox ul{list-style:none; margin:0; padding:0}
+  .newsbox li{border-bottom:1px solid var(--line)}
+  .newsbox button{display:flex; gap:16px; align-items:baseline; width:100%; text-align:left; padding:15px 2px}
+  .newsbox .d{font-size:12px; color:var(--ink-3); width:82px; flex:none; font-variant-numeric:tabular-nums}
+  .newsbox .t{font-size:14.5px}
+  .newsbox .c{margin-left:auto; font-size:11px; color:var(--ink-3); border:1px solid var(--line);
+    padding:1px 8px; white-space:nowrap}
+  .newsbox button:hover .t{text-decoration:underline; text-underline-offset:3px}
+
+  footer.foot{border-top:1px solid var(--line); background:var(--surface); padding:0; font-size:12.5px; color:var(--ink-3)}
+  .foot .links{border-bottom:1px solid var(--line)}
+  .foot .links .wrap{display:flex; gap:14px; flex-wrap:wrap; padding-top:16px; padding-bottom:16px}
+  .foot .links button{border:1px solid var(--line-2); padding:8px 16px; font-size:12.5px; color:var(--ink-2);
+    display:flex; align-items:center; gap:26px; min-width:212px; justify-content:space-between}
+  .foot .links button:hover{border-color:var(--ci-navy); color:var(--ci-navy)}
+  .foot .info{padding-top:28px; padding-bottom:62px}
+  .foot .info .brand{margin-bottom:16px; opacity:.85}
+  .foot .info p{margin-bottom:5px; line-height:1.8}
+
+  /* ---------- 목록 ---------- */
+  .lhead{border-bottom:1px solid var(--line); background:var(--surface); position:relative; overflow:hidden}
+  .lhead .art{position:absolute; right:-4%; top:-40%; width:34%; aspect-ratio:1/1; opacity:.6; pointer-events:none}
+  .lhead .wrap{position:relative; padding:56px 30px 42px}
+  .lhead h1{font-family:var(--font-serif); font-size:38px}
+  .lhead .lede{margin-top:14px; color:var(--ink-2); max-width:52ch}
+  .terms{display:flex; gap:22px; margin-top:30px; font-size:14.5px; color:var(--ink-3); flex-wrap:wrap}
+  .terms button{padding-bottom:5px; border-bottom:2px solid transparent}
+  .terms button[aria-selected="true"]{color:var(--ink); font-weight:600; border-bottom-color:var(--ink)}
+  .terms button:disabled{cursor:default; opacity:.5}
+  .terms .tag{font-size:11px; color:var(--ink-3); margin-left:5px}
+
+  .toolbar{border-bottom:1px solid var(--line); background:var(--paper); position:sticky; top:64px; z-index:30}
+  .toolbar .wrap{display:flex; align-items:center; gap:12px; padding-top:13px; padding-bottom:13px; flex-wrap:wrap}
+  .seg{display:flex; border:1px solid var(--line-2)}
+  .seg button{padding:7px 15px; font-size:13px; color:var(--ink-2); border-right:1px solid var(--line-2)}
+  .seg button:last-child{border-right:none}
+  .seg button[aria-pressed="true"]{background:var(--ink); color:var(--paper)}
+  .search{border:1px solid var(--line-2); background:var(--surface); color:var(--ink); padding:7px 12px; font-size:13px; width:180px}
+  .idx{display:flex; flex-wrap:wrap; margin-left:auto}
+  .idx button{width:28px; padding:6px 0; font-size:13px; color:var(--ink-3)}
+  .idx button:hover:not(:disabled){color:var(--accent)}
+  .idx button[aria-pressed="true"]{color:var(--ink); font-weight:700; text-decoration:underline; text-underline-offset:4px}
+  .idx button:disabled{color:var(--line-2); cursor:default}
+  .resline{padding:26px 0 20px; font-size:13.5px; color:var(--ink-2); display:flex; gap:18px; align-items:center; flex-wrap:wrap}
+  .resline b{color:var(--ink); font-weight:600}
+  .resline .lg{display:flex; gap:20px; color:var(--ink-3); font-size:12.5px}
+  .resline .lg span{display:flex; align-items:center; gap:7px}
+  .resline .lg i{width:24px; height:16px; display:block; overflow:hidden}
+
+  .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:30px 22px; padding-bottom:64px}
+  .mcard{position:relative}
+  .mcard .shot{aspect-ratio:4/3; overflow:hidden; background:var(--surface-2)}
+  .mcard .shot svg{transition:transform .5s cubic-bezier(.2,.7,.3,1)}
+  .mcard:hover .shot svg{transform:scale(1.04)}
+  .mcard h3{font-family:var(--font-serif); font-size:20px; margin-top:14px}
+  .mcard .meta{font-size:12.5px; color:var(--ink-3); margin-top:3px}
+  .mcard.empty h3{color:var(--ink-2)}
+  .mcard.empty .meta{color:var(--line-2)}
+  .mcard .cardlink{text-decoration:none}
+  .mcard .cardlink::after{content:""; position:absolute; inset:0}
+  .mcard:hover h3{text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px}
+  .estate{padding:80px 0; text-align:center; color:var(--ink-3)}
+  .morebtn{display:flex; justify-content:center; padding-bottom:76px}
+  .morebtn button{border:1px solid var(--line-2); padding:12px 34px; font-size:14px; color:var(--ink-2)}
+  .morebtn button:hover{border-color:var(--ink); color:var(--ink)}
+
+  /* ---------- 상세 ---------- */
+  .backbar{border-bottom:1px solid var(--line); background:var(--paper); position:sticky; top:64px; z-index:30}
+  .backbar .wrap{padding:12px 30px; display:flex; align-items:center; gap:12px}
+  .backbar button{font-size:13.5px; color:var(--ink-2)}
+  .backbar button:hover{color:var(--ink)}
+  .backbar .sid{font-size:11.5px; color:var(--ink-3); letter-spacing:.08em; margin-left:auto}
+
+  .dhero{background:var(--surface); border-bottom:1px solid var(--line)}
+  .dhero .band{display:grid; grid-template-columns:2fr 1fr 1fr; gap:2px; aspect-ratio:21/7; max-height:400px;
+    overflow:hidden; background:var(--line)}
+  .dhero .band > div{overflow:hidden; background:var(--surface-2)}
+  .dhero .cap{font-size:11.5px; color:var(--ink-3); max-width:1260px; margin:0 auto; padding:9px 30px 0}
+  .dhero .wrap{padding:34px 30px 46px}
+  .dhero .kicker{font-size:12px; letter-spacing:.16em; color:var(--ink-3)}
+  .dhero h1{font-family:var(--font-serif); font-size:clamp(33px,4.6vw,52px); margin-top:12px}
+  .dhero .oneline{margin-top:12px; color:var(--ink-2); font-size:14.5px}
+  .share{display:flex; gap:10px; margin-top:24px}
+  .share button{border:1px solid var(--line-2); padding:8px 16px; font-size:12.5px; color:var(--ink-2)}
+  .share button:hover{border-color:var(--ink); color:var(--ink)}
+
+  .article{max-width:1260px; margin:0 auto; padding:0 30px}
+  .col{max-width:35em}
+  .bio{margin:56px 0 0; font-size:17.5px; line-height:1.9}
+  .bio p + p{margin-top:18px}
+  .ledger{margin:54px 0 0; max-width:37em}
+  .ledger .lh{display:flex; align-items:baseline; gap:16px; flex-wrap:wrap;
+    padding-bottom:14px; border-bottom:1px solid var(--ink)}
+  .ledger h2{font-family:var(--font-serif); font-size:21px}
+  .ledger .sum{margin-left:auto; font-size:12.5px; color:var(--ink-3); letter-spacing:.01em}
+  .ledger .tl{list-style:none; margin:0; padding:6px 0 0}
+  .ledger .tl li{position:relative; display:grid; grid-template-columns:76px 1fr; gap:18px;
+    padding:13px 0 13px 22px; align-items:baseline}
+  .ledger .tl li::before{content:""; position:absolute; left:0; top:21px; width:7px; height:7px;
+    border-radius:50%; background:var(--accent)}
+  .ledger .tl li::after{content:""; position:absolute; left:3px; top:28px; bottom:-13px; width:1px; background:var(--line-2)}
+  .ledger .tl li:last-child::after{display:none}
+  .ledger .tl li.wip::before{background:var(--paper); border:1.5px solid var(--copper); top:19.5px; left:-1px; width:9px; height:9px}
+  .ledger .ym{font-size:12.5px; color:var(--ink-3); letter-spacing:.02em}
+  .ledger .tx{font-size:15px; color:var(--ink-2); line-height:1.7}
+  .ledger li.wip .tx{color:var(--copper)}
+  .ledger .now{margin-top:14px; margin-left:22px; font-size:12.5px; color:var(--ink-3)}
+
+  .chapter{margin:64px 0 0; padding-top:46px; border-top:1px solid var(--line)}
+  .chapter .ch-no{font-size:11.5px; letter-spacing:.2em; color:var(--ink-3); font-variant-numeric:tabular-nums}
+  .chapter h2{font-family:var(--font-serif); font-size:27px; margin-top:12px; max-width:20em}
+  .chapter .prose{max-width:35em; margin-top:22px; font-size:16px; line-height:1.95; color:var(--ink-2)}
+  .chapter .prose p + p{margin-top:18px}
+
+  .pull{margin:34px 0; padding:0 0 0 22px; border-left:2px solid var(--accent)}
+  .pull p{font-family:var(--font-serif); font-size:20px; line-height:1.8; color:var(--ink)}
+  .pull cite{display:block; font-style:normal; font-size:12.5px; color:var(--ink-3); margin-top:12px}
+  figure{margin:34px 0}
+  figure.wide{max-width:920px}
+  figure.wide .img{aspect-ratio:16/9}
+  figure .img{aspect-ratio:4/3; background:var(--surface-2); overflow:hidden; border:1px solid var(--line)}
+  figure.pair{display:grid; grid-template-columns:1fr 1fr; gap:20px}
+  figure.pair .img{margin:0}
+  figcaption{font-size:12px; color:var(--ink-3); line-height:1.65; margin-top:10px; max-width:44em}
+  figcaption b{display:block; color:var(--ink-2); font-weight:600; font-size:12.5px; margin-bottom:2px}
+  figure button.openimg{display:block; width:100%; padding:0; text-align:left}
+  figure button.openimg:hover .img{border-color:var(--line-2)}
+  .figlink{font-size:11.5px; color:var(--accent); margin-top:4px; display:inline-block}
+
+  .endbar{margin:74px 0 0; padding:34px 0 0; border-top:1px solid var(--line)}
+  .endbar .row{display:flex; gap:20px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+  .endbar p{font-size:13.5px; color:var(--ink-2); max-width:44ch}
+  .endbar button{border:1px solid var(--line-2); padding:11px 22px; font-size:13.5px; color:var(--ink-2)}
+  .endbar button:hover{border-color:var(--ink); color:var(--ink)}
+  .endbar .disclose{font-size:11.5px; color:var(--ink-3); margin-top:22px; max-width:60ch}
+  .artfoot{padding-bottom:96px}
+  .invite{margin:52px 0 0; padding:32px 34px; border:1px solid var(--line); border-left:2px solid var(--copper);
+    background:var(--surface); max-width:40em}
+  .invite h2{font-family:var(--font-serif); font-size:20px}
+  .invite p{margin-top:14px; color:var(--ink-2); font-size:15px; line-height:1.9}
+  .invite a{display:inline-block; margin-top:22px; background:var(--ink); color:var(--paper);
+    padding:12px 26px; text-decoration:none; font-size:14px}
+
+  /* ---------- 기록 목록 ---------- */
+  .ihead{background:var(--surface); border-bottom:1px solid var(--line)}
+  .ihead .wrap{padding:40px 30px}
+  .ihead h1{font-family:var(--font-serif); font-size:29px}
+  .ihead .sub{margin-top:10px; font-size:13.5px; color:var(--ink-3)}
+  .tabs{display:flex; gap:22px; margin-top:26px; flex-wrap:wrap; font-size:13.5px; color:var(--ink-3)}
+  .tabs button{padding-bottom:6px; border-bottom:2px solid transparent}
+  .tabs button[aria-selected="true"]{color:var(--ink); font-weight:600; border-bottom-color:var(--ink)}
+  .tabs button:disabled{cursor:default; opacity:.45}
+  .tabs .n{font-variant-numeric:tabular-nums; margin-left:5px; font-size:12px}
+  .tblwrap{overflow-x:auto; border:1px solid var(--line); background:var(--surface); margin:22px 0 14px}
+  table.items{border-collapse:collapse; width:100%; min-width:720px; font-size:13.5px}
+  .items th{text-align:left; font-size:11.5px; font-weight:600; color:var(--ink-3);
+    padding:12px 16px; border-bottom:1px solid var(--line); background:var(--surface-2); white-space:nowrap}
+  .items td{padding:12px 16px; border-bottom:1px solid var(--line)}
+  .items tr:last-child td{border-bottom:none}
+  .items .num{text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums}
+  .tag{display:inline-block; font-size:10.5px; border:1px solid var(--line-2); color:var(--ink-3); padding:1px 6px}
+  .tag.r{border-color:var(--copper); color:var(--copper)}
+  .inote{font-size:11.5px; color:var(--ink-3); line-height:1.7; padding-bottom:84px; max-width:70ch}
+
+  /* 구술기록 연계 — 의원이 구술자인 경우에만 상세 화면에 표시 */
+  .oral-link{margin:44px 0 0; max-width:40em; display:flex; gap:18px 24px; align-items:center; flex-wrap:wrap;
+    border:1px solid var(--line); border-left:2px solid var(--accent); background:var(--surface); padding:20px 24px}
+  .oral-link .k{font-size:11.5px; letter-spacing:.16em; color:var(--accent)}
+  .oral-link .txt{flex:1 1 20em}
+  .oral-link .txt b{display:block; font-family:var(--font-serif); font-size:18px; margin-top:4px}
+  .oral-link .txt span{display:block; font-size:14px; color:var(--ink-2); margin-top:4px; line-height:1.7}
+  .oral-link a{border:1px solid var(--accent); color:var(--accent); padding:10px 20px; font-size:13.5px; text-decoration:none; white-space:nowrap}
+  .oral-link a:hover{background:var(--accent); color:var(--paper)}
+
+  @media (max-width:1023px){
+    .hero .txt{max-width:none}
+    .hero .art .a2{display:none}
+    .hero .art .a1{width:80%; right:-24%; top:auto; bottom:-30%; opacity:.55}
+    .sec{padding:66px 0}
+    .sec-head{grid-template-columns:1fr; gap:20px; align-items:start}
+    .about{grid-template-columns:1fr; gap:44px}
+    .tiles{grid-template-columns:repeat(2,1fr)}
+    .feature .visual{width:100%}
+    .feature.rev .visual{margin-left:0}
+    .feature .panel{width:100%; margin-top:-44px}
+    .idxlist button{grid-template-columns:44px 1fr; gap:8px 18px}
+    .idxlist .dd{grid-column:2}
+    .idxlist .go{grid-column:2}
+    .grid{grid-template-columns:repeat(3,1fr)}
+    .hero .wrap{padding-top:84px; padding-bottom:92px}
+  }
+  @media (max-width:767px){
+    .wrap, .article, .dhero .cap{padding-left:20px; padding-right:20px}
+    .site{position:static}
+    .site .wrap{height:auto; padding-top:12px; padding-bottom:10px; flex-wrap:wrap; gap:12px}
+    .brand{width:112px; height:33px}
+    .nav{width:100%; flex-wrap:nowrap; overflow-x:auto; gap:20px; padding-bottom:2px;
+      scrollbar-width:none; -ms-overflow-style:none}
+    .nav::-webkit-scrollbar{display:none}
+    .nav > .m > button{padding:8px 0; white-space:nowrap; font-size:14px}
+    .mega{display:none}
+    .foot .links button{min-width:0; flex:1 1 44%}
+    .toolbar, .backbar{top:0}
+    .site .right{display:none}
+    .nav{gap:16px; font-size:13px}
+    .grid{grid-template-columns:repeat(2,1fr); gap:24px 14px}
+    .tiles{grid-template-columns:1fr; gap:26px}
+    .donatebox{padding:28px 24px}
+    .idx{margin-left:0}
+    .dhero .band{grid-template-columns:1fr; aspect-ratio:16/9}
+    .dhero .band > div:nth-child(n+2){display:none}
+    .figure.pair, figure.pair{grid-template-columns:1fr}
+    .bio{font-size:16px}
+    .ledger, .invite{padding:24px 22px}
+  }
+  @media (max-width:479px){ .grid{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important} }
+</style>
+
+<div class="notice">
+  <div class="wrap">
+    <span><b>프로토타입 v2.1</b> — 국회기록원 홈페이지 개편 참조물</span>
+    <span>의원명·정당명·기증 수치·서술문은 <b>전부 예시용 가상 데이터</b>이며, 이미지는 <b>배치 확인용 예시</b>임</span>
+  </div>
+</div>
+
+<div class="banner">
+  <div class="wrap">
+    <span class="tagb">기획전</span>
+    <span>「의정의 물건 ― 행정박물로 보는 국회」 2026. 9. 15 ~ 12. 20 · 국회기록원 전시실</span>
+    <button class="close" aria-label="배너 닫기">×</button>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#" data-go="home" aria-label="국회기록원 메인화면 바로가기"></a>
+    <nav class="nav" aria-label="주요 메뉴">
+      <div class="m">
+        <button type="button">국회기록물</button>
+        <div class="mega">
+          <p class="d">대한민국 의정사의 흐름과 민주주의 발전을 보여주는 국회의 기록유산</p>
+          <ul><li><a href="#">일반문서</a></li><li><a href="#">국회간행물</a></li>
+              <li><a href="#">국회특별위원회 기록</a></li></ul>
+        </div>
+      </div>
+      <div class="m">
+        <button type="button">기록 속 의정사</button>
+        <div class="mega">
+          <p class="d">의회 민주주의 발전과 함께한 국회의 여정</p>
+          <ul><li><a href="#">국회연표</a></li><li><a href="#">임시의정원</a></li>
+              <li><a href="#">12.3 비상계엄</a></li></ul>
+        </div>
+      </div>
+      <div class="m">
+        <button type="button" id="nav-collection">국회의원 컬렉션</button>
+        <div class="mega">
+          <p class="d">한 사람이 남긴 기록으로 읽는 의정활동</p>
+          <ul><li><a href="#" data-go="list">제22대 국회의원<span class="new">신설</span></a></li>
+              <li><a href="#">제21대 이하 국회의원</a></li>
+              <li><a href="#">의장단 컬렉션</a></li>
+              <li><a href="#">기록물 기증 안내</a></li></ul>
+        </div>
+      </div>
+      <div class="m">
+        <button type="button">기록콘텐츠</button>
+        <div class="mega">
+          <p class="d">다양한 주제와 유형의 컬렉션으로 살펴 보는 의정사</p>
+          <ul><li><a href="../index.html">구술기록</a></li><li><a href="#">국회의장 선물</a></li>
+              <li><a href="#">기록물 큐레이션</a></li><li><a href="#">디지털 전시</a></li></ul>
+        </div>
+      </div>
+      <div class="m">
+        <button type="button">이용안내</button>
+        <div class="mega">
+          <p class="d">국회기록의 이용을 위한 열린 기록 서비스</p>
+          <ul><li><a href="#">기록물 열람</a></li><li><a href="#">기록물 기증</a></li>
+              <li><a href="#">정보공개</a></li></ul>
+        </div>
+      </div>
+      <div class="m">
+        <button type="button">기관 소개</button>
+        <div class="mega">
+          <p class="d">대한민국 의정사가 살아 숨쉬는 곳</p>
+          <ul><li><a href="#">기관 소개</a></li><li><a href="#">소식</a></li>
+              <li><a href="#">현황 및 자료</a></li></ul>
+        </div>
+      </div>
+    </nav>
+    <div class="right"><span>ENG</span><span class="sch" role="img" aria-label="통합검색"></span></div>
+  </div>
+</header>
+
+<!-- ================= SC-00 홈 ================= -->
+<main id="view-home">
+  <section class="hero">
+    <div class="art" aria-hidden="true">
+      <div class="a1" id="art1"></div>
+      <div class="a2" id="art2"></div>
+    </div>
+    <div class="wrap">
+      <div class="txt">
+        <h1>남겨진 것으로<br>의회를 다시 읽습니다</h1>
+        <p class="lede">국회기록원은 의정활동의 자취를 모아 컬렉션으로 엮습니다. 문서와 사진, 목소리와 물건이 함께 한 시대의 국회를 이룹니다.</p>
+        <p class="scrollhint">아래로 내려 컬렉션을 둘러보세요 ↓</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="sections"></div>
+
+  <footer class="foot">
+    <div class="links">
+      <div class="wrap">
+        <button type="button">기관 홈페이지 <span>▾</span></button>
+        <button type="button">위원회 홈페이지 <span>▾</span></button>
+        <button type="button">기타 홈페이지 <span>▾</span></button>
+        <button type="button">국회정보시스템 <span>▾</span></button>
+      </div>
+    </div>
+    <div class="wrap info">
+      <span class="brand" aria-hidden="true"></span>
+      <p>(07233) 서울시 영등포구 의사당대로1 (여의도동) 국회기록원</p>
+      <p>시스템 문의 : webnaa@assembly.go.kr</p>
+      <p>Copyright ⓒ National Assembly Records and Archives. All rights reserved.</p>
+      <p style="margin-top:12px">컬렉션에 표시되는 기증 현황은 기록관리시스템에 등록된 값이며 매월 갱신합니다.</p>
+    </div>
+  </footer>
+</main>
+
+<!-- ================= SC-01 목록 ================= -->
+<main id="view-list" hidden>
+  <section class="lhead">
+    <div class="art" id="art3" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1 class="serif">국회의원 컬렉션</h1>
+      <p class="lede">제22대 국회의원 전원의 자리를 두었습니다. 기증된 기록이 있는 의원의 카드에는 색이 들어갑니다.</p>
+      <div class="terms" role="tablist" aria-label="대수 선택">
+        <button role="tab" aria-selected="true">제22대<span class="tag">현직</span></button>
+        <button role="tab" aria-selected="false" disabled>제21대<span class="tag">전직</span></button>
+        <button role="tab" aria-selected="false" disabled>제20대<span class="tag">전직</span></button>
+        <button role="tab" aria-selected="false" disabled>제19대 이전</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="toolbar">
+    <div class="wrap">
+      <div class="seg" role="group" aria-label="기증 여부">
+        <button data-f="all" aria-pressed="true">전체</button>
+        <button data-f="has" aria-pressed="false">기록이 있는 의원</button>
+        <button data-f="none" aria-pressed="false">기증 대기</button>
+      </div>
+      <label class="sr" for="q">성명 검색</label>
+      <input class="search" id="q" type="search" placeholder="성명 검색" autocomplete="off">
+      <div class="idx" id="idx"></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="resline">
+      <span id="rescount" aria-live="polite">전체 <b>0</b>명</span>
+      <span class="lg">
+        <span><i id="lg-color"></i>기록 있음</span>
+        <span><i id="lg-gray"></i>기증 대기</span>
+      </span>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="estate" id="empty" hidden>조건에 맞는 의원이 없습니다.</div>
+    <div class="morebtn" id="morewrap"><button id="more">더 보기</button></div>
+  </div>
+</main>
+
+<!-- ================= SC-02 의원 컬렉션 ================= -->
+<main id="view-detail" hidden>
+  <div class="backbar">
+    <div class="wrap">
+      <button id="back">← 국회의원 컬렉션</button>
+      <span class="sid">SC-02 · 의원 컬렉션</span>
+    </div>
+  </div>
+  <div id="detail"></div>
+</main>
+
+<!-- ================= SC-02-1 기록 전체 목록 ================= -->
+<main id="view-items" hidden>
+  <div class="backbar">
+    <div class="wrap">
+      <button id="iback">← 컬렉션으로</button>
+      <span class="sid">SC-02-1 · 기록 목록</span>
+    </div>
+  </div>
+  <div id="items-body"></div>
+</main>
+
+<script>
+(function(){
+  "use strict";
+
+  var TYPES = [
+    {c:"DOC", n:"문서"},   {c:"PHO", n:"사진"},   {c:"MOV", n:"영상"},
+    {c:"AUD", n:"음성"},   {c:"PUB", n:"간행물"}, {c:"ADM", n:"행정박물"}
+  ];
+  var TYPE_NAME = {}; TYPES.forEach(function(t){ TYPE_NAME[t.c] = t.n; });
+  var PARTIES = ["가온당","나래당","다솜당","마루당","무소속"];
+  var CHO = ["ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
+  var CHO_TABLE = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"];
+  var CHO_FOLD = {"ㄲ":"ㄱ","ㄸ":"ㄷ","ㅃ":"ㅂ","ㅆ":"ㅅ","ㅉ":"ㅈ"};
+
+  function initials(s){
+    var o = "";
+    for (var i=0;i<s.length;i++){
+      var c = s.charCodeAt(i) - 0xAC00;
+      o += (c >= 0 && c <= 11171) ? CHO_TABLE[Math.floor(c/588)] : s[i];
+    }
+    return o;
+  }
+  function firstInitial(n){ var c = initials(n)[0]; return CHO_FOLD[c] || c; }
+  function fmt(n){ return n.toLocaleString("ko-KR"); }
+  function pad(n){ return String(n).padStart(2,"0"); }
+  function seedOf(s){
+    var h = 2166136261;
+    for (var i=0;i<s.length;i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return h >>> 0;
+  }
+  /* 우리말 조사 — 앞 글자의 받침에 따라 골라 씀 */
+  function jong(w){
+    if (!w) return false;
+    var c = w.charCodeAt(w.length-1) - 0xAC00;
+    if (c < 0 || c > 11171) return false;
+    return (c % 28) !== 0;
+  }
+  function eun(w){ return w + (jong(w) ? "은" : "는"); }
+  function eul(w){ return w + (jong(w) ? "을" : "를"); }
+  function wa(w){ return w + (jong(w) ? "과" : "와"); }
+  function euro(w){
+    if (!w) return w;
+    var c = w.charCodeAt(w.length-1) - 0xAC00;
+    var t = (c >= 0 && c <= 11171) ? c % 28 : 0;
+    return w + (t === 0 || t === 8 ? "로" : "으로");
+  }
+  /* 유형 두 개까지만 우리말로 잇고, 그 이상은 '등'으로 줄임 */
+  function joinTypes(list){
+    var n = list.map(function(c){ return TYPE_NAME[c]; });
+    if (!n.length) return "";
+    if (n.length === 1) return n[0];
+    if (n.length === 2) return wa(n[0]) + " " + n[1];
+    return n.slice(0,3).join("·") + " 등";
+  }
+  var ORD_KO = ["","첫","두 번째","세 번째","네 번째","다섯 번째","여섯 번째","일곱 번째","여덟 번째","아홉 번째","열 번째"];
+
+  function intakeText(b,d){
+    var p = [];
+    if (b) p.push("상자 " + fmt(b) + "개");
+    if (d) p.push("이동저장장치 " + fmt(d) + "개");
+    return p.join(", ");
+  }
+
+  var RAW = [
+    ["강윤서",0,0,"서울",3,"운영위원회",                        5,1,1,2140,"DOC,PHO,PUB,ADM,MOV","2026-08-18",78,64],
+    ["고재민",1,0,"부산",1,"보건복지위원회",                    0,0,0,0,"",null,0,0],
+    ["곽하늘",2,1,"",1,"여성가족위원회",                        0,0,1,0,"",null,0,0],
+    ["구성모",0,0,"경기",2,"국토교통위원회",                    2,0,1,312,"DOC,PHO","2026-07-02",41,55],
+    ["권다인",1,0,"대구",1,"교육위원회",                        0,0,0,0,"",null,0,0],
+    ["김도현",2,0,"광주",4,"법제사법위원회",                    7,2,1,5820,"DOC,PHO,MOV,PUB,ADM,AUD","2026-06-11",83,58],
+    ["김서준",0,1,"",1,"정무위원회",                            1,1,0,840,"DOC,PUB","2026-08-25",22,0],
+    ["김은채",1,0,"인천",2,"환경노동위원회",                    3,0,0,176,"DOC,PHO,ADM","2026-05-20",37,61],
+    ["나예린",2,0,"충남",1,"농림축산식품해양수산위원회",        0,0,0,0,"",null,0,0],
+    ["남기훈",0,0,"경북",3,"국방위원회",                        4,0,0,1480,"DOC,PHO,PUB","2026-03-09",69,72],
+    ["노현우",1,1,"",1,"과학기술정보방송통신위원회",            0,0,0,0,"",null,0,0],
+    ["도경원",2,0,"전북",2,"기획재정위원회",                    2,2,0,620,"DOC,PHO,AUD","2026-08-07",15,0],
+    ["동지훈",0,0,"강원",1,"행정안전위원회",                    0,0,0,0,"",null,0,0],
+    ["류하은",1,0,"경기",2,"문화체육관광위원회",                3,1,1,254,"DOC,PHO,MOV","2026-04-14",52,66],
+    ["마성진",2,1,"",1,"정보위원회",                            0,0,0,0,"",null,0,0],
+    ["문가영",0,0,"서울",1,"교육위원회",                        0,0,1,0,"",null,0,0],
+    ["민승우",1,0,"부산",3,"산업통상자원중소벤처기업위원회",    6,0,0,3260,"DOC,PHO,PUB,ADM","2026-02-26",74,49],
+    ["박서연",2,0,"대전",2,"보건복지위원회",                    4,1,1,1120,"DOC,PHO,MOV,PUB","2026-07-30",61,70],
+    ["박준혁",0,0,"경남",1,"국토교통위원회",                    0,0,0,0,"",null,0,0],
+    ["반지호",1,1,"",1,"환경노동위원회",                        0,0,0,0,"",null,0,0],
+    ["배소원",2,0,"울산",2,"운영위원회",                        2,0,1,88,"DOC,ADM","2026-06-03",28,80],
+    ["백건우",0,0,"충북",4,"법제사법위원회",                    6,0,0,4410,"DOC,PHO,MOV,PUB,ADM","2026-01-19",80,53],
+    ["변시온",1,0,"제주",1,"농림축산식품해양수산위원회",        0,0,0,0,"",null,0,0],
+    ["서지안",2,0,"서울",2,"정무위원회",                        1,1,1,470,"DOC,PUB,AUD","2026-08-21",18,0],
+    ["석민재",0,1,"",1,"국방위원회",                            0,0,0,0,"",null,0,0],
+    ["성우진",1,0,"경기",3,"기획재정위원회",                    5,0,1,2680,"DOC,PHO,PUB,AUD","2026-05-08",88,67],
+    ["손예린",2,0,"전남",1,"여성가족위원회",                    0,0,1,0,"",null,0,0],
+    ["송하람",0,0,"대구",2,"과학기술정보방송통신위원회",        2,0,0,142,"DOC,PHO","2026-07-16",44,74],
+    ["신도윤",1,0,"인천",1,"행정안전위원회",                    0,0,0,0,"",null,0,0],
+    ["심유나",2,1,"",1,"문화체육관광위원회",                    2,2,0,930,"DOC,PHO,MOV","2026-08-28",12,0],
+    ["안태경",0,0,"서울",5,"외교통일위원회",                    9,1,1,7240,"DOC,PHO,MOV,PUB,ADM,AUD","2026-04-02",91,62],
+    ["양시현",1,0,"부산",1,"교육위원회",                        0,0,0,0,"",null,0,0],
+    ["엄지원",2,0,"경기",2,"보건복지위원회",                    3,0,0,206,"DOC,PHO,PUB","2026-03-27",39,58],
+    ["여준서",0,1,"",1,"산업통상자원중소벤처기업위원회",        0,0,0,0,"",null,0,0],
+    ["오세람",1,0,"광주",3,"운영위원회",                        4,0,1,1960,"DOC,PHO,ADM,PUB","2026-06-24",72,65],
+    ["원지후",2,0,"강원",1,"국토교통위원회",                    0,0,1,0,"",null,0,0],
+    ["유가온",0,0,"충남",2,"환경노동위원회",                    2,1,0,530,"DOC,PHO","2026-08-14",25,0],
+    ["윤소망",1,1,"",1,"정보위원회",                            0,0,0,0,"",null,0,0],
+    ["이도경",2,0,"서울",4,"법제사법위원회",                    6,1,0,3940,"DOC,PHO,MOV,PUB,ADM","2026-02-11",77,51],
+    ["이한별",0,0,"경남",1,"농림축산식품해양수산위원회",        0,0,0,0,"",null,0,0],
+    ["임재하",1,0,"전북",2,"기획재정위원회",                    3,0,1,364,"DOC,PUB,AUD","2026-05-30",57,69],
+    ["장미르",2,0,"대전",1,"교육위원회",                        0,0,0,0,"",null,0,0],
+    ["전유겸",0,1,"",2,"외교통일위원회",                        4,0,0,1340,"DOC,PHO,PUB","2026-07-09",66,73],
+    ["정하윤",1,0,"경기",3,"보건복지위원회",                    5,1,1,2470,"DOC,PHO,MOV,ADM","2026-08-05",85,60],
+    ["조은결",2,0,"울산",1,"국방위원회",                        0,0,0,0,"",null,0,0],
+    ["주현서",0,0,"경북",2,"행정안전위원회",                    2,0,0,118,"DOC,PHO","2026-04-22",33,77],
+    ["지새힘",1,1,"",1,"여성가족위원회",                        0,0,1,0,"",null,0,0],
+    ["진예본",2,0,"충북",1,"문화체육관광위원회",                0,0,0,0,"",null,0,0],
+    ["차연우",0,0,"서울",2,"정무위원회",                        2,2,1,710,"DOC,PHO,AUD","2026-08-23",20,0],
+    ["채민율",1,0,"부산",1,"과학기술정보방송통신위원회",        0,0,0,0,"",null,0,0],
+    ["천보름",2,0,"제주",3,"산업통상자원중소벤처기업위원회",    4,0,0,1680,"DOC,PHO,PUB,ADM","2026-03-15",70,56],
+    ["최다올",0,0,"전남",1,"운영위원회",                        0,0,0,0,"",null,0,0],
+    ["탁유신",1,1,"",1,"국토교통위원회",                        0,0,0,0,"",null,0,0],
+    ["태윤결",2,0,"경기",2,"환경노동위원회",                    2,0,1,92,"DOC,ADM","2026-06-18",30,82],
+    ["표시우",0,0,"인천",1,"교육위원회",                        0,0,0,0,"",null,0,0],
+    ["피현조",1,0,"대구",1,"보건복지위원회",                    0,0,1,0,"",null,0,0],
+    ["하늘찬",2,0,"광주",2,"법제사법위원회",                    3,0,1,228,"DOC,PHO,MOV","2026-05-12",48,63],
+    ["한겨울",0,1,"",1,"기획재정위원회",                        0,0,0,0,"",null,0,0],
+    ["함소리",1,0,"강원",3,"농림축산식품해양수산위원회",        5,0,0,2050,"DOC,PHO,PUB,ADM,MOV","2026-07-25",76,59],
+    ["허도담",2,0,"경남",1,"국방위원회",                        0,0,0,0,"",null,0,0],
+    ["현지오",0,0,"충남",2,"외교통일위원회",                    1,1,0,395,"DOC,PUB","2026-08-16",16,0],
+    ["홍마루",1,0,"서울",4,"운영위원회",                        7,0,1,4980,"DOC,PHO,MOV,PUB,ADM,AUD","2026-06-30",86,55],
+    ["황가람",2,1,"",1,"정보위원회",                            0,0,0,0,"",null,0,0],
+    ["김하람",3,0,"경기",1,"행정안전위원회",                    0,0,0,0,"",null,0,0],
+    ["이서우",3,0,"부산",2,"문화체육관광위원회",                2,0,0,164,"DOC,PHO","2026-04-08",42,71],
+    ["박한결",4,0,"서울",1,"국토교통위원회",                    0,0,0,0,"",null,0,0],
+    ["정슬아",3,1,"",1,"교육위원회",                            0,0,1,0,"",null,0,0],
+    ["오다인",4,0,"전북",2,"보건복지위원회",                    3,0,0,980,"DOC,PHO,PUB","2026-07-21",64,68]
+  ];
+
+  /* 구술기록 연계 — 의원이 구술자이면 구술콘텐츠(구술자 카드)로 연결함.
+     키는 의원 식별자(member_id), 값은 구술기록의 구술자 식별자. 인명 사전의 같은 인물 식별자로 잇는 구조임 */
+  var ORAL_BASE = "../index.html#/narrator/";
+  var ORAL = {
+    "22-000001": { narrator:"n10", ready:true,  note:"기증을 결심한 이유와 질의서 초안, 골목에서 찍은 사진에 관해 직접 이야기한 구술입니다." },
+    "22-000031": { narrator:"n11", ready:false, note:"채록을 마치고 정리하고 있습니다. 채록 정보와 요약은 구술자 카드에서 볼 수 있습니다." }
+  };
+
+  var DISTRICT_NO = ["갑","을","병"];
+  var TODAY = new Date("2026-08-31");
+
+  /* 총 건수를 유형별로 배분 */
+  function splitCount(total, parts, weights){
+    var wsum = weights.reduce(function(a,b){ return a+b; }, 0);
+    var out = weights.map(function(w){ return Math.max(1, Math.round(total * w / wsum)); });
+    out[0] += total - out.reduce(function(a,b){ return a+b; }, 0);
+    if (out[0] < 1){ out[0] = 1; }
+    return out;
+  }
+
+  /* 기증 회차 생성
+     인수 시점에는 상자·이동저장장치 개수만 확정되고,
+     정리·기술이 끝난 회차에만 유형별 건수가 확정됨 */
+  function buildRounds(m){
+    if (!m.roundCount) return [];
+    var last = new Date(m.latest);
+    var seed = m.name.charCodeAt(0);
+    /* 임기 시작 다음 달부터 최근 기증일 사이에 회차를 고르게 배치함 */
+    var START = new Date("2024-06-15");
+    var span = (last.getFullYear() - START.getFullYear()) * 12 + (last.getMonth() - START.getMonth());
+    var rounds = [], arrangedIdx = [];
+    for (var i=0;i<m.roundCount;i++){
+      var seq = m.roundCount - i;                    // 최근 회차부터 역산
+      var d;
+      if (m.roundCount === 1){ d = new Date(last); }
+      else {
+        d = new Date(START);
+        var off = Math.round(span * (seq - 1) / (m.roundCount - 1));
+        d.setMonth(d.getMonth() + off);
+        if (seq === m.roundCount) d = new Date(last);
+      }
+      var arranged = (i >= m.unarranged);            // 최근 unarranged개 회차가 미정리
+      var nt = m.types.length;
+      var tcount = nt <= 2 ? nt : (2 + (seq % Math.max(1, nt - 1)));
+      rounds.push({
+        seq: seq,
+        date: d.getFullYear() + "-" + pad(d.getMonth()+1) + "-" + pad(d.getDate()),
+        types: (function(){ var k = seq % Math.max(1, nt);
+          return m.types.slice(k).concat(m.types.slice(0, k)).slice(0, tcount); })(),
+        arranged: arranged,
+        count: null,   // 정리 완료 전에는 건수 미확정
+        boxes: 0,
+        devices: 0
+      });
+      if (arranged) arrangedIdx.push(i);
+    }
+    /* 확정 건수는 정리 완료 회차에만 배분함 */
+    if (arrangedIdx.length){
+      var w = arrangedIdx.map(function(idx){ return 1 + ((idx*7 + seed) % 5); });
+      var counts = splitCount(m.count, arrangedIdx.length, w);
+      arrangedIdx.forEach(function(idx, k){ rounds[idx].count = counts[k]; });
+    }
+    /* 인수 단위 — 정리 완료분은 실제 인수 상자 수, 미정리분은 인수 당시 수량 */
+    rounds.forEach(function(r, i){
+      r.boxes = r.arranged ? Math.max(1, Math.ceil(r.count / 130))
+                           : 3 + ((r.seq + seed) % 12);
+      r.devices = ((r.seq + i + seed) % 3 === 0) ? 1 + (r.seq % 3) : 0;
+    });
+    return rounds.sort(function(a,b){ return b.seq - a.seq; });
+  }
+
+  var TITLES = {
+    DOC:["의정활동 서류철","상임위원회 질의자료","법률안 검토 문건","의원실 업무일지","지역 민원 처리 문서","정책 연구 메모","서한철"],
+    PHO:["의정활동 사진","지역 현장 방문 사진","본회의 활동 사진","해외 시찰 사진첩","의정보고회 사진"],
+    MOV:["본회의 발언 영상","국정감사 질의 영상","의정보고회 영상","정책 홍보 영상"],
+    AUD:["지역 간담회 녹음","라디오 인터뷰 음원","정책 토론회 녹음"],
+    PUB:["의정보고서","국정감사 정책자료집","정책토론회 자료집","저서 및 기고문","입법 백서"],
+    ADM:["의원 명패","위촉장·표창","기념패","현판 및 기념품","의사봉"]
+  };
+
+  /* 정리 완료분에 대해서만 기록물철 목록을 생성함
+     공개 수준은 정리 후 의원실 목록 검토를 거쳐 확정되는 값임 */
+  function buildItems(m){
+    var done = m.rounds.filter(function(r){ return r.arranged; });
+    if (!m.count || !done.length) return [];
+    var owned = TYPES.filter(function(t){ return m.types.indexOf(t.c) > -1; });
+    var weights = [0.44,0.26,0.08,0.04,0.12,0.06].filter(function(_,i){
+      return m.types.indexOf(TYPES[i].c) > -1;
+    });
+    var typeCounts = splitCount(m.count, owned.length, weights);
+    var seed = m.name.charCodeAt(0);
+    var items = [];
+    owned.forEach(function(t, ti){
+      var qty = typeCounts[ti];
+      var k = qty >= 500 ? 5 : qty >= 100 ? 4 : qty >= 20 ? 3 : 2;
+      k = Math.min(k, TITLES[t.c].length);
+      var rowW = [];
+      for (var i=0;i<k;i++) rowW.push(3 + ((i * 3 + seed + ti) % 6));
+      var rowCounts = splitCount(qty, k, rowW);
+      for (var i=0;i<k;i++){
+        var rd = done[(i + ti) % done.length];
+        var n = (i + ti + seed) % 8;
+        items.push({
+          title: m.name + " 의원 " + TITLES[t.c][i],
+          type: t.c,
+          year: String(Math.max(2024, parseInt(rd.date.slice(0,4),10) - ((i + ti) % 2))),
+          qty: rowCounts[i],
+          round: rd.seq,
+          level: n === 7 ? "HIDDEN" : (n === 3 ? "RESTRICTED" : "OPEN")
+        });
+      }
+    });
+    return items;
+  }
+
+
+
+
+
+  var DATA = RAW.map(function(r, i){
+    var types = r[10] ? r[10].split(",") : [];
+    var m = {
+      id: "22-" + String(i+1).padStart(6,"0"),
+      name: r[0], initial: firstInitial(r[0]), init: initials(r[0]),
+      party: PARTIES[r[1]],
+      dType: r[2] === 1 ? "비례대표" : "지역구",
+      district: r[2] === 1 ? "비례대표" : (r[3] + " " + r[0].charAt(0) + "○구" + ["갑","을","병"][i % 3]),
+      region: r[2] === 1 ? "" : r[3],
+      terms: r[4],
+      termLabel: r[4] === 1 ? "초선" : (r[4] === 2 ? "재선" : r[4] + "선"),
+      committee: r[5],
+      roundCount: r[6], unarranged: r[7], ongoing: r[8] === 1,
+      count: r[9], types: types, latest: r[11], digitized: r[12]
+    };
+    var arranged = Math.max(0, m.roundCount - m.unarranged);
+    m.rounds = buildRounds(m);
+    m.first = m.rounds.length ? m.rounds[m.rounds.length-1].date : null;
+    m.count = arranged > 0 ? m.count : 0;
+    var pend = m.rounds.filter(function(x){ return !x.arranged; });
+    m.pendingBoxes = pend.reduce(function(a,x){ return a + x.boxes; }, 0);
+    m.pendingDevices = pend.reduce(function(a,x){ return a + x.devices; }, 0);
+    m.items = buildItems(m);
+    m.typeCounts = {};
+    m.items.forEach(function(it){ m.typeCounts[it.type] = (m.typeCounts[it.type]||0) + it.qty; });
+    m.listedItems = m.items.filter(function(it){ return it.level !== "HIDDEN"; });
+    m.hasRecords = m.roundCount > 0;
+    /* 활동 서술(상세 기술) 대상 기준 — 정리 완료 500건 이상 */
+    m.hasStory = m.count >= 500;
+    m.seed = seedOf(m.name);
+    return m;
+  });
+
+  /* ============================================================
+     예시 이미지
+     저채도 계열로만 구성함. 특정 정당의 상징색을 연상시키지 않기 위함
+     ============================================================ */
+  var PAL = [
+    ["#E4DACB","#C6A87C","#8A6C45","#4A3A26"],  /* 황토·세피아 */
+    ["#DCE3DD","#A9BFB2","#5F8274","#2E4A40"],  /* 청록·올리브 */
+    ["#E6DCD6","#CDA98C","#A5714E","#5E3A24"],
+    ["#E2E0E6","#BEB8C6","#8A8296","#4B4455"],  /* 회보라 */
+    ["#E3E1D8","#BFBBA6","#8E8A72","#4B4838"],  /* 카키 */
+    ["#E0E4E6","#B4C0C4","#7E8D93","#3E4B50"]   /* 회청 */
+  ];
+  var GRAY = ["#E0DFDC","#B7B6B2","#8B8A86","#4A4946"];
+
+  var gid = 0;
+  function uid(){ return "g" + (gid++); }
+
+  /* --- 겹치는 도형 구성 (홈 비주얼) --- */
+  function abstractSVG(seed, palIdx, dense, contained){
+    var c = PAL[palIdx % PAL.length];
+    var s = seed, out = "";
+    function rnd(max){ s = (s * 1103515245 + 12345) >>> 0; return s % max; }
+    var n = dense ? 9 : 6;
+    for (var i=0;i<n;i++){
+      var col = c[1 + (i % 3)];
+      var op = (0.4 + (rnd(35) / 100)).toFixed(2);
+      var kind = rnd(4);
+      /* contained: 도형이 화면 안에 온전히 들어오게 하여 사각 잘림이 보이지 않게 함 */
+      var cx = contained ? 130 + rnd(140) : 40 + rnd(320);
+      var cy = contained ? 130 + rnd(140) : 40 + rnd(320);
+      var r  = contained ? 40 + rnd(85)   : 46 + rnd(150);
+      if (kind === 0){
+        out += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="' + col + '" opacity="' + op + '"/>';
+      } else if (kind === 1){
+        var w = contained ? (70 + rnd(110)) : (70 + rnd(220));
+        var h = contained ? (60 + rnd(100)) : (60 + rnd(200));
+        var rot = rnd(90) - 45;
+        out += '<rect x="' + (cx-w/2) + '" y="' + (cy-h/2) + '" width="' + w + '" height="' + h +
+          '" fill="' + col + '" opacity="' + op + '" transform="rotate(' + rot + ' ' + cx + ' ' + cy + ')"/>';
+      } else if (kind === 2){
+        out += '<path d="M' + cx + ',' + (cy-r) + ' A' + r + ',' + r + ' 0 0 1 ' + cx + ',' + (cy+r) + ' Z" ' +
+          'fill="' + col + '" opacity="' + op + '" transform="rotate(' + (rnd(360)) + ' ' + cx + ' ' + cy + ')"/>';
+      } else {
+        var sw = contained ? (5 + rnd(10)) : (6 + rnd(16));
+        out += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="' + col +
+          '" stroke-width="' + sw + '" opacity="' + op + '"/>';
+      }
+    }
+    return '<svg class="viz" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" ' +
+      'style="mix-blend-mode:multiply">' + out + '</svg>';
+  }
+
+  /* --- 활동 장면 (의원 사진 자리) --- */
+  var SCENES = [
+    function(c){ return '' +
+      '<rect width="320" height="200" fill="'+c[0]+'"/><rect y="34" width="320" height="96" fill="'+c[1]+'"/>' +
+      '<path d="M0,130 H320 V200 H0 Z" fill="'+c[2]+'"/>' +
+      '<circle cx="160" cy="58" r="26" fill="'+c[3]+'" opacity=".22"/>' +
+      '<g fill="'+c[3]+'" opacity=".45"><rect x="18" y="96" width="26" height="34" rx="10"/>' +
+      '<rect x="56" y="102" width="26" height="28" rx="10"/><rect x="238" y="100" width="26" height="30" rx="10"/>' +
+      '<rect x="276" y="94" width="26" height="36" rx="10"/></g>' +
+      '<rect x="118" y="150" width="84" height="50" fill="'+c[3]+'"/><circle cx="160" cy="96" r="17" fill="'+c[3]+'"/>' +
+      '<path d="M132,150 C132,126 146,116 160,116 C174,116 188,126 188,150 Z" fill="'+c[3]+'"/>'; },
+    function(c){ return '' +
+      '<rect width="320" height="200" fill="'+c[0]+'"/><rect width="320" height="118" fill="'+c[1]+'"/>' +
+      '<g fill="'+c[3]+'"><circle cx="70" cy="72" r="16"/><path d="M46,118 C46,96 56,86 70,86 C84,86 94,96 94,118 Z"/>' +
+      '<circle cx="160" cy="64" r="18"/><path d="M133,118 C133,93 145,82 160,82 C175,82 187,93 187,118 Z"/>' +
+      '<circle cx="250" cy="74" r="15"/><path d="M228,118 C228,98 237,88 250,88 C263,88 272,98 272,118 Z"/></g>' +
+      '<rect y="118" width="320" height="12" fill="'+c[2]+'"/><rect y="130" width="320" height="70" fill="'+c[3]+'" opacity=".85"/>' +
+      '<g fill="'+c[0]+'" opacity=".6"><rect x="46" y="146" width="48" height="14"/>' +
+      '<rect x="136" y="146" width="48" height="14"/><rect x="226" y="146" width="48" height="14"/></g>'; },
+    function(c){ return '' +
+      '<rect width="320" height="200" fill="'+c[0]+'"/><path d="M0,92 L54,52 L108,92 Z" fill="'+c[1]+'"/>' +
+      '<rect x="130" y="40" width="58" height="80" fill="'+c[1]+'"/><rect x="206" y="62" width="76" height="58" fill="'+c[2]+'" opacity=".8"/>' +
+      '<rect y="120" width="320" height="80" fill="'+c[2]+'"/>' +
+      '<g fill="'+c[3]+'"><circle cx="88" cy="118" r="13"/><path d="M68,168 C68,140 76,130 88,130 C100,130 108,140 108,168 Z"/>' +
+      '<circle cx="132" cy="112" r="15"/><path d="M110,172 C110,142 119,130 132,130 C145,130 154,142 154,172 Z"/>' +
+      '<circle cx="178" cy="120" r="12"/><path d="M160,166 C160,141 168,132 178,132 C188,132 196,141 196,166 Z"/></g>'; },
+    function(c){ return '' +
+      '<rect width="320" height="200" fill="'+c[0]+'"/><rect width="320" height="86" fill="'+c[1]+'"/>' +
+      '<rect x="88" y="16" width="144" height="46" fill="'+c[2]+'" opacity=".6"/>' +
+      '<g fill="'+c[3]+'"><circle cx="62" cy="92" r="14"/><path d="M40,134 C40,110 49,102 62,102 C75,102 84,110 84,134 Z"/>' +
+      '<circle cx="128" cy="84" r="15"/><path d="M105,132 C105,106 115,96 128,96 C141,96 151,106 151,132 Z"/>' +
+      '<circle cx="196" cy="86" r="15"/><path d="M173,132 C173,107 183,98 196,98 C209,98 219,107 219,132 Z"/>' +
+      '<circle cx="260" cy="94" r="13"/><path d="M240,134 C240,112 248,104 260,104 C272,104 280,112 280,134 Z"/></g>' +
+      '<ellipse cx="160" cy="164" rx="140" ry="34" fill="'+c[3]+'"/><ellipse cx="160" cy="158" rx="128" ry="27" fill="'+c[2]+'"/>'; },
+    function(c){ return '' +
+      '<rect width="320" height="200" fill="'+c[1]+'"/><rect y="24" width="320" height="58" fill="'+c[2]+'" opacity=".55"/>' +
+      '<g stroke="'+c[0]+'" stroke-width="3" opacity=".5"><path d="M24,44 H120 M24,62 H96 M200,44 H296 M224,62 H296"/></g>' +
+      '<circle cx="160" cy="90" r="22" fill="'+c[3]+'"/>' +
+      '<path d="M112,200 C112,146 132,124 160,124 C188,124 208,146 208,200 Z" fill="'+c[3]+'"/>' +
+      '<g fill="'+c[3]+'" opacity=".9"><rect x="88" y="168" width="8" height="32" rx="4"/>' +
+      '<rect x="106" y="176" width="8" height="24" rx="4"/><rect x="212" y="172" width="8" height="28" rx="4"/>' +
+      '<rect x="230" y="180" width="8" height="20" rx="4"/></g>'; },
+    function(c){ return '' +
+      '<rect width="320" height="200" fill="'+c[0]+'"/><rect width="320" height="104" fill="'+c[1]+'"/>' +
+      '<rect x="56" y="18" width="208" height="40" fill="'+c[3]+'" opacity=".3"/>' +
+      '<g fill="'+c[3]+'"><circle cx="112" cy="82" r="16"/><path d="M88,140 C88,110 98,100 112,100 C126,100 136,110 136,140 Z"/>' +
+      '<circle cx="208" cy="82" r="16"/><path d="M184,140 C184,110 194,100 208,100 C222,100 232,110 232,140 Z"/>' +
+      '<path d="M136,120 H184 V130 H136 Z"/></g>' +
+      '<rect y="140" width="320" height="60" fill="'+c[2]+'"/><rect x="118" y="150" width="84" height="12" fill="'+c[0]+'" opacity=".75"/>'; }
+  ];
+
+  function sceneSVG(m, gray, idxIn){
+    var c = gray ? GRAY : PAL[(m.seed >>> 8) % PAL.length];
+    var idx = (typeof idxIn === "number") ? idxIn : (m.seed % SCENES.length);
+    var g = uid();
+    return '<svg class="viz" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" role="img" ' +
+      'aria-label="' + m.name + ' 활동 사진 자리(예시 이미지)" focusable="false">' +
+      '<defs><linearGradient id="' + g + '" x1="0" y1="0" x2=".35" y2="1">' +
+      '<stop offset="0" stop-color="#FFF" stop-opacity=".16"/><stop offset=".55" stop-color="#FFF" stop-opacity="0"/>' +
+      '<stop offset="1" stop-color="#000" stop-opacity=".14"/></linearGradient></defs>' +
+      SCENES[idx](c) + '<rect width="320" height="200" fill="url(#' + g + ')"/></svg>';
+  }
+
+  function recordSVG(m, it, i){
+    var c = PAL[(m.seed + i) % PAL.length];
+    if (it.type === "PHO") return sceneSVG(m, false, (m.seed + i) % SCENES.length);
+    if (it.type === "MOV" || it.type === "AUD"){
+      var bars = "";
+      for (var k=0;k<26;k++){
+        var h = 8 + ((m.seed + k*7 + i*3) % 46);
+        bars += '<rect x="' + (24 + k*11) + '" y="' + (100 - h/2) + '" width="5" height="' + h + '" fill="' + c[3] + '" opacity=".75"/>';
+      }
+      return '<svg class="viz" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="' + it.title + ' 예시 이미지">' +
+        '<rect width="320" height="200" fill="' + c[3] + '"/><rect y="26" width="320" height="148" fill="' + c[1] + '" opacity=".25"/>' + bars + '</svg>';
+    }
+    if (it.type === "ADM"){
+      return '<svg class="viz" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="' + it.title + ' 예시 이미지">' +
+        '<rect width="320" height="200" fill="' + c[0] + '"/>' +
+        '<path d="M160,26 L246,52 V104 C246,142 208,166 160,178 C112,166 74,142 74,104 V52 Z" fill="' + c[2] + '"/>' +
+        '<path d="M160,44 L228,64 V104 C228,132 198,152 160,162 C122,152 92,132 92,104 V64 Z" fill="' + c[3] + '" opacity=".55"/>' +
+        '<rect x="126" y="88" width="68" height="7" fill="' + c[0] + '" opacity=".9"/>' +
+        '<rect x="140" y="106" width="40" height="7" fill="' + c[0] + '" opacity=".75"/></svg>';
+    }
+    var lines = "";
+    for (var j=0;j<9;j++){
+      var w = 40 + ((m.seed + j*13 + i*5) % 130);
+      lines += '<rect x="86" y="' + (54 + j*13) + '" width="' + w + '" height="4" fill="' + c[3] + '" opacity=".45"/>';
+    }
+    return '<svg class="viz" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="' + it.title + ' 예시 이미지">' +
+      '<rect width="320" height="200" fill="' + c[1] + '"/><rect x="70" y="18" width="180" height="182" fill="' + c[0] + '"/>' +
+      '<rect x="86" y="34" width="92" height="8" fill="' + c[3] + '" opacity=".8"/>' + lines +
+      '<circle cx="216" cy="166" r="17" fill="none" stroke="' + c[3] + '" stroke-width="3" opacity=".5"/></svg>';
+  }
+
+  /* ============================================================
+     서술문 — 실제로는 기록연구사가 작성한 원고가 들어갈 자리임
+     ============================================================ */
+  var CDESC = {
+    "운영위원회":["국회 운영과 국회 소속기관","국회 운영"],
+    "법제사법위원회":["법무·법원 행정과 법률안 체계 심사","사법"],
+    "정무위원회":["국무조정실 소관 사무와 금융·공정거래","금융과 공정거래"],
+    "기획재정위원회":["예산과 조세","재정"],
+    "교육위원회":["교육 정책과 학교 현장","교육"],
+    "과학기술정보방송통신위원회":["과학기술과 방송통신","과학기술"],
+    "외교통일위원회":["외교와 남북관계","외교"],
+    "국방위원회":["국방과 병역","국방"],
+    "행정안전위원회":["지방행정과 재난안전","안전"],
+    "문화체육관광위원회":["문화·체육·관광","문화"],
+    "농림축산식품해양수산위원회":["농림축산식품과 해양수산","농어촌"],
+    "산업통상자원중소벤처기업위원회":["산업·통상과 중소기업","산업"],
+    "보건복지위원회":["보건의료와 사회복지","복지"],
+    "환경노동위원회":["환경과 노동","환경과 노동"],
+    "국토교통위원회":["국토 개발과 교통","국토교통"],
+    "정보위원회":["국가정보 업무","정보"],
+    "여성가족위원회":["여성·가족·청소년","여성가족"]
+  };
+  var ORD = ["","첫","두","세","네","다섯","여섯","일곱","여덟","아홉","열"];
+
+  /* 서술형 인적사항 — 표 대신 문장으로 */
+  function bioText(m){
+    var d = CDESC[m.committee] || ["의정 활동","정책"];
+    var a = m.dType === "비례대표"
+      ? m.name + " 의원은 " + m.party + " 비례대표로 제22대 국회에 들어왔다."
+      : m.name + " 의원은 " + m.party + " 소속으로 " + m.region + " 지역구에서 당선되었다.";
+    a += m.terms > 1
+      ? " 2024년 5월에 시작한 " + (ORD_KO[m.terms] || m.terms + "번째") + " 임기다. " + m.committee + "에서 활동하고 있다."
+      : " 2024년 5월에 첫 임기를 시작해 " + m.committee + "에서 활동하고 있다.";
+    var b = m.hasRecords
+      ? "국회기록원이 보존하는 " + m.name + " 컬렉션은 " +
+        (m.first.slice(0,4) === m.latest.slice(0,4)
+          ? m.first.slice(0,4) + "년에 기증받은 기록으로 이루어져 있다. "
+          : m.first.slice(0,4) + "년부터 " + m.latest.slice(0,4) + "년 사이에 기증받은 기록으로 이루어져 있다. ") +
+        "의원실에서 만든 문건과 현장에서 남긴 사진이 함께 있어, " +
+        "한 사람의 의정활동이 어떤 자리에서 어떤 방식으로 이루어졌는지 보여준다."
+      : eul(d[0]) + " 소관하는 위원회에서 법안 심사와 국정감사에 참여했다. " +
+        (m.dType === "비례대표"
+          ? "정책토론회와 간담회를 열어 현장의 의견을 모았고, 그 결과를 자료집으로 묶었다."
+          : "지역 현안을 다루는 자리에도 꾸준히 나섰다.");
+    return [a, b];
+  }
+
+  /* 회차별 기증 기술문 — 표가 아니라 문장으로 */
+  /* 기증 이력 — 회차별로 한 줄씩 짧게 */
+  function ledgerRows(m){
+    return m.rounds.slice().sort(function(x,y){ return x.seq - y.seq; }).map(function(r){
+      var ym = r.date.slice(0,4) + ". " + parseInt(r.date.slice(5,7),10);
+      var ord = ORD_KO[r.seq] || (r.seq + "번째");
+      var tx = r.arranged
+        ? ord + " 기증. " + joinTypes(r.types.slice(0,3)) + " " + fmt(r.count) + "건."
+        : ord + " 기증. 현재 정리하고 있다.";
+      return { ym: ym, tx: tx, wip: !r.arranged };
+    });
+  }
+
+  function pickItems(m, types, n){
+    var pool = m.listedItems.filter(function(it){ return types.indexOf(it.type) > -1; });
+    if (!pool.length) pool = m.listedItems.slice();
+    return pool.slice(0, n);
+  }
+
+  /* 장(章) 구성 — 블록 단위로 서술과 도판을 번갈아 배치함
+     실제 구축 시에는 기록연구사가 작성한 원고가 이 자리에 들어감 */
+
+  /* 시범 작성 대상 — 원고를 직접 쓴 컬렉션. 나머지는 아래 기본 틀로 생성함 */
+  var STORY = {
+    "강윤서": [
+      { title:"운영위원회에서", blocks:[
+        ["p","운영위원회는 국회의 살림과 운영을 맡아보는 위원회다. 본회의 일정과 의사 규칙, 국회 소속기관의 예산과 조직이 이 자리에서 논의된다. 강윤서 의원은 제22대 국회에 들어오면서 이 위원회에 배정되었고, 세 번째 임기의 대부분을 여기서 보냈다."],
+        ["p","이 시기의 기록은 대부분 회의를 준비하며 만든 문서다. 질의서 초안에는 줄을 그어 지운 문장과 여백에 적어 넣은 메모가 함께 있다. 어떤 질문을 하려다 접었는지, 어떤 표현으로 고쳐 썼는지가 종이 위에 그대로 남았다. 회의록에는 최종 발언만 실리지만, 이 문서에는 그 앞의 망설임이 남아 있다."],
+        ["fig",0],
+        ["p","국회 소속기관의 예산 심사를 다룬 문건철은 2025년 가을에 몰려 있다. 기관이 낸 자료와 의원실이 따로 만든 대조표가 나란히 편철되어 있어, 같은 숫자를 두고 양쪽이 어느 대목을 달리 보았는지 알 수 있다. 대조표 여백에는 더 확인해야 할 항목마다 표시가 남아 있다."],
+        ["p","의사 규칙 개정 논의를 담은 문서는 분량이 많지 않다. 다만 회의 앞뒤로 오간 짧은 메모가 함께 붙어 있어, 조문 한 줄이 바뀌기까지 오간 논의를 따라가기에는 모자라지 않다."],
+        ["pair",1,2]
+      ]},
+      { title:"지역에서", blocks:[
+        ["p","서울의 지역구는 강윤서 의원이 세 차례 당선된 곳이다. 컬렉션의 다른 한 축이 여기서 만들어졌다. 국회에서 남은 기록이 회의와 법안을 따라간다면, 지역에서 남은 기록은 사람과 장소를 따라간다."],
+        ["p","민원 처리 문서철에는 주민이 접수한 문제와 의원실이 관계 기관에 보낸 질의, 그리고 돌아온 회신이 한 묶음으로 편철되어 있다. 재개발 구역의 이주 대책, 오래된 상가 건물의 안전 점검, 통학로의 신호 체계 같은 사안이 해마다 되풀이해 나타난다."],
+        ["fig",3],
+        ["p","현장 사진은 문서가 적지 못한 것을 보여준다. 회의장이 아니라 골목과 상가 앞, 공사장 가림막 옆에서 찍은 사진이 많다. 더러는 뒷면에 날짜와 장소가 적혀 있어 같은 시기의 문서와 맞대어 볼 수 있다. 사진 한 장과 민원 문서 한 건이 같은 날을 가리키는 경우도 있다."],
+        ["quote","의원실 캐비닛에 쌓여 있던 자료가 임기가 끝나면 그대로 폐기된다는 사실을 알고 기증을 결심했습니다. 개인의 기록이 아니라 의회의 기록으로 남기고 싶었습니다.","강윤서 의원, 2024년 6월 기증 협약 당시"],
+        ["p","지역 간담회 자료집은 임기 내내 해마다 만들어졌다. 같은 주제가 여러 해에 걸쳐 다시 오르는 대목에서는 한 사안이 얼마나 오래 걸려 있었는지 드러난다. 자료집은 그해의 요구를 적어 둔 문서이면서, 여러 해를 겹쳐 보면 끝내 풀리지 않은 것의 목록이 된다."],
+        ["pair",4,5]
+      ]},
+      { title:"컬렉션이 만들어지기까지", blocks:[
+        ["p","이 컬렉션은 한 번에 만들어지지 않았다. 2024년 6월 첫 기증을 시작으로 다섯 차례에 걸쳐 기록이 더해졌고, 회차마다 성격이 조금씩 다르다."],
+        ["p","첫 회차는 임기가 시작되고 얼마 지나지 않아 의원실이 정리해 둔 자료였다. 그 뒤로는 한 해에 한두 차례씩, 정리가 끝난 분량이 상자에 담겨 옮겨 왔다. 처음에는 문서가 대부분이었으나 뒤로 갈수록 사진과 영상이 늘었다. 기록을 남기는 방식도 임기 중에 조금씩 달라진 셈이다."],
+        ["p","다섯 번째 기증분은 아직 정리하고 있다. 정리를 마치면 유형별 건수가 확정되어 이 컬렉션에 더해진다. 이 컬렉션은 아직 완결되지 않았다. 기록은 지금도 쌓이고 있다."]
+      ]}
+    ]
+  };
+
+  function chapters(m){
+    if (STORY[m.name]) return STORY[m.name];
+    var d = CDESC[m.committee] || ["의정 활동","정책"];
+    var ch = [];
+    ch.push({ title: m.committee + "에서", blocks:[
+      ["p", eun(m.committee) + " " + eul(d[0]) + " 다루는 상임위원회다. " + m.name + " 의원은 이곳에서 법안 심사와 국정감사에 참여하며 " + d[1] + " 현안을 살폈다."],
+      ["p","이 시기의 기록은 질의를 준비하며 모은 자료와 회의를 마친 뒤 정리한 문건으로 남아 있다. 한 안건을 두고 앞뒤로 작성한 문서가 나란히 남은 경우가 있어, 결론만이 아니라 그 결론에 이르기까지의 과정을 함께 읽을 수 있다."],
+      ["fig",0],
+      ["p","준비 문서에는 줄을 그어 지운 문장과 여백에 적어 넣은 메모가 함께 있다. 회의록에는 최종 발언만 실리지만, 이 문서에는 그 앞의 검토가 남는다."],
+      ["pair",1,2]
+    ]});
+    if (m.dType === "비례대표"){
+      ch.push({ title:"정책과 입법", blocks:[
+        ["p","지역구를 두지 않은 대신 " + d[1] + " 분야의 정책 활동에 시간을 들였다. 토론회와 간담회를 열어 현장의 의견을 모으고 그 결과를 자료집으로 묶었다."],
+        ["fig",3],
+        ["p","자료집과 토론회 기록에는 한 법안이 발의되기까지 오간 논의가 담겨 있다. 최종 조문만 보아서는 알 수 없는 대목이다."],
+        ["p","같은 주제의 자료집이 해를 달리해 여러 권 남은 경우에는, 논의가 어디에서 멈추고 어디에서 다시 이어졌는지 짚어 볼 수 있다."],
+        ["pair",4,5]
+      ]});
+    } else {
+      ch.push({ title:"지역에서", blocks:[
+        ["p", eun(m.region) + " " + m.name + " 의원의 지역구다. 지역 현안을 다룬 문서와 현장에서 찍은 사진이 컬렉션의 한 축을 이룬다."],
+        ["p","민원 처리 문서에는 주민이 제기한 문제와 의원실의 대응이 나란히 담겨 있다. 낱낱으로 보면 개별 사안의 기록이지만, 모아 놓으면 그 시기 지역이 무엇을 요구했는지 드러난다."],
+        ["fig",3],
+        ["p","현장 사진은 문서가 적지 못한 것을 보여준다. 회의장이 아니라 골목과 상가, 공사장 앞에서 찍은 사진이 많다. 더러는 같은 시기의 문서와 맞대어 볼 수 있다."],
+        ["pair",4,5]
+      ]});
+    }
+    if (m.roundCount >= 2){
+      ch.push({ title:"컬렉션이 만들어지기까지", blocks:[
+        ["p","이 컬렉션은 한 번에 만들어지지 않았다. " + m.roundCount + "차례에 걸쳐 기록이 더해졌고, 회차마다 성격이 조금씩 다르다."],
+        ["p","정리가 끝난 분량부터 차례로 옮겨 왔으므로 컬렉션은 임기와 나란히 쌓여 왔다. 앞으로 기증이 더해지면 이 컬렉션이 담는 시간의 폭도 넓어진다."]
+      ]});
+    }
+    return ch;
+  }
+
+  /* ============================================================
+     화면 전환
+     ============================================================ */
+  var views = {
+    home: document.getElementById("view-home"),
+    list: document.getElementById("view-list"),
+    detail: document.getElementById("view-detail"),
+    items: document.getElementById("view-items")
+  };
+  var scrollMem = { list:0, detail:0 };
+  var itemState = { id:null, type:"ALL" };
+  function show(which){
+    Object.keys(views).forEach(function(k){ views[k].hidden = (k !== which); });
+    /* 홈이 아닌 화면에서는 「국회의원 컬렉션」 메뉴를 활성 표시 */
+    if (which === "home"){ if (window.__clearNav) window.__clearNav(); }
+    else if (window.__markNav) window.__markNav(2);
+  }
+  document.querySelectorAll("[data-go]").forEach(function(b){
+    b.onclick = function(){
+      show(b.dataset.go === "list" ? "list" : "home");
+      window.scrollTo(0,0);
+    };
+  });
+  document.querySelector(".banner .close").onclick = function(){
+    document.querySelector(".banner").hidden = true;
+  };
+
+  /* ============================================================
+     홈
+     ============================================================ */
+  (function home(){
+    document.getElementById("art1").innerHTML = abstractSVG(20260901, 1, true);
+    document.getElementById("art2").innerHTML = abstractSVG(775533, 2, false, true);
+    var a3 = document.getElementById("art3");
+    if (a3) a3.innerHTML = abstractSVG(90210, 4, false, true);
+
+    var donors = DATA.filter(function(m){ return m.hasRecords; });
+    var total = DATA.reduce(function(a,m){ return a + m.count; }, 0);
+    var feat = donors.slice().sort(function(a,b){ return b.count - a.count; });
+    function fake(n){ return {name:n, seed:seedOf(n)}; }
+
+    /* 첫 화면의 섹션은 상단 1차 메뉴와 제목·순서를 일치시킴 */
+    var SECTIONS = [
+      {
+        id:"s-records", menu:0, title:"국회기록물",
+        desc:"대한민국 의정사의 흐름과 민주주의 발전을 보여주는 국회의 기록유산",
+        type:"index",
+        rows:[
+          ["일반문서", "제헌국회 이래 국회가 생산하고 접수한 문서 기록", "생산기관·연도·유형으로 검색"],
+          ["국회간행물", "의안과 회의록, 연구보고서를 비롯한 국회의 발간물", "원문 열람 제공"],
+          ["국회특별위원회 기록", "특별위원회의 구성부터 활동 종료까지 남은 기록", "위원회별 활동 기간순"]
+        ]
+      },
+      {
+        id:"s-history", menu:1, title:"기록 속 의정사",
+        desc:"의회 민주주의 발전과 함께한 국회의 여정",
+        type:"feature", scene:2, pal:0,
+        picks:[
+          {m:fake("임시의정원"), t:"임시의정원", s:"대한민국 국회의 기원이 된 의회 조직 · 홍진 문서 약 1,500장"},
+          {m:fake("비상계엄"), t:"12.3 비상계엄", s:"개요와 타임라인, 법률과 역사 속의 계엄, 기록으로 보는 그날"}
+        ],
+        note:"국회연표에서는 제헌국회부터 오늘까지의 의정사를 연도별로 짚어 볼 수 있습니다.",
+        cta:"기록 속 의정사 보기"
+      },
+      {
+        id:"s-members", menu:2, title:"국회의원 컬렉션",
+        desc:"한 사람이 남긴 기록으로 읽는 의정활동",
+        type:"feature", scene:1, pal:5, primary:true,
+        picks:[
+          {m:feat[0], t:feat[0].name + " 의원 컬렉션", s:"의정 서류철과 현장 사진 · " + feat[0].roundCount + "회 기증", id:feat[0].id},
+          {m:feat[1], t:feat[1].name + " 의원 컬렉션", s:"상임위 활동 자료 중심 · " + feat[1].roundCount + "회 기증", id:feat[1].id}
+        ],
+        note:"제22대 국회의원 전원의 자리를 두었습니다. 기증된 기록이 있는 의원의 카드에는 색이 들어갑니다.",
+        cta:"제22대 전체 보기", go:true
+      },
+      {
+        id:"s-contents", menu:3, title:"기록콘텐츠",
+        desc:"다양한 주제와 유형의 컬렉션으로 살펴 보는 의정사",
+        type:"tiles",
+        tiles:[
+          ["구술기록", "문서가 담지 못한 자리의 공기를 목소리로 남깁니다", 3, 3],
+          ["국회의장 선물", "의장에게 전해진 외교 선물과 기념물 186점", 5, 2],
+          ["기록물 큐레이션", "주제를 정해 기록을 골라 엮은 읽을거리", 0, 4],
+          ["디지털 전시", "전시장을 찾지 않고도 둘러보는 온라인 전시", 4, 1]
+        ]
+      },
+      {
+        id:"s-guide", menu:4, title:"이용안내",
+        desc:"국회기록의 이용을 위한 열린 기록 서비스",
+        type:"index",
+        rows:[
+          ["기록물 열람", "열람실 방문 전 사전 예약을 받습니다", "예약 신청"],
+          ["기록물 기증", "의정활동 기록의 기증 절차와 문의처를 안내합니다", "상담 신청"],
+          ["정보공개", "국회 통합 정보공개시스템으로 연결됩니다", "청구 바로가기"]
+        ],
+        donate:true
+      },
+      {
+        id:"s-about", menu:5, title:"기관 소개",
+        desc:"대한민국 의정사가 살아 숨쉬는 곳",
+        type:"about"
+      }
+    ];
+
+    function pickHTML(p){
+      return '<button class="pick"' + (p.id ? ' data-id="' + p.id + '"' : ' type="button"') + '>' +
+        '<span class="th">' + sceneSVG(p.m, false) + '</span>' +
+        '<span><b>' + p.t + '</b><span>' + p.s + '</span></span></button>';
+    }
+
+    function sectionHTML(sec, i){
+      var no = String(i+1).padStart(2,"0");
+      var head =
+        '<div class="sec-head">' +
+          '<div><p class="no">' + no + '</p><h2 class="serif">' + sec.title + '</h2></div>' +
+          '<p class="d">' + sec.desc + '</p>' +
+        '</div>';
+      var body = "";
+
+      if (sec.type === "index"){
+        body = '<ul class="idxlist">' + sec.rows.map(function(r, k){
+          return '<li><button type="button">' +
+            '<span class="n">' + String(k+1).padStart(2,"0") + '</span>' +
+            '<span class="t serif">' + r[0] + '</span>' +
+            '<span class="dd">' + r[1] + '</span>' +
+            '<span class="go">' + r[2] + ' →</span></button></li>';
+        }).join("") + '</ul>' +
+        (sec.donate
+          ? '<div class="donatebox"><div><h3 class="serif">임기가 끝나면 기록은 흩어집니다</h3>' +
+            '<p>의원실의 자료는 임기 종료와 함께 사라지기 쉽습니다. 한 번에 전부 맡기실 필요는 없으며, 정리된 분량부터 나누어 기증하실 수 있습니다.</p></div>' +
+            '<a href="#" onclick="return false">기증 상담 신청</a></div>'
+          : '');
+      }
+
+      else if (sec.type === "feature"){
+        body = '<div class="feature' + (i % 2 ? " rev" : "") + '">' +
+          '<div class="visual">' + sceneSVG(fake(sec.title), false, sec.scene) + '</div>' +
+          '<div class="panel">' +
+            (sec.note ? '<p class="note">' + sec.note + '</p>' : '') +
+            '<div class="picks">' + sec.picks.map(pickHTML).join("") + '</div>' +
+            '<button class="go"' + (sec.go ? ' data-open-list="1"' : ' type="button"') + '>' + sec.cta + ' →</button>' +
+          '</div>' +
+        '</div>';
+      }
+
+      else if (sec.type === "tiles"){
+        body = '<div class="tiles">' + sec.tiles.map(function(t){
+          return '<button class="tile" type="button">' +
+            '<span class="img">' + sceneSVG(fake(t[0]), false, t[2]) + '</span>' +
+            '<span class="cap"><b class="serif">' + t[0] + '</b><span>' + t[1] + '</span></span></button>';
+        }).join("") + '</div>';
+      }
+
+      else if (sec.type === "about"){
+        var NEWS = [
+          ["2026.08.28","「의정의 물건 ― 행정박물로 보는 국회」 기획전 개막","전시"],
+          ["2026.08.21","제22대 국회의원 기록물 기증 안내 설명회 개최","공지사항"],
+          ["2026.08.12","구술 컬렉션 「의사당의 하루」 1차 채록 공개","보도자료"],
+          ["2026.07.30","2026년 상반기 기록물 보유현황 갱신","현황 및 자료"]
+        ];
+        body = '<div class="about">' +
+          '<div class="prose">' +
+            '<p>2026년 1월 문을 연 국회기록원은 국회가 생산한 공적 기록과 함께, 의원 개인이 의정활동 과정에서 남긴 기록을 모읍니다. ' +
+            '의원실의 서류철과 현장 사진, 회의의 목소리, 의정의 자리에서 오간 물건이 모두 수집 대상입니다.</p>' +
+            '<p>모인 기록은 인물과 주제를 단위로 묶어 컬렉션으로 공개합니다. 낱낱의 문서를 검색하는 일보다, ' +
+            '한 사람과 한 사건을 따라 읽는 경험을 먼저 두었습니다.</p>' +
+            '<dl class="figs3">' +
+              '<div><dt>컬렉션</dt><dd class="tnum">4<small>종</small></dd></div>' +
+              '<div><dt>기록이 있는 의원</dt><dd class="tnum">' + donors.length + '<small>명</small></dd></div>' +
+              '<div><dt>정리 완료 기록</dt><dd class="tnum">' + fmt(total) + '<small>건</small></dd></div>' +
+            '</dl>' +
+          '</div>' +
+          '<div class="newsbox"><div class="nh"><h3 class="serif">소식</h3><span>전체 보기 →</span></div>' +
+            '<ul>' + NEWS.map(function(n){
+              return '<li><button type="button"><span class="d">' + n[0] + '</span>' +
+                '<span class="t">' + n[1] + '</span><span class="c">' + n[2] + '</span></button></li>';
+            }).join("") + '</ul>' +
+          '</div>' +
+        '</div>';
+      }
+
+      return '<section class="sec" id="' + sec.id + '" data-menu="' + sec.menu + '">' +
+        '<div class="wrap">' + head + body + '</div></section>';
+    }
+
+    document.getElementById("sections").innerHTML = SECTIONS.map(sectionHTML).join("");
+
+    document.querySelectorAll("#sections .pick[data-id]").forEach(function(b){
+      b.onclick = function(){ scrollMem.list = window.scrollY; openDetail(b.dataset.id); };
+    });
+    document.querySelectorAll("#sections [data-open-list]").forEach(function(b){
+      b.onclick = function(){ show("list"); window.scrollTo(0,0); };
+    });
+
+    /* ---- 스크롤 위치에 따라 해당 1차 메뉴를 활성 표시 ---- */
+    var navBtns = [].slice.call(document.querySelectorAll(".nav > .m > button"));
+    var secs = [].slice.call(document.querySelectorAll("#sections .sec"));
+    var current = -1;
+    function markNav(idx){
+      if (idx === current) return;
+      current = idx;
+      navBtns.forEach(function(b, k){ b.setAttribute("aria-current", k === idx ? "true" : "false"); });
+    }
+    window.__markNav = markNav;
+    window.__clearNav = function(){ current = -1; navBtns.forEach(function(b){ b.setAttribute("aria-current","false"); }); };
+
+    function spy(){
+      if (views.home.hidden) return;
+      var line = window.scrollY + window.innerHeight * 0.34;
+      var hit = -1;
+      secs.forEach(function(el){
+        if (el.offsetTop <= line) hit = parseInt(el.dataset.menu, 10);
+      });
+      markNav(hit);
+    }
+    var ticking = false;
+    window.addEventListener("scroll", function(){
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){ spy(); ticking = false; });
+    }, {passive:true});
+    window.addEventListener("resize", spy);
+    spy();
+
+    /* 상단 메뉴를 누르면 해당 섹션으로 이동 */
+    navBtns.forEach(function(b, k){
+      b.addEventListener("click", function(){
+        var target = document.querySelector('#sections .sec[data-menu="' + k + '"]');
+        if (!target) return;
+        if (views.home.hidden){ show("home"); }
+        var top = target.offsetTop - 76;
+        window.scrollTo({ top: top < 0 ? 0 : top, behavior: "smooth" });
+      });
+    });
+  })();
+
+  /* ============================================================
+     목록
+     ============================================================ */
+  var state = { filter:"all", q:"", initial:"", shown:24 };
+  var grid = document.getElementById("grid");
+  var idxBox = document.getElementById("idx");
+  var allBtn = document.createElement("button");
+  allBtn.textContent = "전체"; allBtn.style.width = "42px"; allBtn.setAttribute("aria-pressed","true");
+  allBtn.onclick = function(){ state.initial = ""; state.shown = 24; syncIdx(); render(); };
+  idxBox.appendChild(allBtn);
+  CHO.forEach(function(c){
+    var b = document.createElement("button");
+    b.textContent = c; b.dataset.cho = c; b.setAttribute("aria-pressed","false");
+    if (!DATA.some(function(m){ return m.initial === c; })) b.disabled = true;
+    b.onclick = function(){ state.initial = (state.initial === c ? "" : c); state.shown = 24; syncIdx(); render(); };
+    idxBox.appendChild(b);
+  });
+  function syncIdx(){
+    allBtn.setAttribute("aria-pressed", state.initial === "");
+    idxBox.querySelectorAll("[data-cho]").forEach(function(b){
+      b.setAttribute("aria-pressed", b.dataset.cho === state.initial);
+    });
+  }
+  document.querySelectorAll(".seg button").forEach(function(b){
+    b.onclick = function(){
+      state.filter = b.dataset.f; state.shown = 24;
+      document.querySelectorAll(".seg button").forEach(function(x){ x.setAttribute("aria-pressed", x === b); });
+      render();
+    };
+  });
+  document.getElementById("q").addEventListener("input", function(e){
+    state.q = e.target.value.trim(); state.shown = 24; render();
+  });
+  document.getElementById("more").onclick = function(){ state.shown += 24; render(); };
+
+  /* 카드 — 사진 + 성명 + 정당. 실적 수치는 두지 않음 */
+  function cardHTML(m){
+    var gray = !m.hasRecords;
+    return '<article class="mcard' + (gray ? " empty" : "") + '">' +
+      '<div class="shot">' + sceneSVG(m, gray) + '</div>' +
+      '<h3 class="serif"><a class="cardlink" href="#" data-id="' + m.id + '" aria-label="' +
+        m.name + ' 의원 컬렉션, ' + m.party + (gray ? ', 기증된 기록 없음' : ', 기증된 기록 있음') +
+        '">' + m.name + '</a></h3>' +
+      '<p class="meta">' + m.party + '</p>' +
+    '</article>';
+  }
+  function bindCards(host){
+    host.querySelectorAll(".cardlink").forEach(function(a){
+      a.onclick = function(e){ e.preventDefault(); scrollMem.list = window.scrollY; openDetail(a.dataset.id); };
+    });
+  }
+  function filtered(){
+    return DATA.filter(function(m){
+      if (state.filter === "has" && !m.hasRecords) return false;
+      if (state.filter === "none" && m.hasRecords) return false;
+      if (state.initial && m.initial !== state.initial) return false;
+      if (state.q){
+        var q = state.q;
+        if (!(m.name.indexOf(q) > -1 || m.init.indexOf(q) === 0 || m.party.indexOf(q) > -1)) return false;
+      }
+      return true;
+    }).sort(function(a,b){ return a.name.localeCompare(b.name, "ko"); });
+  }
+  function render(){
+    var list = filtered();
+    document.getElementById("rescount").innerHTML =
+      (state.filter === "has" ? "기록이 있는 의원 " : state.filter === "none" ? "기증 대기 " : "전체 ") +
+      '<b class="tnum">' + list.length + '</b>명';
+    grid.innerHTML = list.slice(0, state.shown).map(cardHTML).join("");
+    bindCards(grid);
+    document.getElementById("empty").hidden = list.length > 0;
+    document.getElementById("morewrap").hidden = list.length <= state.shown;
+  }
+  (function legend(){
+    var s = DATA.filter(function(m){ return m.hasRecords; })[0];
+    var g = DATA.filter(function(m){ return !m.hasRecords; })[0];
+    document.getElementById("lg-color").innerHTML = sceneSVG(s, false);
+    document.getElementById("lg-gray").innerHTML = sceneSVG(g, true);
+  })();
+
+  /* ============================================================
+     상세
+     ============================================================ */
+  document.getElementById("back").onclick = function(){ show("list"); window.scrollTo(0, scrollMem.list); };
+
+  function figureHTML(m, it, i, cls){
+    return '<figure class="' + (cls || "") + '">' +
+      '<button class="openimg" type="button" aria-label="' + it.title + ' 원본 보기">' +
+        '<span class="img">' + recordSVG(m, it, i) + '</span>' +
+      '</button>' +
+      '<figcaption><b>' + it.title + '</b>' + it.year + '년 · ' + TYPE_NAME[it.type] + ' · ' + fmt(it.qty) + '건<br>' +
+      '국회기록원, ' + m.id + '-' + pad(i+1) + ' · ' + it.round + '차 기증분' +
+      (it.level === "RESTRICTED" ? '<br>원문은 열람 신청 절차를 따름' : '') +
+      '<br><span class="figlink">원본 보기 →</span></figcaption></figure>';
+  }
+
+  function openDetail(id){
+    var m = DATA.filter(function(x){ return x.id === id; })[0];
+    if (!m) return;
+    var bio = bioText(m);
+
+    var hero =
+      '<section class="dhero">' +
+        '<div class="band">' +
+          '<div>' + sceneSVG(m, !m.hasRecords) + '</div>' +
+          '<div>' + sceneSVG(m, !m.hasRecords, (m.seed + 2) % SCENES.length) + '</div>' +
+          '<div>' + sceneSVG(m, !m.hasRecords, (m.seed + 4) % SCENES.length) + '</div>' +
+        '</div>' +
+        '<p class="cap">' + m.name + ' 의원 활동 사진 자리 · 예시 이미지</p>' +
+        '<div class="wrap">' +
+          '<p class="kicker">국회의원 컬렉션</p>' +
+          '<h1 class="serif">' + m.name + '</h1>' +
+          '<p class="oneline">' + m.party + ' · 제22대 (2024 ~ )</p>' +
+          '<div class="share">' +
+            '<button type="button">링크 복사</button>' +
+            '<button type="button">페이스북 공유</button>' +
+          '</div>' +
+        '</div>' +
+      '</section>';
+
+    var out = '<div class="article">' +
+      '<div class="bio col">' + bio.map(function(p){ return '<p>' + p + '</p>'; }).join("") + '</div>';
+
+    var oral = ORAL[m.id];
+    if (oral){
+      out += '<aside class="oral-link" aria-label="구술기록 연계">' +
+        '<div class="txt"><p class="k">구술기록</p><b>' + m.name + ' 의원의 구술' + (oral.ready ? '이 있습니다' : '을 정리하고 있습니다') + '</b>' +
+        '<span>' + oral.note + '</span></div>' +
+        '<a href="' + ORAL_BASE + oral.narrator + '">' + (oral.ready ? '구술 듣기' : '구술자 카드 보기') + ' ↗</a></aside>';
+    }
+
+    if (m.hasRecords){
+      var led = ledgerRows(m);
+      out += '<section class="ledger">' +
+        '<div class="lh"><h2 class="serif">기증 이력</h2>' +
+          '<p class="sum tnum">' + m.roundCount + '회 · ' +
+          (m.count ? fmt(m.count) + '건 정리 완료' : '정리 진행 중') + ' · ' +
+          m.first.slice(0,4) + '. ' + parseInt(m.first.slice(5,7),10) + ' ~ ' +
+          m.latest.slice(0,4) + '. ' + parseInt(m.latest.slice(5,7),10) + '</p></div>' +
+        '<ol class="tl">' + led.map(function(r){
+          return '<li' + (r.wip ? ' class="wip"' : '') + '>' +
+            '<span class="ym tnum">' + r.ym + '</span>' +
+            '<span class="tx">' + r.tx + '</span></li>';
+        }).join("") + '</ol>' +
+        ((m.pendingBoxes || m.pendingDevices)
+          ? '<p class="now">정리 중인 인수 물량 · ' + intakeText(m.pendingBoxes, m.pendingDevices) + '</p>' : '') +
+      '</section>';
+
+      if (m.hasStory){
+        /* 서술과 기록 이미지를 블록 순서대로 번갈아 배치 */
+        var pool = m.listedItems.length ? m.listedItems : m.items;
+        out += chapters(m).map(function(c, ci){
+          var body = c.blocks.map(function(bk){
+            if (bk[0] === "p") return '<div class="prose col"><p>' + bk[1] + '</p></div>';
+            if (bk[0] === "quote")
+              return '<blockquote class="pull col"><p>' + bk[1] + '</p><cite>' + bk[2] + '</cite></blockquote>';
+            if (bk[0] === "fig"){
+              var it = pool[(ci*4 + bk[1]) % pool.length];
+              return it ? figureHTML(m, it, ci*6 + bk[1], "wide") : "";
+            }
+            if (bk[0] === "pair"){
+              var a = pool[(ci*4 + bk[1]) % pool.length], b2 = pool[(ci*4 + bk[2]) % pool.length];
+              if (!a || !b2) return "";
+              return '<figure class="pair">' + [a,b2].map(function(it, k){
+                var n = ci*6 + (k ? bk[2] : bk[1]);
+                return '<div><button class="openimg" type="button" aria-label="' + it.title + ' 원본 보기">' +
+                  '<span class="img">' + recordSVG(m, it, n) + '</span></button>' +
+                  '<figcaption><b>' + it.title + '</b>' + it.year + '년 · ' + TYPE_NAME[it.type] + ' · ' + fmt(it.qty) + '건<br>' +
+                  '국회기록원, ' + m.id + '-' + pad(n+1) + ' · ' + it.round + '차 기증분' +
+                  '<br><span class="figlink">원본 보기 →</span></figcaption></div>';
+              }).join("") + '</figure>';
+            }
+            return "";
+          }).join("");
+          return '<section class="chapter"><p class="ch-no">' + pad(ci+1) + '</p>' +
+            '<h2 class="serif">' + c.title + '</h2>' + body + '</section>';
+        }).join("");
+      } else {
+        out += '<div class="invite" style="border-left-color:var(--line-2)">' +
+          '<h2 class="serif">활동 서술은 준비 중입니다</h2>' +
+          '<p>이 컬렉션의 활동 서술은 아직 작성 전입니다. 정리와 기술이 끝난 컬렉션부터 차례로 서술을 더하고 있습니다. ' +
+          '그때까지는 아래 목록에서 기록을 직접 살펴보실 수 있습니다.</p></div>';
+      }
+
+      out += '<div class="endbar"><div class="row">' +
+        '<p>' + (m.hasStory ? '서술에서 다루지 않은 기록도 목록에서 찾아보실 수 있습니다.' : '') + '</p>' +
+        (m.count ? '<button id="tolist" type="button">이 컬렉션의 기록 전체 목록 →</button>' : '') +
+        '</div>' +
+        '<p class="disclose">기증자와의 협의에 따라 목록을 공개하지 않는 기록물이 포함될 수 있습니다. ' +
+        '목록에는 공개 대상 기록물만 표시합니다.</p></div>';
+    } else {
+      out += '<div class="invite">' +
+        '<h2 class="serif">기증된 기록을 기다리고 있습니다</h2>' +
+        '<p>' + m.name + ' 의원의 의정활동 기록은 아직 국회기록원에 들어오지 않았습니다. 의원실의 자료는 임기가 끝나면 흩어지기 쉽습니다. ' +
+        '한 번에 전부 맡기실 필요는 없으며, 정리된 분량부터 나누어 기증하실 수 있습니다. 현황 조사부터 인수와 정리, 공개까지 국회기록원이 함께합니다.</p>' +
+        '<a href="#" onclick="return false">기증 상담 신청</a></div>';
+    }
+    out += '<div class="artfoot"></div></div>';
+
+    document.getElementById("detail").innerHTML = hero + out;
+    var tl = document.getElementById("tolist");
+    if (tl) tl.onclick = function(){ scrollMem.detail = window.scrollY; openItems(m.id, "ALL"); };
+    show("detail"); window.scrollTo(0,0);
+    document.getElementById("back").focus();
+  }
+
+  /* ============================================================
+     기록 전체 목록
+     ============================================================ */
+  document.getElementById("iback").onclick = function(){
+    openDetail(itemState.id); window.scrollTo(0, scrollMem.detail);
+  };
+  function openItems(id, type){
+    itemState.id = id; itemState.type = type || "ALL";
+    renderItems(); show("items"); window.scrollTo(0,0);
+    document.getElementById("iback").focus();
+  }
+  function renderItems(){
+    var m = DATA.filter(function(x){ return x.id === itemState.id; })[0];
+    if (!m) return;
+    var rows = m.listedItems.filter(function(it){ return itemState.type === "ALL" || it.type === itemState.type; });
+    rows.sort(function(a,b){
+      var ai = TYPES.findIndex(function(t){ return t.c === a.type; });
+      var bi = TYPES.findIndex(function(t){ return t.c === b.type; });
+      return ai - bi || b.qty - a.qty;
+    });
+    var q = itemState.type === "ALL" ? m.count : (m.typeCounts[itemState.type] || 0);
+    var tabs = '<button data-t="ALL" aria-selected="' + (itemState.type === "ALL") + '">전체<span class="n tnum">' + fmt(m.count) + '</span></button>' +
+      TYPES.map(function(t){
+        var c = m.typeCounts[t.c] || 0;
+        return '<button data-t="' + t.c + '" aria-selected="' + (itemState.type === t.c) + '"' + (c ? "" : " disabled") +
+          '>' + t.n + '<span class="n tnum">' + fmt(c) + '</span></button>';
+      }).join("");
+
+    document.getElementById("items-body").innerHTML =
+      '<section class="ihead"><div class="wrap">' +
+        '<h1 class="serif">' + m.name + ' 의원 컬렉션 · 기록 목록</h1>' +
+        '<p class="sub tnum">' + m.roundCount + '회 기증 · 정리 완료 ' + fmt(m.count) + '건 · ' + m.first + ' ~ ' + m.latest + '</p>' +
+        '<div class="tabs" role="tablist" aria-label="기록물 유형">' + tabs + '</div>' +
+      '</div></section>' +
+      '<div class="wrap">' +
+        '<p class="resline">' + (itemState.type === "ALL" ? "전체" : TYPE_NAME[itemState.type]) +
+        ' <b class="tnum">' + fmt(q) + '</b>건 · 목록 제공 기록물철 ' + rows.length + '건</p>' +
+        '<div class="tblwrap"><table class="items">' +
+        '<thead><tr><th scope="col">기록물철명</th><th scope="col">유형</th><th scope="col">생산연도</th>' +
+        '<th scope="col" class="num">수량(건)</th><th scope="col" class="num">기증 회차</th><th scope="col">공개 구분</th></tr></thead>' +
+        '<tbody>' + rows.map(function(r){
+          return '<tr><td>' + r.title + '</td><td>' + TYPE_NAME[r.type] + '</td><td class="num">' + r.year + '</td>' +
+            '<td class="num">' + fmt(r.qty) + '</td><td class="num">' + r.round + '차</td>' +
+            '<td>' + (r.level === "OPEN" ? '<span class="tag">공개</span>' : '<span class="tag r">원문 제한</span>') + '</td></tr>';
+        }).join("") + '</tbody></table></div>' +
+        '<p class="inote">목록은 기록물철 단위로 표시하며, 수량은 철에 포함된 건수입니다. ' +
+        '기증자와의 협의에 따라 목록을 공개하지 않는 기록물이 포함될 수 있습니다.<br>' +
+        '실제 구축 시 이 화면은 소장기록 검색과 연계하며, 프로토타입에서는 예시용 가상 목록을 표시합니다.</p>' +
+      '</div>';
+    document.querySelectorAll("#items-body .tabs button").forEach(function(b){
+      b.onclick = function(){ if (b.disabled) return; itemState.type = b.dataset.t; renderItems(); };
+    });
+  }
+
+  render();
+
+  /* 바로 가기 주소 — #list 는 목록, #member/22-000001 은 의원 상세(구술기록 프로토타입에서 들어올 때 씀) */
+  function route(){
+    var h = location.hash.replace(/^#\/?/, "");
+    if (h === "list"){ show("list"); window.scrollTo(0,0); }
+    else if (h.indexOf("member/") === 0){ openDetail(h.slice(7)); }
+  }
+  window.addEventListener("hashchange", route);
+  route();
+})();
+</script>
+
+</body></html>

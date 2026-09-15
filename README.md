@@ -26,6 +26,8 @@
 - 1차 프로토타입(claude.ai 「국회기록원 아카이브」)의 기존 콘텐츠는 그대로 두고, 의원 상세(SC-02) 인물 소개 아래에 「구술기록」 연결 상자 하나만 추가함
 - 구술자인 의원(강윤서 → `#/narrator/n10`, 안태경 → `#/narrator/n11`)에게만 나타나며, 구술자가 아닌 의원에게는 표시하지 않음
 - 연결 근거: 인명 사전 `persons.json`의 `links.member_collection_id`가 1차 컬렉션의 의원 식별자(22-000001 등)와 같음
+- 다른 PC에서도 오갈 수 있도록 1차 국회의원 컬렉션 화면을 내용 변경 없이 `collection/index.html`에 함께 둠. 구술기록 상단 「국회의원 컬렉션」 메뉴, 인명 사전의 [국회의원 컬렉션에서 보기], 구술자 상세의 관련 자료 카드가 이 화면으로 연결됨
+  - 바로 가기 주소: `collection/index.html#list`(의원 목록), `collection/index.html#member/22-000001`(의원 상세)
 
 ## 구현 화면
 
@@ -65,6 +67,7 @@
 
 ```
 index.html, config.js, 시연하기.command
+collection/ 1차 국회의원 컬렉션 화면(사본, 구술 연결 상자만 추가)
 assets/   app.css, app.js(화면 렌더링), logo.png
 data/     site, narrators, sessions, segments, topics, assemblies, places, persons, mentions (.json)
           bundle.js — 파일로 바로 열 때 쓰는 묶음(자동 생성)

@@ -1491,7 +1491,7 @@
       '<header class="phero"><p class="kicker">인명 사전' + (p.is_sample ? ' · 표본(가상 인물)' : '') + '</p><h1>' + esc(p.name) + (p.hanja ? '<small>' + esc(p.hanja) + '</small>' : '') + '</h1>' +
         '<p class="dis">' + esc(p.disambiguation) + '</p><p class="summary">' + esc(p.summary) + '</p>' +
         '<div class="links">' + (n ? '<a class="btn primary" href="#/narrator/' + n.id + '">' + esc(n.name) + ' 본인의 구술 보기</a>' : '') +
-          (p.links.member_collection_id ? '<button class="btn" data-toast="국회의원 컬렉션(1차 과제)과 같은 인물 식별자로 연결됩니다 — 연동 예정">국회의원 컬렉션에서 보기</button>' : '') + '</div>' +
+          (p.links.member_collection_id ? '<a class="btn" href="collection/index.html#member/' + esc(p.links.member_collection_id) + '">국회의원 컬렉션에서 보기</a>' : '') + '</div>' +
         (same.length ? '<p class="samename">같은 이름의 다른 인물이 있습니다: ' + same.map(function(o){ return '<a href="#/person/' + o.person_id + '">' + esc(o.name) + '(' + esc(o.disambiguation) + ')</a>'; }).join(", ") + '. 인명 사전은 동명이인을 구분하여 연결합니다.</p>' : '') +
         '<p class="note" style="margin-top:14px">구술 속 표기: ' + surfaces.map(function(s){ return "‘" + esc(s) + "’"; }).join(", ") + '</p>' +
       '</header>' +
@@ -1540,6 +1540,8 @@
     if (tb){ toast(tb.dataset.toast); return; }
     var pl = t.closest("[data-place]");
     if (pl && MAPSTATE){ selectPlace(pl.dataset.place, true); return; }
+    var hb = t.closest("button[data-href]");
+    if (hb){ location.href = hb.dataset.href; return; }
   });
   document.addEventListener("keydown", function(ev){
     if (ev.key === "Escape" && !pop.hidden){ closePop(); return; }
